@@ -1,24 +1,23 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import {Route, Switch} from "react-router-dom";
+import Sitebar from "./components/Sitebar";
+import HomePage from "./components/HomePage";
+import UserInfo from "./components/UserInfo";
+import Donation from "./components/Donation";
+import Request from "./components/Request";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>    
+      <Sitebar />     
+      {/* <Switch> */}
+        {/* <Route exact path = '/' component={( => <HomePage title="Props Passed In" />)} /> */}
+        {/* <Route exact path="/profile" component={UserInfo} /> */}
+        {/* <Route exact path="/giveAPenny" component={Donation} /> */}
+        {/* <Route exact path="/needAPenny" component={Request} /> */}
+      {/* </Switch> */}
     </div>
   );
 }
