@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-// import logo from './logo.svg';
 import './App.less';
 import {Route, Switch} from "react-router-dom";
 import Sitebar from "./components/Sitebar";
@@ -9,6 +8,8 @@ import Donation from "./components/FinancialDonation/Donation";
 import Request from "./components/Request/Request"
 import FooterSection from "./components/Footer"
 import Auth from './components/Auth/Auth'
+import Create from "./components/Auth/Create"
+import Login from "./components/Auth/Login"
 
 type Token ={
   SessionToken: string
@@ -41,22 +42,23 @@ class App extends Component<{}, Token> {
     :<Auth updateToken={this.updateToken}/>)
   }
 
-render(){
-  return (
-    <div>
-      <Sitebar />     
-      {this.protectedViews()}   
-      <Switch>
-        {/* <Route exact path = '/' component={( => <HomePage title="Props Passed In" />)} /> */}
-        <Route exact path = '/' component={HomePage} />
-        <Route exact path="/needAPenny" component={Request} />
-        <Route exact path="/profile" component={UserInfo} />
-        <Route exact path="/giveAPenny" component={Donation} />
-      </Switch>
-      <FooterSection />     
-    </div>
-  );
-}
+  render(){
+    return (
+      <div>
+        <Sitebar />     
+        <Switch> 
+          <Route exact path = '/' component={HomePage} />
+        {this.protectedViews()}   
+          <Route exact path="/needAPenny" component={Request} />
+          <Route exact path="/profile" component={UserInfo} />
+          <Route exact path="/giveAPenny" component={Donation} />
+          <Route exact path="/signup" component={Create} />
+          <Route exact path="/login" component={Login} />
+        </Switch>
+        <FooterSection />     
+      </div>
+    );
+  }
 }
 
 export default App;

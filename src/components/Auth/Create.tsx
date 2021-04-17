@@ -4,7 +4,7 @@ import APIURL from "../../helpers/environment"
 
 const layout = {
         labelCol:{ span: 8},
-        wrapperCol: {span: 16},
+        wrapperCol: {span: 8},
     };
     
     const tailLayout = {
@@ -80,16 +80,16 @@ class Create extends Component <PropsItems, SignUpData>{
                         <Input onChange={this.handleChangePassword} />
                     </Form.Item>
 
-                    <Form.Item name="radio-group" label="Role" >
-                        <Radio.Group onChange={this.handleChangeRole}>
-                            <Radio value="user">User</Radio>
-                            <Radio value="donor">Donor</Radio>
-                            <Radio value="admin">Admin</Radio>
+                    <Form.Item name="radio-group" label="What would you like to do?" rules={[{ required: true, message: 'Please pick an item!' }]}>
+                        <Radio.Group onChange={this.handleChangeRole} >
+                            <Radio.Button value="recipient">Make A Request</Radio.Button>
+                            <Radio.Button value="donor">Fill A Request</Radio.Button>
+                            <Radio.Button value="admin">Admin</Radio.Button>
                         </Radio.Group>                
                     </Form.Item>
 
                     <Form.Item {...tailLayout}>
-                        <Button id="formButton" type="primary" htmlType="submit">Sign Up!</Button>
+                        <Button id="formButton" type="primary" htmlType="submit">Sign Up</Button>
                     </Form.Item>
                 </Form>
             </div> 
@@ -97,24 +97,3 @@ class Create extends Component <PropsItems, SignUpData>{
 }
 }
 export default Create;
-
-
-
-// const Regex = RegExp(/^\s?[A-Z0–9]+[A-Z0–9._+-]{0,}@[A-Z0–9._+-]+\.[A-Z0–9]{2,4}\s?$/i);
-
-
-
-        
-//         handleChange = (event:any) => {
-//             event.preventDefault();
-//             const {username, value} = event.target;
-//             let errors = this.state.errors;
-//             switch(username){
-//                 case 'username' :
-//                     errors.username = value.length < 5 ? 'Username must be 5 characters long': '';
-//                 break;
-//                 case 'password':
-//                     errors.password = value.length < 8 ? 'Password must be 8 characters long': '';
-//                 break;
-//                 default:
-//                 break;    

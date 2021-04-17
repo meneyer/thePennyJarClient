@@ -1,5 +1,7 @@
 import React, {Component} from "react";
+import { Image, Layout } from 'antd';
 
+const {Sider, Content} = Layout
 
 type PropsItems ={
     token: string
@@ -12,10 +14,18 @@ class HomePage extends Component <PropsItems, {}>{
 
             }
         }
+
     render(){
         return (
             <div>
-                Hello Home Page
+                <Layout>
+                    <Sider width={500}>
+                        <Image id="pennyJarImage" width={500} src='https://images.unsplash.com/photo-1567427017947-545c5f8d16ad?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1990&q=80' />
+                    </Sider>
+                    <Content>
+                        <h1>The Penny Jar</h1>
+                    </Content> 
+                </Layout>
             </div>
         );
     };
