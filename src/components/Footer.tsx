@@ -1,12 +1,28 @@
-import React from "react";
-// import {Link} from "react-router-dom"
+import React, {Component} from 'react';
+import {Layout} from 'antd';
 
-const Footer = () => {
-    return (
-        <div>            
-            <h5>FOOTER: The Penny Jar -- Give a Penny, Take a Penny -- Anonymous Help, Anonymous Requests -- M. Neyer, 2021</h5>
-        </div>
-    );
+const {Footer} = Layout;
+
+class FooterSection extends Component <{}, {}> {
+    constructor(props: any){
+        super(props);
+        this.state = {
+
+        }
+    }
+    render(){
+        return (
+            <div>
+                <Layout className="Layout" id="footerLayout">
+                    <Footer id="footerText">
+                        <div id="footerLeft">The Penny Jar</div> 
+                        <div id="footerCenter"> Give a Penny, Take a Penny -- Anonymous Help, Anonymous Requests </div>
+                        <div id="footerRight"> M. Neyer, 2021</div>                     
+                    </Footer>
+                </Layout>,
+            </div>
+        );
+    };
 };
 
-export default Footer;
+export default FooterSection;

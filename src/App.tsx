@@ -1,31 +1,62 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {Component} from 'react';
+// import logo from './logo.svg';
+import './App.less';
 import {Route, Switch} from "react-router-dom";
 import Sitebar from "./components/Sitebar";
 import HomePage from "./components/HomePage/HomePage";
 import UserInfo from "./components/UserInfoProfile/UserInfo";
 import Donation from "./components/FinancialDonation/Donation";
 import Request from "./components/Request/Request"
-import Footer from "./components/Footer"
+import FooterSection from "./components/Footer"
+import Auth from './components/Auth/Auth'
 
-function App() {
+type Token ={
+  SessionToken: string
+}
+
+class App extends Component<{}, Token> {
+  constructor(props:any){
+    super(props)
+    this.state={
+      SessionToken: '',
+    }
+  }
+  
+  updateToken = (newToken: string) => {
+    localStorage.setItem('token', newToken);
+    this.setState({
+      SessionToken: newToken
+    }) 
+  }
+  
+  clearToken = () => {
+    localStorage.clear();
+    this.setState({
+      SessionToken: ''
+    })
+  } 
+  
+  protectedViews = () => {
+    return (this.state.SessionToken === localStorage.getItem('token') ? <HomePage token={this.state.SessionToken}/>
+    :<Auth updateToken={this.updateToken}/>)
+  }
+
+render(){
   return (
-    <div>    
+    <div>
       <Sitebar />     
+      {this.protectedViews()}   
       <Switch>
         {/* <Route exact path = '/' component={( => <HomePage title="Props Passed In" />)} /> */}
         <Route exact path = '/' component={HomePage} />
         <Route exact path="/needAPenny" component={Request} />
-        {/* //loads at localhost3000:needAPenny, not on the / page */}
         <Route exact path="/profile" component={UserInfo} />
-         {/* //loads at localhost3000:profile, not on the / page */}
         <Route exact path="/giveAPenny" component={Donation} />
-         {/* //loads at localhost3000:giveAPenny, not on the / page */}
       </Switch>
-      <Footer />     
+      <FooterSection />     
     </div>
   );
+}
 }
 
 export default App;
