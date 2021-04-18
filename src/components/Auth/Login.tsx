@@ -77,7 +77,7 @@ class Login extends Component <PropsItems, SignInData> {
 
     render(){
         return (
-            <div>                
+            <div className="boxbg">                
                 <Form {...layout} onFinish={this.handleSubmit}>
                     <Form.Item label="Username" name="username" rules={[{required: true, message: 'Please input a username'}]}>
                         <Input onChange={this.handleChangeUsername}/>

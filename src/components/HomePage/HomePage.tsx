@@ -17,7 +17,7 @@ class HomePage extends Component <PropsItems, {}>{
 
     render(){
         return (
-            <div>
+            <div id="HomePage">
                 <Layout>
                     <Sider width={500}>
                         <Image id="pennyJarImage" width={500} src='https://images.unsplash.com/photo-1567427017947-545c5f8d16ad?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1990&q=80' />

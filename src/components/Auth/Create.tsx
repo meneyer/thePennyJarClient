@@ -70,29 +70,31 @@ class Create extends Component <PropsItems, SignUpData>{
 
     render(){
         return(
-            <div>                
-                <Form {...layout} onFinish={this.handleSubmit}>
-                    <Form.Item label="Username" name="username" rules={[{required: true, message: 'Please input a username'}]}>
-                        <Input onChange={this.handleChangeUsername}/>
-                    </Form.Item>
+            <div className="backgroundColor">
+                <div className="boxbg">                
+                    <Form {...layout} onFinish={this.handleSubmit}>
+                        <Form.Item label="Username" name="username" rules={[{required: true, message: 'Please input a username'}]}>
+                            <Input onChange={this.handleChangeUsername}/>
+                        </Form.Item>
 
-                    <Form.Item label="Password" name="password" rules={[{required: true, message: 'Please input a password'}]}>
-                        <Input onChange={this.handleChangePassword} />
-                    </Form.Item>
+                        <Form.Item label="Password" name="password" rules={[{required: true, message: 'Please input a password'}]}>
+                            <Input onChange={this.handleChangePassword} />
+                        </Form.Item>
 
-                    <Form.Item name="radio-group" label="What would you like to do?" rules={[{ required: true, message: 'Please pick an item!' }]}>
-                        <Radio.Group onChange={this.handleChangeRole} >
-                            <Radio.Button value="recipient">Make A Request</Radio.Button>
-                            <Radio.Button value="donor">Fill A Request</Radio.Button>
-                            <Radio.Button value="admin">Admin</Radio.Button>
-                        </Radio.Group>                
-                    </Form.Item>
+                        <Form.Item name="radio-group" label="What would you like to do?" rules={[{ required: true, message: 'Please pick an item!' }]}>
+                            <Radio.Group onChange={this.handleChangeRole} >
+                                <Radio.Button value="recipient">Make A Request</Radio.Button>
+                                <Radio.Button value="donor">Fill A Request</Radio.Button>
+                                <Radio.Button value="admin">Admin</Radio.Button>
+                            </Radio.Group>                
+                        </Form.Item>
 
-                    <Form.Item {...tailLayout}>
-                        <Button id="formButton" type="primary" htmlType="submit">Sign Up</Button>
-                    </Form.Item>
-                </Form>
-            </div> 
+                        <Form.Item {...tailLayout}>
+                            <Button id="formButton" type="primary" htmlType="submit">Sign Up</Button>
+                        </Form.Item>
+                    </Form>
+                </div> 
+            </div>
         )
 }
 }

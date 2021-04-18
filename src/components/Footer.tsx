@@ -12,8 +12,8 @@ class FooterSection extends Component <{}, {}> {
     }
     render(){
         return (
-            <div>
-                <Layout className="Layout" id="footerLayout">
+            <div className="backgroundColor">
+                <Layout>
                     <Footer id="footerText">
                         <h3 id="footerLeft">The Penny Jar</h3> 
                         <h3 id="footerCenter"> Give a Penny, Take a Penny -- Anonymous Help, Anonymous Requests </h3>

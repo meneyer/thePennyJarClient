@@ -22,7 +22,7 @@ class SiteBar extends Component <{}, {}> {
             <Layout className="layout" >
                 <Header>   
                     <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['1']}>   
-                    <Menu.Item key="99">The Penny Jar               
+                    <Menu.Item key="99">The Penny Jar  (MAKE A LOGO)             
                         </Menu.Item> 
 
                     <Menu.Item key="1">Home
@@ -50,7 +50,7 @@ class SiteBar extends Component <{}, {}> {
                             <Link to='/login' />  
                             </Menu.Item>    
 
-                            <Menu.Item key="7">Logout -- NOT WORKING YET
+                            <Menu.Item key="7">Logout (NOT WORKING YET)
                             {/* <Button onClick={this.props.clearToken}>Logout</Button> */}
                             </Menu.Item>                       
                         {/* </SubMenu> */}
