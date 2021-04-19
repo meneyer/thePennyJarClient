@@ -5,11 +5,11 @@ import { Layout, Menu, Button} from 'antd';
 // const {SubMenu} = Menu
 const { Header } = Layout;
 
-// type PropsItems ={
-//     clearToken: (newToken: string) => void
-// }
+type PropsItems ={
+    // clearToken: (token: string) => void
+}
 
-class SiteBar extends Component <{}, {}> {
+class SiteBar extends Component <PropsItems, {}> {
     constructor(props: any){
         super(props);
         this.state = {
@@ -51,6 +51,7 @@ class SiteBar extends Component <{}, {}> {
                             </Menu.Item>    
 
                             <Menu.Item key="7">Logout (NOT WORKING YET)
+                            {/* <Button onClick={this.props.clickLogout}>Logout</Button> */}
                             {/* <Button onClick={this.props.clearToken}>Logout</Button> */}
                             </Menu.Item>                       
                         {/* </SubMenu> */}

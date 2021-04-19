@@ -3,9 +3,9 @@ import './App.less';
 import {Route, Switch} from "react-router-dom";
 import Sitebar from "./components/Sitebar";
 import HomePage from "./components/HomePage/HomePage";
-import UserInfo from "./components/UserInfoProfile/UserInfo";
-import Donation from "./components/FinancialDonation/Donation";
-import Request from "./components/Request/Request"
+import UserInfoInfo from "./components/UserInfoProfile/UserInfoInfo";
+import DonationInfo from "./components/FinancialDonation/DonationInfo";
+import RequestInfo from "./components/Request/RequestInfo"
 import FooterSection from "./components/Footer"
 import Auth from './components/Auth/Auth'
 import Create from "./components/Auth/Create"
@@ -45,13 +45,14 @@ class App extends Component<{}, Token> {
   render(){
     return (
       <div>
-        <Sitebar />     
+        {/* <Sitebar clickLogout={this.clearToken} />   */}
+        <Sitebar />    
         <Switch> 
           <Route exact path = '/' component={HomePage} />
         {this.protectedViews()}   
-          <Route exact path="/needAPenny" component={Request} />
-          <Route exact path="/profile" component={UserInfo} />
-          <Route exact path="/giveAPenny" component={Donation} />
+          <Route exact path="/needAPenny" component={RequestInfo} />
+          <Route exact path="/profile" component={UserInfoInfo} />
+          <Route exact path="/giveAPenny" component={DonationInfo} />
           <Route exact path="/signup" component={Create} />
           <Route exact path="/login" component={Login} />
         </Switch>
