@@ -6,7 +6,7 @@ import { Layout, Menu, Button} from 'antd';
 const { Header } = Layout;
 
 type PropsItems ={
-    // clearToken: (token: string) => void
+    clearToken: () => void
 }
 
 class SiteBar extends Component <PropsItems, {}> {
@@ -42,17 +42,13 @@ class SiteBar extends Component <PropsItems, {}> {
                         </Menu.Item> 
                         
                         {/* <SubMenu style={{float: 'right'}}> */}
-                            <Menu.Item key="5">Sign Up
-                            <Link to='/signup' />  
+                            <Menu.Item key="5">SignUp/LogIn -- MAKE A BUTTON
+                            <Link to='/signup' /> 
+                            {/* <Button type="primary" onClick={()=><Link to="/signup"></Link>}>SignUp/LogIn</Button>  */}
                             </Menu.Item> 
 
-                            <Menu.Item key="6">Login
-                            <Link to='/login' />  
-                            </Menu.Item>    
-
-                            <Menu.Item key="7">Logout (NOT WORKING YET)
-                            {/* <Button onClick={this.props.clickLogout}>Logout</Button> */}
-                            {/* <Button onClick={this.props.clearToken}>Logout</Button> */}
+                            <Menu.Item key="7">
+                            <Button type="primary" onClick={()=>this.props.clearToken()}>Logout</Button>
                             </Menu.Item>                       
                         {/* </SubMenu> */}
 

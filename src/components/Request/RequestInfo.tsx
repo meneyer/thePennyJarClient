@@ -14,11 +14,11 @@ import RequestTableAndDelete from './RequestTableAndDelete'
 //     requestFilled: boolean
 // }
 
-// type PropsItems ={
+type PropsItems ={
+    SessionToken:string
+}
 
-// }
-
-class RequestInfo extends Component <{}, {}> {
+class RequestInfo extends Component <PropsItems, {}> {
     constructor(props: any){
         super(props);
         this.state = {
@@ -36,9 +36,14 @@ class RequestInfo extends Component <{}, {}> {
     render(){
         return (
             <div>
-                Hello from RequestInfo
-                <RequestCreate />
-                <RequestTableAndDelete />
+                <div>
+                    {this.props.SessionToken === localStorage.getItem('token') ? 
+                        <div>
+                            Hello from RequestInfo
+                            <RequestCreate />
+                            <RequestTableAndDelete />
+                        </div> : <h1>Please log in</h1>  }
+                    </div>
             </div>    
         );
     }

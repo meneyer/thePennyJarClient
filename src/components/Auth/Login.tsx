@@ -54,9 +54,8 @@ class Login extends Component <PropsItems, SignInData> {
         console.log("handle change role", event)
     }
 
-    handleSubmit = (event:any) => {
+    handleSubmit = () => {
         console.log("form submitted");
-        // event.preventDefault();
         fetch(`${APIURL}/user/login`, {
             method: "POST",
             body: JSON.stringify({ user: { username: this.state.username, password: this.state.password, role: this.state.role } }),
@@ -73,6 +72,7 @@ class Login extends Component <PropsItems, SignInData> {
             } else {
                 console.log(data.sessionToken);
                 console.log("User logged in");
+                alert("User sucessfully logged in");
             }              
         })
     }

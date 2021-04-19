@@ -14,11 +14,11 @@ export interface UserInfoData{
     zipcode: number
 }
 
-// type PropsItems ={
+type PropsItems ={
+    SessionToken:string
+}
 
-// }
-
-class UserInfo extends Component <{}, UserInfoData> {
+class UserInfo extends Component <PropsItems, UserInfoData> {
     constructor(props: any){
         super(props);
         this.state = {
@@ -35,9 +35,14 @@ class UserInfo extends Component <{}, UserInfoData> {
     render(){
         return (
             <div>
-                Hello from UserInfo
-                <UserInfoCreate />
-                <UserInfoTableAndDelete />
+                <div>
+                    {this.props.SessionToken === localStorage.getItem('token') ? 
+                        <div> 
+                            Hello from UserInfo
+                            <UserInfoCreate />
+                            <UserInfoTableAndDelete />
+                        </div> : <h1>Please log in</h1>  }
+                </div>
             </div>    
         );
     }

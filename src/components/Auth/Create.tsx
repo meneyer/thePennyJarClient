@@ -60,9 +60,8 @@ class Create extends Component <PropsItems, SignUpData>{
         console.log("handle change role", event)
     }
 
-    handleSubmit = (event:any) => {
+    handleSubmit = () => {
         console.log("form submitted");
-        // event.preventDefault();
         fetch(`${APIURL}/user/create`, {
             method: "POST",
             body: JSON.stringify({ user: { username: this.state.username, password: this.state.password, role: this.state.role } }),

@@ -9,26 +9,33 @@ export interface DonationData{
     messageToRecipient: string
 }
 
-// type PropsItems ={
+type PropsItems ={
+    SessionToken:string
+}
 
-// }
-
-class DonationInfo extends Component <{}, DonationData> {
+class DonationInfo extends Component <PropsItems, DonationData> {
     constructor(props: any){
         super(props);
         this.state = {
             choice: '',
             amount: 0,
             taxReceipt: false,
-            messageToRecipient: ''
+            messageToRecipient: '',  
+            // SessionToken: ''          
         }
     }
     render(){
         return (
             <div>
-                Hello from DonationInfo
-                <DonationCreate />
-                <DonationTableAndDelete />
+                <div>
+                    {this.props.SessionToken === localStorage.getItem('token') ? 
+                        <div> 
+                            Hello from DonationInfo
+                            {/* <DonationCreate SessionToken={this.state.SessionToken}/> */}
+                            <DonationCreate/>
+                            <DonationTableAndDelete />
+                        </div> : <h1>Please log in</h1>  }
+                </div>
             </div>    
         );
     }

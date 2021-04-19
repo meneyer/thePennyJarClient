@@ -8,8 +8,8 @@ import DonationInfo from "./components/FinancialDonation/DonationInfo";
 import RequestInfo from "./components/Request/RequestInfo"
 import FooterSection from "./components/Footer"
 import Auth from './components/Auth/Auth'
-import Create from "./components/Auth/Create"
-import Login from "./components/Auth/Login"
+// import Create from "./components/Auth/Create"
+// import Login from "./components/Auth/Login"
 
 type Token ={
   SessionToken: string
@@ -45,16 +45,14 @@ class App extends Component<{}, Token> {
   render(){
     return (
       <div>
-        {/* <Sitebar clickLogout={this.clearToken} />   */}
-        <Sitebar />    
-        <Switch> 
+        <Sitebar clearToken={this.clearToken} />    
+          {/* {this.protectedViews()}    */}
+        <Switch>
+          <Route exact path='/signup' component={()=> <Auth updateToken={this.updateToken}/>} /> 
           <Route exact path = '/' component={HomePage} />
-        {this.protectedViews()}   
-          <Route exact path="/needAPenny" component={RequestInfo} />
-          <Route exact path="/profile" component={UserInfoInfo} />
-          <Route exact path="/giveAPenny" component={DonationInfo} />
-          <Route exact path="/signup" component={Create} />
-          <Route exact path="/login" component={Login} />
+          <Route exact path="/needAPenny" component={()=><RequestInfo SessionToken={this.state.SessionToken}/>} />
+          <Route exact path="/profile" component={()=><UserInfoInfo SessionToken={this.state.SessionToken}/>} />
+          <Route exact path="/giveAPenny" component={()=> <DonationInfo SessionToken={this.state.SessionToken}/>} />
         </Switch>
         <FooterSection />     
       </div>
