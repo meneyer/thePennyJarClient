@@ -9,7 +9,7 @@ export interface DonationData{
 }
 
 type PropsItems ={
-    // SessionToken:string
+    SessionToken:string
 }
 
 class DonationCreate extends Component <PropsItems, DonationData> {
@@ -31,12 +31,12 @@ class DonationCreate extends Component <PropsItems, DonationData> {
                 }),            
             headers: new Headers({
                 "Content-Type": "application/json",
-                // Authorization: props.token,
+                Authorization: this.props.SessionToken,
         }),
         })
         .then((res) => res.json())
         .then((data) => {
-            console.log(data);
+            console.log(data);          
             // setRaceName("");
             // setLocation("");
             // setLength("");
