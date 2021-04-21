@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import DonationCreate from './DonationCreate';
 import DonationTableAndDelete from './DonationTableAndDelete'
+import APIURL from '../../helpers/environment'
 
 export interface DonationData{
     choice: string,
@@ -23,15 +24,34 @@ class DonationInfo extends Component <PropsItems, DonationData> {
             messageToRecipient: '',                    
         }
     }
+
+    // fetchDonationInfo = () => {
+    //     fetch(`${APIURL}/giveapenny/`, {
+    //         method: "GET",
+    //         headers: new Headers({
+    //             "Content-Type": "application/json",
+    //         Authorization: this.props.SessionToken,
+    //         }),
+    //     })
+    //     .then((res) => res.json())
+    //     .then((logData) => {
+    //         console.log(logData);
+    //     });
+    // }
+    
+    // componentDidMount() {
+    //     this.fetchDonationInfo();
+    // };
+
     render(){
         return (
             <div>
                 <div>
                     {this.props.SessionToken === localStorage.getItem('token') ? 
-                        <div> 
-                            Hello from DonationInfo
-                            <DonationCreate SessionToken={this.props.SessionToken}/>
-                            {/* <DonationCreate/> */}
+                        <div>                            
+                            <DonationCreate SessionToken={this.props.SessionToken} 
+                            // fetchDonationInfo={this.props.fetchDonationInfo}
+                            />
                             <DonationTableAndDelete SessionToken={this.props.SessionToken}/>
                         </div> : <h1>Please log in</h1>  }
                 </div>
@@ -42,34 +62,6 @@ class DonationInfo extends Component <PropsItems, DonationData> {
 export default DonationInfo;
 
 
-
-// import React, { useEffect, useState } from "react";
-// import {} from "reactstrap";
-// import EventCreate from "./EventCreate";
-// import EventTableAndDelete from "./EventTableAndDelete";
-// import LoggedIn from "../Auth/LoggedIn";
-// import BeforeLogIn from "../Auth/BeforeLogin";
-// import APIURL from "../../helpers/environment";
-
-// const EventInfo = (props) => {
-//   const [events, setEvents] = useState([]);
-//   const [updateRace, setUpdateRace] = useState(false);
-//   const [updateEvent, setUpdateEvent] = useState({});
-
-//   const fetchEventInfo = () => {
-//     fetch(`${APIURL}/events/`, {
-//       method: "GET",
-//       headers: new Headers({
-//         "Content-Type": "application/json",
-//         Authorization: props.token,
-//       }),
-//     })
-//       .then((res) => res.json())
-//       .then((logData) => {
-//         setEvents(logData);
-//         console.log(logData);
-//       });
-//   };
 
 //   const editEvent = (eventInfoUpdate) => {
 //     setUpdateEvent(eventInfoUpdate);
@@ -84,15 +76,6 @@ export default DonationInfo;
 //     setUpdateRace(false);
 //   };
 
-//   useEffect(() => {
-//     fetchEventInfo();
-//   }, []);
-
-//   //Below: Had to wrap the entire events display in a ternary so that you wouldn't see it if you weren't logged in with a token -Ginger
-//   return (
-//     <div id="eventInfoBG" style={{ paddingBottom: "50px" }}>
-//       {" "}
-//       {props.token === localStorage.getItem("token") ? (
 //         <div>
 
 //           {events !== undefined ? (
@@ -110,13 +93,4 @@ export default DonationInfo;
 //             ""
 //           )}
 
-//           <EventCreate token={props.token} fetchEventInfo={fetchEventInfo} />{" "}
-//         </div>
-//       ) : (
-//         <BeforeLogIn />
-//       )}
-//     </div>
-//   );
-// };
 
-// export default EventInfo;

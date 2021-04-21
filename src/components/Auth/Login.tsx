@@ -24,7 +24,7 @@ type PropsItems ={
 }
 
 class Login extends Component <PropsItems, SignInData> {
-    constructor(props: any){
+    constructor(props: PropsItems){
         super(props);
         this.state = {
             username: "",

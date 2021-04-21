@@ -29,9 +29,6 @@ class SiteBar extends Component <PropsItems, {}> {
                         <Link to='/' />  
                         </Menu.Item> 
 
-                        <Menu.Item key="2">Profile
-                            <Link to='/profile' />
-                        </Menu.Item>
                         
                         <Menu.Item key="3">Need A Penny
                             <Link to='/needAPenny' />
@@ -41,6 +38,9 @@ class SiteBar extends Component <PropsItems, {}> {
                         <Link to='/giveAPenny' />  
                         </Menu.Item> 
                         
+                        <Menu.Item key="2">Profile
+                            <Link to='/profile' />
+                        </Menu.Item>
                         {/* <SubMenu style={{float: 'right'}}> */}
                             <Menu.Item key="5">SignUp/LogIn -- MAKE A BUTTON
                             <Link to='/signup' /> 

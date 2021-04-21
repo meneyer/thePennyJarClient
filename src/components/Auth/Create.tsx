@@ -30,7 +30,7 @@ type PropsItems ={
 }
 
 class Create extends Component <PropsItems, SignUpData>{
-    constructor(props:any){
+    constructor(props: PropsItems){
         super(props)
         this.state={
             username: "",
