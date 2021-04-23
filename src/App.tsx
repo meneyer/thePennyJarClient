@@ -8,6 +8,7 @@ import DonationInfo from "./components/FinancialDonation/DonationInfo";
 import RequestInfo from "./components/Request/RequestInfo"
 import FooterSection from "./components/Footer"
 import Auth from './components/Auth/Auth'
+import DonationCreate from "./components/FinancialDonation/DonationCreate"
 // import Create from "./components/Auth/Create"
 // import Login from "./components/Auth/Login"
 
@@ -54,6 +55,7 @@ class App extends Component<{}, Token> {
           <Route exact path="/needAPenny" component={()=><RequestInfo SessionToken={this.state.SessionToken}/>} />
           <Route exact path="/profile" component={()=><UserInfoInfo SessionToken={this.state.SessionToken}/>} />
           <Route exact path="/giveAPenny" component={()=> <DonationInfo SessionToken={this.state.SessionToken}/>} />
+          <Route exact path="/giveAPenny/donate" component={DonationCreate} /> 
         </Switch>
         <FooterSection />     
       </div>

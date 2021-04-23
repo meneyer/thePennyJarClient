@@ -7,12 +7,12 @@ export interface DonationData{
     // messageToRecipient: string
 }
 
-// type PropsItems ={
+type PropsItems ={
 
-// }
+}
 
 class DonationUpdate extends Component <{}, {}> {
-    constructor(props: any){
+    constructor(props: PropsItems){
         super(props);
         this.state = {
             // choice: '',

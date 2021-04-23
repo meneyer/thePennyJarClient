@@ -6,12 +6,12 @@ const {Sider, Content} = Layout
 const { TextArea } = Input;
 
 const layout = {
-  labelCol:{ span: 7},
+  labelCol:{ span: 6},
   wrapperCol: {span: 16},
 };
 
 const tailLayout = {
-wrapperCol: { offset: 11, span: 16},
+wrapperCol: { offset: 6, span: 4},
 }
 
 export interface DonationData{
@@ -23,11 +23,11 @@ export interface DonationData{
 
 type PropsItems ={
     SessionToken:string;
-    // fetchDonationInfo = () => void
+    fetchDonationInfo: () => void
 }
 
 class DonationCreate extends Component <PropsItems, DonationData> {
-    constructor(props: any){
+    constructor(props: PropsItems){
         super(props);
         this.state = {
             choice: '',
@@ -35,34 +35,6 @@ class DonationCreate extends Component <PropsItems, DonationData> {
             taxReceipt: false,
             messageToRecipient: ''
         }
-    }
-
-    handleChangeChoice = (event: any) => {
-      this.setState({
-      choice: event.target.value,    
-      })
-      console.log("choice picked", event)
-    } 
-
-    handleChangeAmount = (event: any) => {
-      console.log("amount picked", event)
-      this.setState({
-      amount: event    
-      })
-    } 
-
-  handleChangeTaxReceipt = (event: any) => {
-      this.setState({
-      taxReceipt: event.target.value,    
-      })
-      console.log("tax choice picked", event)
-    }
-
-    handleChangeMessage = (event: any) => {
-      this.setState({
-      messageToRecipient: event.target.value,    
-      })
-      console.log("message submitted", event)
     }
 
     handleSubmit = () => {
@@ -85,7 +57,7 @@ class DonationCreate extends Component <PropsItems, DonationData> {
         .then((res) => res.json())
         .then((data) => {
             console.log(data);
-            // this.props.fetchDonationInfo();
+            this.props.fetchDonationInfo();
         });
     };
     render(){
@@ -99,25 +71,17 @@ class DonationCreate extends Component <PropsItems, DonationData> {
                 <Form {...layout} onFinish={this.handleSubmit}> 
 
                   <Form.Item label="What would you like to do?" name="choice" rules={[{required: true, message: 'Please input a password'}]}>
-                  <Input 
-                  // value={this.state.choice} 
-                  onChange={(event) =>(this.setState({choice: event.target.value}))} 
-                  // onChange={this.handleChangeChoice}
-                  placeholder='Fill Request # ____; Give to the Operations Fund;  Give to the "Need A Penny" Fund'/>
+                    <Input onChange={(event) =>(this.setState({choice: event.target.value}))} placeholder='Fill Request # ____; Give to the Operations Fund;  Give to the "Need A Penny" Fund'/>
                   </Form.Item>
 
                   <Form.Item label="Amount">
                     <Form.Item name="Amount" noStyle rules={[{required: true, message: 'Please input an amount'}]}>                     
-                      <InputNumber 
-                      onChange={this.handleChangeAmount} min={0}
-                      // <Input
-                      // value={this.state.amount} onChange={(e) =>(e.target.value)}
-                      />                    
+                      <InputNumber onChange={(event) =>(this.setState({amount: event}))} min={0} />                    
                     </Form.Item>
                   </Form.Item>
 
                   <Form.Item name="taxReceipt" label="Would you like a tax receipt?" >
-                    <Radio.Group onChange={this.handleChangeTaxReceipt}>
+                    <Radio.Group onChange={(event) =>(this.setState({taxReceipt: event.target.value}))}>
                       <Radio.Button value="yes">Yes</Radio.Button>
                       <Radio.Button value="no">No</Radio.Button>
                     </Radio.Group>                
@@ -125,10 +89,7 @@ class DonationCreate extends Component <PropsItems, DonationData> {
 
                   <Form.Item label="Message" name="messageToReceipient">
                     <TextArea rows={10}
-                    placeholder="Please enter a message to the recipient, if desired, 2000 character maximum"
-                    onChange={this.handleChangeMessage}
-                    // value={this.state.messageToRecipient} onChange={(e) =>(e.target.value)} 
-                    />
+                    placeholder="Please enter a message to the recipient, if desired, 2000 character maximum" onChange={(event) =>(this.setState({messageToRecipient: event.target.value}))} />
                   </Form.Item>
 
                   <Form.Item {...tailLayout}>
@@ -145,3 +106,31 @@ class DonationCreate extends Component <PropsItems, DonationData> {
   }
 }
 export default DonationCreate;
+
+    // handleChangeChoice = (event: any) => {
+    //   this.setState({
+    //   choice: event.target.value,    
+    //   })
+    //   console.log("choice picked", event)
+    // } 
+
+    // handleChangeAmount = (event: any) => {
+    //   console.log("amount picked", event)
+    //   this.setState({
+    //   amount: event    
+    //   })
+    // } 
+
+  // handleChangeTaxReceipt = (event: any) => {
+  //     this.setState({
+  //     taxReceipt: event.target.value,    
+  //     })
+  //     console.log("tax choice picked", event)
+  //   }
+
+    // handleChangeMessage = (event: any) => {
+    //   this.setState({
+    //   messageToRecipient: event.target.value,    
+    //   })
+    //   console.log("message submitted", event)
+    // }

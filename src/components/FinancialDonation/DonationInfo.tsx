@@ -7,7 +7,8 @@ export interface DonationData{
     choice: string,
     amount: number,
     taxReceipt: boolean,
-    messageToRecipient: string
+    messageToRecipient: string,
+    logData: []
 }
 
 type PropsItems ={
@@ -21,27 +22,34 @@ class DonationInfo extends Component <PropsItems, DonationData> {
             choice: '',
             amount: 0,
             taxReceipt: false,
-            messageToRecipient: '',                    
+            messageToRecipient: '',  
+            logData: []                  
         }
     }
 
-    // fetchDonationInfo = () => {
-    //     fetch(`${APIURL}/giveapenny/`, {
-    //         method: "GET",
-    //         headers: new Headers({
-    //             "Content-Type": "application/json",
-    //         Authorization: this.props.SessionToken,
-    //         }),
-    //     })
-    //     .then((res) => res.json())
-    //     .then((logData) => {
-    //         console.log(logData);
-    //     });
-    // }
+    fetchDonationInfo = () => {
+        // let localLogData: [] = []
+        fetch(`${APIURL}/giveapenny/`, {
+            method: "GET",
+            headers: new Headers({
+                "Content-Type": "application/json",
+            Authorization: this.props.SessionToken,
+            }),
+        })
+        .then((res) => res.json())
+        .then((logData) => {
+            console.log (logData);
+            this.setState({
+                logData: logData
+            })
+            // localLogData=logData
+        });
+        // return localLogData
+    }
     
-    // componentDidMount() {
-    //     this.fetchDonationInfo();
-    // };
+    componentDidMount() {
+        this.fetchDonationInfo();
+    };
 
     render(){
         return (
@@ -50,9 +58,9 @@ class DonationInfo extends Component <PropsItems, DonationData> {
                     {this.props.SessionToken === localStorage.getItem('token') ? 
                         <div>                            
                             <DonationCreate SessionToken={this.props.SessionToken} 
-                            // fetchDonationInfo={this.props.fetchDonationInfo}
+                            fetchDonationInfo={this.fetchDonationInfo}
                             />
-                            <DonationTableAndDelete SessionToken={this.props.SessionToken}/>
+                            <DonationTableAndDelete SessionToken={this.props.SessionToken} fetchDonationInfo={this.fetchDonationInfo} logData={this.state.logData}/>
                         </div> : <h1>Please log in</h1>  }
                 </div>
             </div>    

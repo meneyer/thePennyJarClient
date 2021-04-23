@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import { Image, Layout, Row, Col } from 'antd';
+import { Image, Layout, Row, Col, } from 'antd';
 
 const {Sider, Content} = Layout
 
@@ -20,18 +20,30 @@ class HomePage extends Component <PropsItems, {}>{
             <div>
                 <div className="boxbg">
                     <Layout>
-                        <Sider width={350}>
-                            <img id="pennyJarImage2" width={350}  src='https://images.unsplash.com/photo-1567427017947-545c5f8d16ad?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1990&q=80'></img>                         
-                        </Sider>
+                        {/* <Sider width={350}> */}
+                            {/* <img id="pennyJarImage2" width={350}  src='https://images.unsplash.com/photo-1567427017947-545c5f8d16ad?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1990&q=80'></img>                          */}
+                        {/* </Sider> */}
                         <Content> 
-                            <Row justify="center" align="middle">
-                                <Col span={20}>  
-                                    <h1>The Penny Jar</h1>
+                                {/* <h1 className='title'>The Penny Jar</h1> */}
+                            <Row justify="space-around" align="middle">
+                                <div>
+                                <Col span={8}>  
+                                <img id="pennyJarImage2" width={500}  src='https://images.unsplash.com/photo-1567427017947-545c5f8d16ad?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1990&q=80'></img> 
+                                </Col>
+                                </div>
+                                <Col span={12}>  
+                                <br />
+                                <h1 className='title'>The Penny Jar</h1>
                                     <hr />                   
-                                    <h3>Need a Penny?  Take a Penny.</h3>
-                                    <h3> Have a Penny?  Give a Penny.</h3>
+                                    <h1>For those times when we need a little help, but are afraid to ask.</h1>
+                                    <h1>For those times when we want to help, but don't know how.</h1>
                                     <hr />
-                                    <h3>Anoynymous Requests - Anonymous Help</h3>   
+                                    <h1>Anoynymous Requests - Anonymous Help</h1>   
+                                    <hr />                   
+                                    <h1>Need a Penny?  Take a Penny.</h1>
+                                    <h1> Have a Penny?  Give a Penny.</h1>
+                                    {/* <hr />  
+                                    <p> blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blahblah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blahblah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah</p> */}
                                 </Col>
                             </Row>
                         </Content>

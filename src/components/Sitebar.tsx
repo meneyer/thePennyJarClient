@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import {Link} from "react-router-dom"
-import { Layout, Menu, Button} from 'antd';
+import { Layout, Menu, Breadcrumb, Button} from 'antd';
 
-// const {SubMenu} = Menu
+const {SubMenu} = Menu
 const { Header } = Layout;
 
 type PropsItems ={
@@ -10,7 +10,7 @@ type PropsItems ={
 }
 
 class SiteBar extends Component <PropsItems, {}> {
-    constructor(props: any){
+    constructor(props: PropsItems){
         super(props);
         this.state = {
 
@@ -22,35 +22,55 @@ class SiteBar extends Component <PropsItems, {}> {
             <Layout className="layout" >
                 <Header>   
                     <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['1']}>   
+                    
                     <Menu.Item key="99">The Penny Jar  (MAKE A LOGO)             
                         </Menu.Item> 
 
                     <Menu.Item key="1">Home
                         <Link to='/' />  
                         </Menu.Item> 
-
                         
-                        <Menu.Item key="3">Need A Penny
+                        {/* <Menu.Item key="3">Need A Penny
                             <Link to='/needAPenny' />
-                        </Menu.Item>
-                        
-                        <Menu.Item key="4">Give A Penny
-                        <Link to='/giveAPenny' />  
-                        </Menu.Item> 
-                        
-                        <Menu.Item key="2">Profile
-                            <Link to='/profile' />
-                        </Menu.Item>
-                        {/* <SubMenu style={{float: 'right'}}> */}
-                            <Menu.Item key="5">SignUp/LogIn -- MAKE A BUTTON
-                            <Link to='/signup' /> 
-                            {/* <Button type="primary" onClick={()=><Link to="/signup"></Link>}>SignUp/LogIn</Button>  */}
-                            </Menu.Item> 
+                        </Menu.Item> */}
 
-                            <Menu.Item key="7">
-                            <Button type="primary" onClick={()=>this.props.clearToken()}>Logout</Button>
-                            </Menu.Item>                       
-                        {/* </SubMenu> */}
+                        <SubMenu key="sub3" title="Need A Penny">
+                            <Menu.Item key="1">Request Form <Link to='/needAPenny' />  </Menu.Item>
+                            <Menu.Item key="2">Request List <Link to='/needAPenny' /> </Menu.Item>
+                            <Menu.Item key="3">My Requests <Link to='/needAPenny' /></Menu.Item>
+                            <Menu.Item key="4">option4</Menu.Item>
+                        </SubMenu>
+                        
+                        {/* <Menu.Item key="4">Give A Penny
+                        <Link to='/giveAPenny' />  
+                        </Menu.Item>  */}
+
+                        <SubMenu key="sub4" title="Give A Penny">
+                            <Menu.Item key="1">Donation Form <Link to='/giveAPenny/donate' />  </Menu.Item>
+                            <Menu.Item key="2">Donation List <Link to='/giveAPenny' /> </Menu.Item>
+                            <Menu.Item key="3">My Donations <Link to='/giveAPenny' /></Menu.Item>
+                            <Menu.Item key="4">option4</Menu.Item>
+                        </SubMenu>
+                        
+                        {/* <Menu.Item key="5">Profile
+                            <Link to='/profile' />
+                        </Menu.Item> */}
+
+                        <SubMenu key="sub5" title="My Info">
+                            <Menu.Item key="1">User Profile <Link to='/profile' />  </Menu.Item>
+                            <Menu.Item key="2">Request List <Link to='/needAPenny' /> </Menu.Item>
+                            <Menu.Item key="3">My Requests <Link to='/needAPenny' /></Menu.Item>
+                            <Menu.Item key="4">option4</Menu.Item>
+                        </SubMenu>
+                        
+                        <Menu.Item key="6">
+                            <Link to='/signup'><Button type="primary">SignUp/LogIn</Button></Link>                            
+                        </Menu.Item> 
+
+                        <Menu.Item key="7">
+                        <Button type="primary" onClick={()=>this.props.clearToken()}>Logout</Button>
+                        </Menu.Item>                       
+                        
 
                     </Menu>
                 </Header>       
