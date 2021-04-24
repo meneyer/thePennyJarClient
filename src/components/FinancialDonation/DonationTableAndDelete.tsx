@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import DonationDelete from './DonationDelete'
 import DonationUpdate from './DonationUpdate'
 import APIURL from "../../helpers/environment"
 import { Table, Button, Layout } from 'antd';
@@ -32,23 +33,11 @@ class DonationTableAndDelete extends Component <PropsItems, DonationData> {
         }
     }
 
-    // // donations = eventInfoUpdate
-    // const deleteDonation = (donations) => {
-        //     fetch(`${APIURL}/events/delete/${eventInfoUpdate.id}`, {
-        //       method: "DELETE",
-        //       headers: new Headers({
-        //         "Content-Type": "application/json",
-        //         Authorization: props.token,
-        //       }),
-        //     }).then(() => props.fetchEventInfo());
-        //   };
+    componentDidMount() {
+        this.donationMap();
+    };
 
-    // componentDidMount() {
-    //     this.donationMap();
-    // };
-
-    donationMap = () => {
-    //     // donations = eventInfoUpdate
+    donationMap = () => {  
         return this.props.logData.map((donations:DonationData, index: number) => {
             return (
                 <tr key={index}>
@@ -58,8 +47,10 @@ class DonationTableAndDelete extends Component <PropsItems, DonationData> {
                     {/* <td>{donations.taxReceipt}</td> */}
                     <td>{donations.messageToRecipient}</td>
                     <td>
-                        <Button type="primary">Update</Button>
-                        <Button type="primary">Delete</Button>
+                        <DonationUpdate SessionToken={this.props.SessionToken} donations={donations.id} fetchDonationInfo={this.props.fetchDonationInfo}/>
+                    </td>
+                    <td>
+                        <DonationDelete SessionToken={this.props.SessionToken} donations={donations.id} fetchDonationInfo={this.props.fetchDonationInfo}/>
                     </td>
                 </tr>
             )
@@ -84,7 +75,8 @@ class DonationTableAndDelete extends Component <PropsItems, DonationData> {
                             <th>Amount</th>
                             {/* <th>TaxReceipt?</th> */}
                             <th>Message To Recipient</th>
-                            <th>Update/Delete</th>
+                            <th>Update</th>
+                            <th>Delete</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -92,7 +84,7 @@ class DonationTableAndDelete extends Component <PropsItems, DonationData> {
                     </tbody>
                     </table>
                 {/* </Table> */}
-                <DonationUpdate />
+                {/* <DonationUpdate /> */}
                     {/* </Content> */}
                 </Layout>
             </div>    

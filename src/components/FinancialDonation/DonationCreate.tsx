@@ -38,6 +38,7 @@ class DonationCreate extends Component <PropsItems, DonationData> {
     }
 
     handleSubmit = () => {
+      // let token = this.props.SessionToken ? this.props.SessionToken : localStorage.getItem('token');
       console.log(this.props.SessionToken, this.state)
         fetch(`${APIURL}/giveapenny/`, {
           method: "POST",
@@ -52,6 +53,7 @@ class DonationCreate extends Component <PropsItems, DonationData> {
           headers: new Headers({
             "Content-Type": "application/json",
             Authorization: this.props.SessionToken,
+            // Authorization: token ? token : "",
           }),
         })
         .then((res) => res.json())

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Link} from "react-router-dom"
-import { Layout, Menu, Breadcrumb, Button} from 'antd';
+import { Layout, Menu, Breadcrumb, Button, Image} from 'antd';
 
 const {SubMenu} = Menu
 const { Header } = Layout;
@@ -23,12 +23,13 @@ class SiteBar extends Component <PropsItems, {}> {
                 <Header>   
                     <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['1']}>   
                     
-                    <Menu.Item key="99">The Penny Jar  (MAKE A LOGO)             
-                        </Menu.Item> 
-
-                    <Menu.Item key="1">Home
+                    <Menu.Item key="1"> The Penny Jar (MAKE A LOGO)
+                        {/* <Image src="../components/assets/47090afb0e2043e18dab43948cd49fd8.png"></Image> */}                              
                         <Link to='/' />  
-                        </Menu.Item> 
+                        </Menu.Item>
+
+                    {/* <Menu.Item key="1">Home
+                        </Menu.Item>  */}
                         
                         {/* <Menu.Item key="3">Need A Penny
                             <Link to='/needAPenny' />
@@ -46,10 +47,10 @@ class SiteBar extends Component <PropsItems, {}> {
                         </Menu.Item>  */}
 
                         <SubMenu key="sub4" title="Give A Penny">
+                            <Menu.Item key="4">Donation Everything REMOVE THIS ITEM <Link to='/giveAPenny/' /></Menu.Item>
                             <Menu.Item key="1">Donation Form <Link to='/giveAPenny/donate' />  </Menu.Item>
-                            <Menu.Item key="2">Donation List <Link to='/giveAPenny' /> </Menu.Item>
-                            <Menu.Item key="3">My Donations <Link to='/giveAPenny' /></Menu.Item>
-                            <Menu.Item key="4">option4</Menu.Item>
+                            <Menu.Item key="2">Donation List <Link to='/giveAPenny/donationlist' /> </Menu.Item>
+                            <Menu.Item key="3">My Donations <Link to='/giveAPenny/mydonations' /></Menu.Item>
                         </SubMenu>
                         
                         {/* <Menu.Item key="5">Profile
