@@ -1,7 +1,9 @@
 import React, {Component, MouseEvent} from 'react';
 import APIURL from "../../helpers/environment"
 // import DonationTableAndDelete from "./DonationTableAndDelete"
-import { Modal, Button  } from 'antd';
+import {Modal, Form, Input, Button, Radio, InputNumber } from "antd"
+
+const { TextArea } = Input;
 
 export interface DonationDataState{
     choice: string,
@@ -72,14 +74,44 @@ class DonationUpdate extends Component <PropsItems, DonationDataState> {
     render(){
         return (
             <div>
+                <Button type="primary" 
+                onClick={this.updateDonation}
+                >Update</Button>   
+
                 {/* <Button type="primary" onClick={this.showModal}> Open Modal  </Button>
                 <Modal title="Basic Modal" visible={this.state.isModalVisible} onOk={this.handleOk} onCancel={this.handleCancel}>
-                    <p>Some contents...</p>
-                    <p>Some contents...</p>
-                    <p>Some contents...</p> */}
-                        <Button type="primary" 
-                        onClick={this.updateDonation}
-                        >Update</Button>            
+
+                <Form 
+                onFinish={this.handleSubmit}
+                > 
+
+                    <Form.Item label="What would you like to do?" name="choice" rules={[{required: true, message: 'Please input a password'}]}>
+                        <Input onChange={(event) =>(this.setState({choice: event.target.value}))} placeholder='Fill Request # ____; Give to the Operations Fund;  Give to the "Need A Penny" Fund'/>
+                    </Form.Item>
+
+                    <Form.Item label="Amount">
+                    <Form.Item name="Amount" noStyle rules={[{required: true, message: 'Please input an amount'}]}>                     
+                        <InputNumber onChange={(event) =>(this.setState({amount: event}))} min={0} />                    
+                    </Form.Item>
+                    </Form.Item>
+
+                    <Form.Item name="taxReceipt" label="Would you like a tax receipt?" >
+                    <Radio.Group onChange={(event) =>(this.setState({taxReceipt: event.target.value}))}>
+                        <Radio.Button value="yes">Yes</Radio.Button>
+                        <Radio.Button value="no">No</Radio.Button>
+                    </Radio.Group>                
+                    </Form.Item>
+
+                    <Form.Item label="Message" name="messageToReceipient">
+                    <TextArea rows={10}
+                    placeholder="Please enter a message to the recipient, if desired, 2000 character maximum" onChange={(event) =>(this.setState({messageToRecipient: event.target.value}))} />
+                    </Form.Item>
+
+                    <Form.Item >
+                    <Button type="primary" htmlType="submit">Submit</Button>
+                    </Form.Item>
+
+                    </Form> */}
                 {/* </Modal> */}
             </div>    
         );

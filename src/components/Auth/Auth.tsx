@@ -14,7 +14,7 @@ type PropsItems ={
 }
 
 class Auth extends Component <PropsItems, Toggle> {
-    constructor(props: any){
+    constructor(props: PropsItems){
         super(props);
         this.state = {
             showLogin: true

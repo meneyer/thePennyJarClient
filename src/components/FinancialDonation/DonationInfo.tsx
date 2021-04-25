@@ -16,7 +16,7 @@ type PropsItems ={
 }
 
 class DonationInfo extends Component <PropsItems, DonationData> {
-    constructor(props: any){
+    constructor(props: PropsItems){
         super(props);
         this.state = {
             choice: '',
