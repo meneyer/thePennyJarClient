@@ -12,7 +12,8 @@ export interface UserInfoData{
     address: string,
     city: string,
     state: string,
-    zipcode: number
+    zipcode: number,
+    logData: []
 }
 
 type PropsItems ={
@@ -30,30 +31,31 @@ class UserInfo extends Component <PropsItems, UserInfoData> {
             address: '',
             city: '',
             state: '',
-            zipcode: 0
+            zipcode: 0,
+            logData: []
         }
     }
 
-        // fetchProfileInfo = () => {
-    //     fetch(`${APIURL}/needapenny/`, {
-    //         method: "GET",
-    //         headers: new Headers({
-    //             "Content-Type": "application/json",
-    //         Authorization: this.props.SessionToken,
-    //         }),
-    //     })
-    //     .then((res) => res.json())
-    //     .then((logData) => {
-    //         console.log (logData);
-    //         this.setState({
-    //             logData: logData
-    //         })
-    //     });
-    // }
+        fetchProfileInfo = () => {
+        fetch(`${APIURL}/profile/`, {
+            method: "GET",
+            headers: new Headers({
+                "Content-Type": "application/json",
+            Authorization: this.props.SessionToken,
+            }),
+        })
+        .then((res) => res.json())
+        .then((logData) => {
+            console.log (logData);
+            this.setState({
+                logData: logData
+            })
+        });
+    }
 
-    // componentDidMount() {
-    //     this.fetchProfileInfo();
-    // };
+    componentDidMount() {
+        this.fetchProfileInfo();
+    };
 
     render(){
         return (
@@ -62,8 +64,13 @@ class UserInfo extends Component <PropsItems, UserInfoData> {
                     {this.props.SessionToken === localStorage.getItem('token') ? 
                         <div> 
                             Hello from UserInfo
-                            <UserInfoCreate />
-                            <UserInfoTableAndDelete />
+                            <UserInfoCreate 
+                            SessionToken={this.props.SessionToken} 
+                            fetchProfileInfo={this.fetchProfileInfo}/>
+                            <UserInfoTableAndDelete 
+                            // SessionToken={this.props.SessionToken} 
+                            // fetchProfileInfo={this.fetchProfileInfo}
+                            />
                         </div> : <h1>Please log in</h1>  }
                 </div>
             </div>    

@@ -10,6 +10,8 @@ import FooterSection from "./components/Footer"
 import Auth from './components/Auth/Auth'
 import DonationCreate from "./components/FinancialDonation/DonationCreate"
 import DonationTableAndDelete from './components/FinancialDonation/DonationTableAndDelete';
+import RequestCreate from './components/Request/RequestCreate';
+import UserInfoCreate from './components/UserInfoProfile/UserInfoCreate'
 // import Create from "./components/Auth/Create"
 // import Login from "./components/Auth/Login"
 
@@ -53,8 +55,17 @@ class App extends Component<{}, Token> {
         <Switch>
           <Route exact path='/signup' component={()=> <Auth updateToken={this.updateToken}/>} /> 
           <Route exact path = '/' component={HomePage} />
+
           <Route exact path="/needAPenny" component={()=><RequestInfo SessionToken={this.state.SessionToken}/>} />
+          <Route exact path="/needAPenny/request" component={RequestCreate} />
+          {/* <Route exact path="/needAPenny/requestlist" component={} />  */}
+          {/* <Route exact path="/needAPenny/myrequests" component={} />  */}
+
           <Route exact path="/profile" component={()=><UserInfoInfo SessionToken={this.state.SessionToken}/>} />
+          <Route exact path="/profile/myprofile" component={UserInfoCreate} />
+          {/* <Route exact path="/giveAPenny/mydonations" component={} /> */}
+          {/* <Route exact path="/needAPenny/myrequests" component={} /> */}
+
           <Route exact path="/giveAPenny" component={()=> <DonationInfo SessionToken={this.state.SessionToken}/>} />
           <Route exact path="/giveAPenny/donate" component={DonationCreate} />
           {/* <Route exact path="/giveAPenny/donationlist" component={DonationTableAndDelete} />  */}

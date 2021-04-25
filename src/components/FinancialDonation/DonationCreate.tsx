@@ -15,55 +15,56 @@ wrapperCol: { offset: 6, span: 4},
 }
 
 export interface DonationData{
-    choice: string,
-    amount: number,
-    taxReceipt: boolean,
-    messageToRecipient: string
+  choice: string,
+  amount: number,
+  taxReceipt: boolean,
+  messageToRecipient: string
 }
 
 type PropsItems ={
-    SessionToken:string;
-    fetchDonationInfo: () => void
+  SessionToken:string;
+  fetchDonationInfo: () => void
 }
 
 class DonationCreate extends Component <PropsItems, DonationData> {
-    constructor(props: PropsItems){
-        super(props);
-        this.state = {
-            choice: '',
-            amount: 0,
-            taxReceipt: false,
-            messageToRecipient: ''
-        }
-    }
+  constructor(props: PropsItems){
+      super(props);
+      this.state = {
+          choice: '',
+          amount: 0,
+          taxReceipt: false,
+          messageToRecipient: ''
+      }
+  }
 
-    handleSubmit = () => {
-      // let token = this.props.SessionToken ? this.props.SessionToken : localStorage.getItem('token');
-      console.log(this.props.SessionToken, this.state)
-        fetch(`${APIURL}/giveapenny/`, {
-          method: "POST",
-          body: JSON.stringify({
-            financialdonation:{ 
-              choice:this.state.choice, 
-              amount: this.state.amount, 
-              taxReceipt: this.state.taxReceipt, 
-              messageToRecipient: this.state.messageToRecipient
-            }
-          }),            
-          headers: new Headers({
-            "Content-Type": "application/json",
-            Authorization: this.props.SessionToken,
-            // Authorization: token ? token : "",
-          }),
-        })
-        .then((res) => res.json())
-        .then((data) => {
-            console.log(data);
-            this.props.fetchDonationInfo();
-        });
-    };
-    render(){
-      return (
+  handleSubmit = () => {
+    // let token = this.props.SessionToken ? this.props.SessionToken : localStorage.getItem('token');
+    console.log(this.props.SessionToken, this.state)
+    fetch(`${APIURL}/giveapenny/`, {
+      method: "POST",
+      body: JSON.stringify({
+        financialdonation:{ 
+          choice:this.state.choice, 
+          amount: this.state.amount, 
+          taxReceipt: this.state.taxReceipt, 
+          messageToRecipient: this.state.messageToRecipient
+        }
+      }),            
+      headers: new Headers({
+        "Content-Type": "application/json",
+        Authorization: this.props.SessionToken,
+        // Authorization: token ? token : "",
+      }),
+    })
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data);
+      this.props.fetchDonationInfo();
+    });
+  };
+
+  render(){
+    return (
       <div className="boxbg">
         <Layout>        
           <Content> 
@@ -71,7 +72,7 @@ class DonationCreate extends Component <PropsItems, DonationData> {
               <Col span={24} >  
                 <h1>Give A Penny</h1>
                 <Form {...layout} onFinish={this.handleSubmit}> 
-
+                <h3 id="fieldh3s">REQUIRED FIELDS</h3>
                   <Form.Item label="What would you like to do?" name="choice" rules={[{required: true, message: 'Please input a password'}]}>
                     <Input onChange={(event) =>(this.setState({choice: event.target.value}))} placeholder='Fill Request # ____; Give to the Operations Fund;  Give to the "Need A Penny" Fund'/>
                   </Form.Item>
@@ -81,9 +82,10 @@ class DonationCreate extends Component <PropsItems, DonationData> {
                       <InputNumber onChange={(event) =>(this.setState({amount: event}))} min={0} />                    
                     </Form.Item>
                   </Form.Item>
-
+                  
+                  <h3 id="fieldh3s">OPTIONAL FIELDS</h3>
                   <Form.Item name="taxReceipt" label="Would you like a tax receipt?" >
-                    <Radio.Group onChange={(event) =>(this.setState({taxReceipt: event.target.value}))}>
+                    <Radio.Group onChange={(event) =>(this.setState({taxReceipt: event.target.value}))} buttonStyle="solid">
                       <Radio.Button value="yes">Yes</Radio.Button>
                       <Radio.Button value="no">No</Radio.Button>
                     </Radio.Group>                

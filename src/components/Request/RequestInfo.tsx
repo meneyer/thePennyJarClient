@@ -12,7 +12,8 @@ export interface RequestData{
     giftReciptient: string,
     link: string,
     messageToDonor: string,
-    requestFilled: boolean
+    requestFilled: boolean,
+    logData: []
 }
 
 type PropsItems ={
@@ -31,30 +32,31 @@ class RequestInfo extends Component <PropsItems, RequestData> {
             giftReciptient: '',
             link: '',
             messageToDonor: '',
-            requestFilled: false
+            requestFilled: false,
+            logData: []  
         }
     }
 
-    // fetchRequestInfo = () => {
-    //     fetch(`${APIURL}/needapenny/`, {
-    //         method: "GET",
-    //         headers: new Headers({
-    //             "Content-Type": "application/json",
-    //         Authorization: this.props.SessionToken,
-    //         }),
-    //     })
-    //     .then((res) => res.json())
-    //     .then((logData) => {
-    //         console.log (logData);
-    //         this.setState({
-    //             logData: logData
-    //         })
-    //     });
-    // }
+    fetchRequestInfo = () => {
+        fetch(`${APIURL}/needapenny/`, {
+            method: "GET",
+            headers: new Headers({
+                "Content-Type": "application/json",
+            Authorization: this.props.SessionToken,
+            }),
+        })
+        .then((res) => res.json())
+        .then((logData) => {
+            console.log (logData);
+            this.setState({
+                logData: logData
+            })
+        });
+    }
 
-    // componentDidMount() {
-    //     this.fetchRequestInfo();
-    // };
+    componentDidMount() {
+        this.fetchRequestInfo();
+    };
 
     render(){
         return (
@@ -62,8 +64,10 @@ class RequestInfo extends Component <PropsItems, RequestData> {
                 <div>
                     {this.props.SessionToken === localStorage.getItem('token') ? 
                         <div>
-                            Hello from RequestInfo
-                            <RequestCreate />
+                            <RequestCreate 
+                            SessionToken={this.props.SessionToken} 
+                            fetchRequestInfo={this.fetchRequestInfo}
+                            />
                             <RequestTableAndDelete />
                         </div> : <h1>Please log in</h1>  }
                     </div>
@@ -71,12 +75,7 @@ class RequestInfo extends Component <PropsItems, RequestData> {
         );
     }
 
-    // render(){
-    //     return (
-    //         <div>
-    //             <div>
-    //                 {this.props.SessionToken === localStorage.getItem('token') ? 
-    //                     <div>                            
+                                
     //                         <DonationCreate SessionToken={this.props.SessionToken} 
     //                         fetchDonationInfo={this.fetchDonationInfo}
     //                         />

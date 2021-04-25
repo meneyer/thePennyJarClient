@@ -26,8 +26,8 @@ export interface UserInfoData{
 }
 
 type PropsItems ={
-    // SessionToken:string;
-    // fetchProfileInfo: () => void
+    SessionToken:string;
+    fetchProfileInfo: () => void
 }
 
 class UserCreate extends Component <PropsItems, UserInfoData> {
@@ -45,64 +45,80 @@ class UserCreate extends Component <PropsItems, UserInfoData> {
         }
     }
 
-    //     handleSubmit = () => {
-//       // let token = this.props.SessionToken ? this.props.SessionToken : localStorage.getItem('token');
-//       console.log(this.props.SessionToken, this.state)
-//         fetch(`${APIURL}/giveapenny/`, {
-//           method: "POST",
-//           body: JSON.stringify({
-//             financialdonation:{ 
-//               choice:this.state.choice, 
-//               amount: this.state.amount, 
-//               taxReceipt: this.state.taxReceipt, 
-//               messageToRecipient: this.state.messageToRecipient
-//             }
-//           }),            
-//           headers: new Headers({
-//             "Content-Type": "application/json",
-//             Authorization: this.props.SessionToken,
-//             // Authorization: token ? token : "",
-//           }),
-//         })
-//         .then((res) => res.json())
-//         .then((data) => {
-//             console.log(data);
-//             this.props.fetchDonationInfo();
-//         });
-//     };
+    handleSubmit = () => {
+      // let token = this.props.SessionToken ? this.props.SessionToken : localStorage.getItem('token');
+      console.log(this.props.SessionToken, this.state)
+        fetch(`${APIURL}/profile/`, {
+          method: "POST",
+          body: JSON.stringify({
+            userInfo:{ 
+              firstName:this.state.firstName, 
+              lastName:this.state.lastName, 
+              email: this.state.email, 
+              phone: this.state.phone, 
+              address: this.state.address,
+              city:this.state.city, 
+              state: this.state.state, 
+              zipcode: this.state.zipcode, 
+              // role: req.user.role               
+            }
+          }),            
+          headers: new Headers({
+            "Content-Type": "application/json",
+            Authorization: this.props.SessionToken,
+            // Authorization: token ? token : "",
+          }),
+        })
+        .then((res) => res.json())
+        .then((data) => {
+            console.log(data);
+            this.props.fetchProfileInfo();
+        });
+    };
 
-    render(){
-        return (
-            <div>
-                Hello from UserCreate
-                {/* <Layout>        
+  render(){
+    return (
+      <div>
+        Hello from UserCreate
+        <Layout>        
           <Content> 
             <Row justify="start" >
               <Col span={24} >  
-                <h1>Give A Penny</h1>
+                <h1>User Profile</h1>
+                <h3 id="fieldh3s">This information will only be seen by admins to fill requests, send tax receipts, etc.</h3>
                 <Form {...layout} onFinish={this.handleSubmit}> 
-
-                  <Form.Item label="What would you like to do?" name="choice" rules={[{required: true, message: 'Please input a password'}]}>
-                    <Input onChange={(event) =>(this.setState({choice: event.target.value}))} placeholder='Fill Request # ____; Give to the Operations Fund;  Give to the "Need A Penny" Fund'/>
+                <h3 id="fieldh3s">REQUIRED FIELDS</h3>
+                  <Form.Item label="First Name" name="First Name" rules={[{required: true}]}>
+                    <Input onChange={(event) =>(this.setState({firstName: event.target.value}))} />
+                  </Form.Item>
+                  <h3 id="fieldh3s">OPTIONAL FIELDS</h3>
+                  <Form.Item label="Last Name" name="Last Name">
+                    <Input onChange={(event) =>(this.setState({lastName: event.target.value}))} />
                   </Form.Item>
 
-                  <Form.Item label="Amount">
-                    <Form.Item name="Amount" noStyle rules={[{required: true, message: 'Please input an amount'}]}>                     
-                      <InputNumber onChange={(event) =>(this.setState({amount: event}))} min={0} />                    
-                    </Form.Item>
+                  <Form.Item name='E-mail' label="Email" rules={[{ type: 'email'}]}>
+                    <Input onChange={(event) =>(this.setState({email: event.target.value}))} />
                   </Form.Item>
 
-                  <Form.Item name="taxReceipt" label="Would you like a tax receipt?" >
-                    <Radio.Group onChange={(event) =>(this.setState({taxReceipt: event.target.value}))}>
-                      <Radio.Button value="yes">Yes</Radio.Button>
-                      <Radio.Button value="no">No</Radio.Button>
-                    </Radio.Group>                
+                  <Form.Item label="Phone Number" name="Phone Number">
+                    <Input onChange={(event) =>(this.setState({phone: event.target.value}))} />
                   </Form.Item>
 
-                  <Form.Item label="Message" name="messageToReceipient">
-                    <TextArea rows={10}
-                    placeholder="Please enter a message to the recipient, if desired, 2000 character maximum" onChange={(event) =>(this.setState({messageToRecipient: event.target.value}))} />
+                  <Form.Item label="Street Address" name="Street Address">
+                    <Input onChange={(event) =>(this.setState({address: event.target.value}))} />
                   </Form.Item>
+
+                  <Form.Item label="City" name="City">
+                    <Input onChange={(event) =>(this.setState({city: event.target.value}))} />
+                  </Form.Item>
+
+                  <Form.Item label="State" name="State">
+                    <Input onChange={(event) =>(this.setState({state: event.target.value}))} />
+                  </Form.Item>
+
+                  <Form.Item label="Zip Code" name="Zip Code">
+                    <InputNumber onChange={(event) =>(this.setState({zipcode: event}))} min={0} />
+                  </Form.Item>  
 
                   <Form.Item {...tailLayout}>
                     <Button type="primary" htmlType="submit">Submit</Button>
@@ -112,10 +128,10 @@ class UserCreate extends Component <PropsItems, UserInfoData> {
               </Col>
             </Row>
           </Content>
-        </Layout> */}
-            </div>    
-        );
-    }
+        </Layout>
+      </div>    
+    );
+  }
 }
 
 export default UserCreate;

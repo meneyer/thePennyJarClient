@@ -97,7 +97,7 @@ class Create extends Component <PropsItems, SignUpData>{
                                     </Form.Item>
 
                                     <Form.Item name="radio-group" label="What would you like to do?" rules={[{ required: true, message: 'Please pick an item' }]}>
-                                        <Radio.Group onChange={this.handleChangeRole} >
+                                        <Radio.Group onChange={this.handleChangeRole} buttonStyle="solid" >
                                             <Radio.Button value="recipient">Make A Request</Radio.Button>
                                             <Radio.Button value="donor">Fill A Request</Radio.Button>
                                             <Radio.Button value="admin">Admin</Radio.Button>
