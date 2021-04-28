@@ -19,9 +19,7 @@ type PropsItems ={
     logData: [],
 }
 
-
-
-class DonationTableAndDelete extends Component <PropsItems, DonationData> {
+class DonationTable extends Component <PropsItems, DonationData> {
     constructor(props: PropsItems){
         super(props);
         this.state = {
@@ -47,7 +45,7 @@ class DonationTableAndDelete extends Component <PropsItems, DonationData> {
                     {/* <td>{donations.taxReceipt}</td> */}
                     <td>{donations.messageToRecipient}</td>
                     <td>
-                        <DonationUpdate SessionToken={this.props.SessionToken} donations={donations.id} fetchDonationInfo={this.props.fetchDonationInfo}/>
+                        <DonationUpdate SessionToken={this.props.SessionToken} donations={donations} fetchDonationInfo={this.props.fetchDonationInfo}/>
                     </td>
                     <td>
                         <DonationDelete SessionToken={this.props.SessionToken} donations={donations.id} fetchDonationInfo={this.props.fetchDonationInfo}/>
@@ -64,34 +62,30 @@ class DonationTableAndDelete extends Component <PropsItems, DonationData> {
                 <Layout>
                     {/* <Content> */}
 
-                <h2>Past Donations</h2>
+                <h2>Donations</h2>
                 {/* <Table> */}
                     <table>
-
-                    <thead>
-                        <tr>
-                            <th>Request Number</th>
-                            <th>Choice</th>
-                            <th>Amount</th>
-                            {/* <th>TaxReceipt?</th> */}
-                            <th>Message To Recipient</th>
-                            <th>Update</th>
-                            <th>Delete</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {this.donationMap()}
-                    </tbody>
+                        <thead>
+                            <tr>
+                                <th>Donation Number</th>
+                                <th>Choice</th>
+                                <th>Amount</th>
+                                {/* <th>TaxReceipt?</th> */}
+                                <th>Message To Recipient</th>
+                                <th>Update</th>
+                                <th>Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {this.donationMap()}
+                        </tbody>
                     </table>
-                {/* </Table> */}
-                {/* <DonationUpdate /> */}
-                    {/* </Content> */}
                 </Layout>
             </div>    
         );
     }
 }
-export default DonationTableAndDelete;
+export default DonationTable;
 
 
 

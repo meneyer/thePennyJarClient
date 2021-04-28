@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import UserInfoCreate from './UserInfoCreate';
-import UserInfoTableAndDelete from './UserInfoTableAndDelete'
+import UserInfoTable from './UserInfoTable'
 import APIURL from '../../helpers/environment'
 
 
@@ -67,7 +67,7 @@ class UserInfo extends Component <PropsItems, UserInfoData> {
                             <UserInfoCreate 
                             SessionToken={this.props.SessionToken} 
                             fetchProfileInfo={this.fetchProfileInfo}/>
-                            <UserInfoTableAndDelete 
+                            <UserInfoTable 
                             // SessionToken={this.props.SessionToken} 
                             // fetchProfileInfo={this.fetchProfileInfo}
                             />

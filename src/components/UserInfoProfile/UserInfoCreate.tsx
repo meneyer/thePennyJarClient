@@ -84,14 +84,14 @@ class UserCreate extends Component <PropsItems, UserInfoData> {
           <Content> 
             <Row justify="start" >
               <Col span={24} >  
-                <h1>User Profile</h1>
-                <h3 id="fieldh3s">This information will only be seen by admins to fill requests, send tax receipts, etc.</h3>
+                <h1 id="formTitles">User Profile</h1>
+                <h1 >This information will only be seen by admins to fill requests, send tax receipts, etc.</h1>
                 <Form {...layout} onFinish={this.handleSubmit}> 
-                <h3 id="fieldh3s">REQUIRED FIELDS</h3>
+                <h1 id="fieldWords">REQUIRED FIELDS</h1>
                   <Form.Item label="First Name" name="First Name" rules={[{required: true}]}>
                     <Input onChange={(event) =>(this.setState({firstName: event.target.value}))} />
                   </Form.Item>
-                  <h3 id="fieldh3s">OPTIONAL FIELDS</h3>
+                  <h1 id="fieldWords">OPTIONAL FIELDS</h1>
                   <Form.Item label="Last Name" name="Last Name">
                     <Input onChange={(event) =>(this.setState({lastName: event.target.value}))} />
                   </Form.Item>

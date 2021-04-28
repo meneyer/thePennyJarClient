@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import RequestCreate from './RequestCreate'
-import RequestTableAndDelete from './RequestTableAndDelete'
+import RequestTable from './RequestTable'
 import APIURL from '../../helpers/environment'
 
 export interface RequestData{
@@ -68,7 +68,8 @@ class RequestInfo extends Component <PropsItems, RequestData> {
                             SessionToken={this.props.SessionToken} 
                             fetchRequestInfo={this.fetchRequestInfo}
                             />
-                            <RequestTableAndDelete />
+                            <RequestTable SessionToken={this.props.SessionToken} 
+                            fetchRequestInfo={this.fetchRequestInfo} logData={this.state.logData} />
                         </div> : <h1>Please log in</h1>  }
                     </div>
             </div>    

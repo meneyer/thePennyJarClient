@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import DonationCreate from './DonationCreate';
-import DonationTableAndDelete from './DonationTableAndDelete'
+import DonationTable from './DonationTable'
 import APIURL from '../../helpers/environment'
 
 export interface DonationData{
@@ -25,10 +25,10 @@ class DonationInfo extends Component <PropsItems, DonationData> {
             messageToRecipient: '',  
             logData: []                  
         }
+        console.log("donation info", this.props.SessionToken)
     }
 
     fetchDonationInfo = () => {
-        // let localLogData: [] = []
         fetch(`${APIURL}/giveapenny/`, {
             method: "GET",
             headers: new Headers({
@@ -42,9 +42,7 @@ class DonationInfo extends Component <PropsItems, DonationData> {
             this.setState({
                 logData: logData
             })
-            // localLogData=logData
         });
-        // return localLogData
     }
     
     componentDidMount() {
@@ -60,7 +58,7 @@ class DonationInfo extends Component <PropsItems, DonationData> {
                             <DonationCreate SessionToken={this.props.SessionToken} 
                             fetchDonationInfo={this.fetchDonationInfo}
                             />
-                            <DonationTableAndDelete SessionToken={this.props.SessionToken} fetchDonationInfo={this.fetchDonationInfo} logData={this.state.logData}/>
+                            <DonationTable SessionToken={this.props.SessionToken} fetchDonationInfo={this.fetchDonationInfo} logData={this.state.logData}/>
                         </div> : <h1>Please log in</h1>  }
                 </div>
             </div>    
@@ -68,37 +66,3 @@ class DonationInfo extends Component <PropsItems, DonationData> {
     }
 }
 export default DonationInfo;
-
-
-
-//   const editEvent = (eventInfoUpdate) => {
-//     setUpdateEvent(eventInfoUpdate);
-//     console.log(eventInfoUpdate);
-//   };
-
-//   const updateOn = () => {
-//     setUpdateRace(true);
-//   };
-
-//   const updateOff = () => {
-//     setUpdateRace(false);
-//   };
-
-//         <div>
-
-//           {events !== undefined ? (
-//             <EventTableAndDelete
-//               token={props.token}
-//               events={events}
-//               editEvent={editEvent}
-//               updateOn={updateOn}
-//               updateOff={updateOff}
-//               fetchEventInfo={fetchEventInfo}
-//               updateRace={updateRace}
-//               updateEvent={updateEvent}
-//             />
-//           ) : (
-//             ""
-//           )}
-
-

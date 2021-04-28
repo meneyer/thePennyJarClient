@@ -22,7 +22,7 @@ type PropsItems ={
     // logData: [],
 }
 
-class UserTableAndDelete extends Component <PropsItems, UserInfoData> {
+class UserTable extends Component <PropsItems, UserInfoData> {
     constructor(props: PropsItems){
         super(props);
         this.state = {
@@ -39,7 +39,7 @@ class UserTableAndDelete extends Component <PropsItems, UserInfoData> {
     render(){
         return (
             <div>
-                Hello from UserTableAndDelete
+                Hello from UserTable
                 <UserInfoDelete />
                 <UserInfoUpdate />
             </div>    
@@ -47,7 +47,7 @@ class UserTableAndDelete extends Component <PropsItems, UserInfoData> {
     }
 }
 
-export default UserTableAndDelete;
+export default UserTable;
 
 
 

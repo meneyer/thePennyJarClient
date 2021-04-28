@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
 import APIURL from "../../helpers/environment";
-import {Layout, Form, Input, Button, Radio, Row, Col, InputNumber } from "antd"
+import {Layout, Form, Input, Button, Row, Col, InputNumber, Select } from "antd"
 
 const {Sider, Content} = Layout
 const { TextArea } = Input;
+const { Option } = Select;
 
 const layout = {
   labelCol:{ span: 6},
@@ -35,10 +36,11 @@ class DonationCreate extends Component <PropsItems, DonationData> {
           taxReceipt: false,
           messageToRecipient: ''
       }
+      console.log("donation create", this.props.SessionToken)
   }
 
   handleSubmit = () => {
-    // let token = this.props.SessionToken ? this.props.SessionToken : localStorage.getItem('token');
+    
     console.log(this.props.SessionToken, this.state)
     fetch(`${APIURL}/giveapenny/`, {
       method: "POST",
@@ -63,6 +65,19 @@ class DonationCreate extends Component <PropsItems, DonationData> {
     });
   };
 
+  onChange = () => {
+    this.setState({
+      taxReceipt: !this.state.taxReceipt
+    })
+  }
+
+    handleChangeTaxReceipt = (event: any) => {
+      this.setState({
+      taxReceipt: event,    
+      })
+      console.log("tax choice picked", event)
+    }
+
   render(){
     return (
       <div className="boxbg">
@@ -70,9 +85,9 @@ class DonationCreate extends Component <PropsItems, DonationData> {
           <Content> 
             <Row justify="start" >
               <Col span={24} >  
-                <h1>Give A Penny</h1>
+                <h1 id="formTitles">Give A Penny</h1>
                 <Form {...layout} onFinish={this.handleSubmit}> 
-                <h3 id="fieldh3s">REQUIRED FIELDS</h3>
+                <h1 id="fieldWords">REQUIRED FIELDS</h1>
                   <Form.Item label="What would you like to do?" name="choice" rules={[{required: true, message: 'Please input a password'}]}>
                     <Input onChange={(event) =>(this.setState({choice: event.target.value}))} placeholder='Fill Request # ____; Give to the Operations Fund;  Give to the "Need A Penny" Fund'/>
                   </Form.Item>
@@ -83,13 +98,27 @@ class DonationCreate extends Component <PropsItems, DonationData> {
                     </Form.Item>
                   </Form.Item>
                   
-                  <h3 id="fieldh3s">OPTIONAL FIELDS</h3>
-                  <Form.Item name="taxReceipt" label="Would you like a tax receipt?" >
+                  <h1 id="fieldWords">OPTIONAL FIELDS</h1>
+                  {/* <Form.Item name="taxReceipt" label="Would you like a tax receipt?" >
                     <Radio.Group onChange={(event) =>(this.setState({taxReceipt: event.target.value}))} buttonStyle="solid">
                       <Radio.Button value="yes">Yes</Radio.Button>
                       <Radio.Button value="no">No</Radio.Button>
                     </Radio.Group>                
-                  </Form.Item>
+                  </Form.Item> */}
+
+                  <Form.Item name="taxReceipt" label="Would you like a tax reciept?" >
+                        <Select 
+                        onChange={this.handleChangeTaxReceipt}
+                        >
+                            <Option value="false">No</Option>
+                            <Option value="true">Yes</Option>
+                        </Select>
+                    </Form.Item>
+                  
+                  {/* <Form.Item name="taxReceipt" label="Would you like a tax receipt?" >
+                    <Switch onChange={this.onChange} checkedChildren="No" unCheckedChildren="Yes"/>
+                  </Form.Item> */}
+
 
                   <Form.Item label="Message" name="messageToReceipient">
                     <TextArea rows={10}

@@ -9,7 +9,7 @@ import RequestInfo from "./components/Request/RequestInfo"
 import FooterSection from "./components/Footer"
 import Auth from './components/Auth/Auth'
 import DonationCreate from "./components/FinancialDonation/DonationCreate"
-import DonationTableAndDelete from './components/FinancialDonation/DonationTableAndDelete';
+import DonationTableAndDelete from './components/FinancialDonation/DonationTable';
 import RequestCreate from './components/Request/RequestCreate';
 import UserInfoCreate from './components/UserInfoProfile/UserInfoCreate'
 // import Create from "./components/Auth/Create"
@@ -26,6 +26,15 @@ class App extends Component<{}, Token> {
     this.state={
       SessionToken: '',
     }
+  }
+
+  componentDidMount() {
+    let token = localStorage.getItem('token')
+    if(token && token !=null){
+      this.setState({
+        SessionToken: token
+      }) 
+    };
   }
   
   updateToken = (newToken: string) => {

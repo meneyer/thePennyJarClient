@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import APIURL from "../../helpers/environment"
 // import DonationTableAndDelete from "./DonationTableAndDelete"
-import {  Button  } from 'antd';
+import {  Button, Popconfirm, message  } from 'antd';
 
 export interface DonationData{
 }
@@ -18,6 +18,12 @@ class DonationDelete extends Component <PropsItems, {}> {
         this.state = {}
     }
 
+    text = "Are you sure you want to delete this donation?"
+
+    confirm(){
+        message.info("Clicked on Yes")
+    }
+
     deleteDonation = () => {
         fetch(`${APIURL}/giveapenny/delete/${this.props.donations}`, {
             method: "DELETE",
@@ -32,10 +38,14 @@ class DonationDelete extends Component <PropsItems, {}> {
     render(){
 
         return (
-            <div>  
-                <Button type="primary" 
+            <div>
+                <Popconfirm placement="topLeft" title={this.text} onConfirm={this.deleteDonation} okText="Yes" cancelText="No">
+                    <Button type="primary" >Delete</Button>
+                </Popconfirm>
+                            
+                {/* <Button type="primary" 
                 onClick={this.deleteDonation}
-                >Delete</Button>
+                >Delete</Button> */}
             </div>    
         );
     }

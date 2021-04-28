@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
 import APIURL from "../../helpers/environment";
-import {Layout, Form, Input, Button, Radio, Row, Col, InputNumber,  DatePicker, } from "antd"
+import {Layout, Form, Input, Button, Radio, Row, Col, Select } from "antd"
 
 const {Sider, Content} = Layout
 const { TextArea } = Input;
+const { Option } = Select;
 
 const layout = {
     labelCol:{ span: 6},
@@ -90,8 +91,10 @@ class RequestCreate extends Component <PropsItems, RequestData> {
         this.setState({
         dateNeeded: event.target.value,    
         })
-        console.log("requested date picked", event)
+        console.log("needed by date picked", event)
     }
+
+    date = new Date()
 
     render(){
         return (
@@ -100,9 +103,9 @@ class RequestCreate extends Component <PropsItems, RequestData> {
                 <Content> 
                     <Row justify="start" >
                     <Col span={24} >  
-                        <h1>Need A Penny</h1>
+                        <h1 id="formTitles">Need A Penny</h1>
                         <Form {...layout} onFinish={this.handleSubmit}> 
-                        <h3 id="fieldh3s">REQUIRED FIELDS</h3>
+                        <h1 id="fieldWords">REQUIRED FIELDS</h1>
     
                         {/* <Form.Item label="REQUIRED FIELDS" name="displayName" >                       
                         </Form.Item> */}
@@ -117,14 +120,15 @@ class RequestCreate extends Component <PropsItems, RequestData> {
                         </Form.Item>
 
                         <Form.Item label="Today's Date">
-                            <DatePicker                          
-                            // onChange={this.handleChangeRequested}
+                            <Input type="date" 
+                            defaultValue= {this.date.toISOString().slice(0,10)}       
+                            onChange={this.handleChangeRequested}
                             />
                         </Form.Item>
 
                         <Form.Item label="Date Needed">
-                            <DatePicker 
-                            // onChange={this.handleChangeNeeded}
+                            <Input type="date" 
+                            onChange={this.handleChangeNeeded}
                             />
                         </Form.Item>
 
@@ -132,7 +136,7 @@ class RequestCreate extends Component <PropsItems, RequestData> {
                             <Input onChange={(event) =>(this.setState({item: event.target.value}))} placeholder="Examples: $50 Grocery Gift Card, Teddy Bear for my daugher's birthday, etc."/>
                         </Form.Item>
 
-                        <h3 id="fieldh3s">OPTIONAL FIELDS</h3>
+                        <h1 id="fieldWords">OPTIONAL FIELDS</h1>
                         <Form.Item label="Who is this for?" name="giftRecipient" >
                             <Input onChange={(event) =>(this.setState({giftRecipient: event.target.value}))} placeholder="Examples: For my daughter, Alexis, on her 3rd birthday; for my father, Derrick; groceries for my family; etc."/>
                         </Form.Item>
@@ -147,19 +151,29 @@ class RequestCreate extends Component <PropsItems, RequestData> {
                         </Form.Item>
 
     {/* <hr/> */}
-                        {/* <h3 id="fieldh3s">*ADMINS WILL UPDATE WHEN FILLED*</h3> */}
+                        {/* <h1 id="fieldWords">*ADMINS WILL UPDATE WHEN FILLED*</h1> */}
+
                         <Form.Item name="requestFilled" label="Request Filled?" >
+                        <Select defaultValue="no"
+                    //    onChange={(event) =>(this.setState({requestFilled: value}))}
+                        >
+                            {/* <Option value="true">Yes</Option> */}
+                            <Option value="false">No</Option>
+                        </Select>
+                    </Form.Item>
+                    
+                        {/* <Form.Item name="requestFilled" label="Request Filled?" >
                             <Radio.Group defaultValue="no" buttonStyle="solid"
-                            // onChange={(event) =>(this.setState({requestFilled: event.target.value}))}
+                            onChange={(event) =>(this.setState({requestFilled: event.target.value}))}
                             >
-                            {/* <Radio.Button value="yes">Yes</Radio.Button> */}
+                            <Radio.Button value="yes">Yes</Radio.Button>
                             <Radio.Button value="no">No</Radio.Button>
-                            </Radio.Group> 
+                            </Radio.Group>  */}
                         
                         <Form.Item {...tailLayout}>
                             <Button type="primary" htmlType="submit">Submit</Button>
                         </Form.Item>
-                        </Form.Item>
+                        {/* </Form.Item> */}
     
                         </Form>
                     </Col>

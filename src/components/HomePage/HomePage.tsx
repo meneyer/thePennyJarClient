@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import { Image, Layout, Row, Col, } from 'antd';
+import Image1 from '../assets/michael-longmire-lhltMGdohc8-unsplash.jpg'
 
 const {Sider, Content} = Layout
 
@@ -28,7 +29,7 @@ class HomePage extends Component <PropsItems, {}>{
                             <Row justify="space-around" align="middle">
                                 <div>
                                 <Col span={8}>  
-                                <img id="pennyJarImage2" width={500}  src='https://images.unsplash.com/photo-1567427017947-545c5f8d16ad?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1990&q=80'></img> 
+                                <img id="pennyJarImage2" width={500}  src={Image1}></img> 
                                 </Col>
                                 </div>
                                 <Col span={12}>  

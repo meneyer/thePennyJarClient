@@ -1,9 +1,8 @@
 import React, {Component, MouseEvent} from 'react';
 import APIURL from "../../helpers/environment"
-// import DonationTableAndDelete from "./DonationTableAndDelete"
-import {Modal, Form, Input, Button, Radio, InputNumber } from "antd"
+import {Modal, Button, InputNumber, Form, Input, Select } from "antd"
 
-const { TextArea } = Input;
+const { Option } = Select;
 
 export interface DonationDataState{
     choice: string,
@@ -16,42 +15,41 @@ export interface DonationDataState{
 type PropsItems ={
     SessionToken:string
     fetchDonationInfo: () => void,
-    donations: number
+    donations: any,
 }
 
 class DonationUpdate extends Component <PropsItems, DonationDataState> {
     constructor(props: PropsItems){
         super(props);
         this.state = {
-            choice: '',
-            amount: 0,
-            taxReceipt: false,
-            messageToRecipient: '',
+            choice: this.props.donations.choice,
+            amount: this.props.donations.amount,
+            taxReceipt: this.props.donations.taxReceipt,
+            messageToRecipient: this.props.donations.messageToReceipient,
             isModalVisible: false,
         }
     }
 
-    // showModal = (isModalVisible: boolean) => {
-    //     this.setState=({
-    //         isModalVisible: true,
-    //     });
-    // };
+    showModal = (e: MouseEvent) => {
+        this.setState({
+            isModalVisible: true
+        });
+    };
     
-    // handleOk = (e: MouseEvent)  => {
-    //     this.setState=({
-    //     isModalVisible: false
-    //     });
-    // };
+    handleOk = (e: MouseEvent)  => {
+        this.setState({
+        isModalVisible: false
+        });
+    };
     
-    // handleCancel = (e: MouseEvent)  => {
-    //     this.setState=({
-    //     isModalVisible: false
-    //     });
-    // };
+    handleCancel = (e: MouseEvent)  => {
+        this.setState({
+        isModalVisible: false
+        });
+    };
     
-
     updateDonation = () => {            
-        fetch(`${APIURL}/giveapenny/update/${this.props.donations}`, {
+        fetch(`${APIURL}/giveapenny/update/${this.props.donations.id}`, {
             method: "PUT",
             body: JSON.stringify({
                 financialdonation:{ 
@@ -72,47 +70,40 @@ class DonationUpdate extends Component <PropsItems, DonationDataState> {
     
 
     render(){
+        // console.log(this.props.donations.taxReceipt)
+        // console.log(this.props.donations.messageToRecipient)
         return (
             <div>
-                <Button type="primary" 
-                onClick={this.updateDonation}
-                >Update</Button>   
-
-                {/* <Button type="primary" onClick={this.showModal}> Open Modal  </Button>
-                <Modal title="Basic Modal" visible={this.state.isModalVisible} onOk={this.handleOk} onCancel={this.handleCancel}>
-
-                <Form 
-                onFinish={this.handleSubmit}
-                > 
-
-                    <Form.Item label="What would you like to do?" name="choice" rules={[{required: true, message: 'Please input a password'}]}>
-                        <Input onChange={(event) =>(this.setState({choice: event.target.value}))} placeholder='Fill Request # ____; Give to the Operations Fund;  Give to the "Need A Penny" Fund'/>
+                <Button type="primary" onClick={this.showModal}> Update  </Button>
+                <Modal title="Update Donation" visible={this.state.isModalVisible} onOk={this.updateDonation} onCancel={this.handleCancel}>
+            
+                <Form> 
+                    <Form.Item label="What would you like to do?" name="choice" >
+                        <Input defaultValue={this.props.donations.choice} value={this.props.donations.choice} onChange={(event) =>(this.setState({choice: event.target.value}))} />
                     </Form.Item>
 
                     <Form.Item label="Amount">
-                    <Form.Item name="Amount" noStyle rules={[{required: true, message: 'Please input an amount'}]}>                     
-                        <InputNumber onChange={(event) =>(this.setState({amount: event}))} min={0} />                    
+                    <Form.Item name="Amount" noStyle >                     
+                        <InputNumber defaultValue={this.props.donations.amount} value={this.props.donations.amount} onChange={(event) =>(this.setState({amount: event}))} min={0} />                    
                     </Form.Item>
                     </Form.Item>
 
-                    <Form.Item name="taxReceipt" label="Would you like a tax receipt?" >
-                    <Radio.Group onChange={(event) =>(this.setState({taxReceipt: event.target.value}))}>
-                        <Radio.Button value="yes">Yes</Radio.Button>
-                        <Radio.Button value="no">No</Radio.Button>
-                    </Radio.Group>                
-                    </Form.Item>
+                    <Form.Item
+                        name="taxReceipt"
+                        label="Would you like a tax reciept?"                        
+                    >
+                        <Select defaultValue={this.props.donations.taxReceipt} value={this.props.donations.taxReceipt} onChange={(event) =>(this.setState({taxReceipt: event}))}>
+                            <Option value="false">No</Option>
+                            <Option value="true">Yes</Option>
+                        </Select>
+                    </Form.Item>                  
 
                     <Form.Item label="Message" name="messageToReceipient">
-                    <TextArea rows={10}
-                    placeholder="Please enter a message to the recipient, if desired, 2000 character maximum" onChange={(event) =>(this.setState({messageToRecipient: event.target.value}))} />
-                    </Form.Item>
-
-                    <Form.Item >
-                    <Button type="primary" htmlType="submit">Submit</Button>
-                    </Form.Item>
-
-                    </Form> */}
-                {/* </Modal> */}
+                    <Input.TextArea defaultValue={(this.props.donations.messageToRecipient)} value={this.props.donations.messageToReceipient} rows={10} 
+                    onChange={(event) =>(this.setState({messageToRecipient: event.target.value}))} />
+                    </Form.Item>                   
+                    </Form>
+                </Modal>
             </div>    
         );
     }

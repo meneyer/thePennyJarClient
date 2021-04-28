@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from "react-router-dom"
 import { Layout, Menu, Breadcrumb, Button, Image} from 'antd';
+import Image1 from '../components/assets/thePennyJarLogo.png'
 
 const {SubMenu} = Menu
 const { Header } = Layout;
@@ -23,8 +24,11 @@ class SiteBar extends Component <PropsItems, {}> {
                 <Header>   
                     <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['1']}>   
                     
-                    <Menu.Item key="1"> The Penny Jar (MAKE A LOGO)
-                        {/* <Image src="../components/assets/47090afb0e2043e18dab43948cd49fd8.png"></Image> */}                              
+                    <Menu.Item key="1"> 
+                        <img id="pennyJarLogo" src={Image1} 
+                        width="100px"
+                        height="auto"
+                        ></img>                              
                         <Link to='/' />  
                         </Menu.Item>
 
