@@ -59,13 +59,13 @@ class RequestTable extends Component <PropsItems, RequestData> {
                 <td>{requests.giftRecipient}</td>
                 <td>{requests.link}</td>
                 <td>{requests.messageToDonor}</td>
-                <td>{requests.requestFilled}</td>
-                {/* <td>
-                    <DonationUpdate SessionToken={this.props.SessionToken} donations={donations.id} fetchDonationInfo={this.props.fetchDonationInfo}/>
+                <td>{requests.requestFilled === true ? "Yes" : "No"}</td>
+                <td>
+                    <RequestUpdate SessionToken={this.props.SessionToken} requests={requests.id} fetchRequestInfo={this.props.fetchRequestInfo}/>
                 </td>
                 <td>
-                    <DonationDelete SessionToken={this.props.SessionToken} donations={donations.id} fetchDonationInfo={this.props.fetchDonationInfo}/>
-                </td> */}
+                    <RequestDelete SessionToken={this.props.SessionToken} requests={requests.id} fetchRequestInfo={this.props.fetchRequestInfo}/>
+                </td>
             </tr>
         )
         })
@@ -98,9 +98,8 @@ class RequestTable extends Component <PropsItems, RequestData> {
                             {this.requestMap()}
                         </tbody>
                     </table>
-                </Layout>
-                <RequestDelete />
-                <RequestUpdate />
+                </Layout>         
+
             </div>    
         );
     }

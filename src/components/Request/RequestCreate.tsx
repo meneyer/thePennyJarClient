@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import APIURL from "../../helpers/environment";
-import {Layout, Form, Input, Button, Radio, Row, Col, Select } from "antd"
+import {Layout, Form, Input, Button, Row, Col, Select } from "antd"
 
 const {Sider, Content} = Layout
 const { TextArea } = Input;
@@ -104,18 +104,17 @@ class RequestCreate extends Component <PropsItems, RequestData> {
                     <Row justify="start" >
                     <Col span={24} >  
                         <h1 id="formTitles">Need A Penny</h1>
+                        
                         <Form {...layout} onFinish={this.handleSubmit}> 
+                    
                         <h1 id="fieldWords">REQUIRED FIELDS</h1>
     
-                        {/* <Form.Item label="REQUIRED FIELDS" name="displayName" >                       
-                        </Form.Item> */}
-
                         <Form.Item label="Display Name" name="displayName" rules={[{required: true, message: 'Please input a display name'}]}>
                             <Input onChange={(event) =>(this.setState({displayName: event.target.value}))} placeholder="Examples: John, Sally Smith, NeedChristmasPresents42, etc."/>
                         </Form.Item>
 
                         <Form.Item label="Reason" name="reason" rules={[{required: true, message: 'Why do you need a penny?'}]}>
-                            <TextArea rows={5}
+                            <Input.TextArea rows={5}
                             placeholder="Examples: Lost my job due to COVID-19; Spouse laid off work due to an unexpected medical event; Unexpected housing expense, like needing to replace an appliance; etc." onChange={(event) =>(this.setState({description: event.target.value}))} />
                         </Form.Item>
 
@@ -133,7 +132,7 @@ class RequestCreate extends Component <PropsItems, RequestData> {
                         </Form.Item>
 
                         <Form.Item label="What do you need?" name="item" rules={[{required: true, message: 'Please input what you need'}]}>
-                            <Input onChange={(event) =>(this.setState({item: event.target.value}))} placeholder="Examples: $50 Grocery Gift Card, Teddy Bear for my daugher's birthday, etc."/>
+                            <Input onChange={(event) =>(this.setState({item: event.target.value}))} placeholder="Max Request: $100.  Must be an e-gift card or an Amazon item -- Examples: $50 Grocery Gift Card, Teddy Bear for my daugher's birthday, etc."/>
                         </Form.Item>
 
                         <h1 id="fieldWords">OPTIONAL FIELDS</h1>
@@ -146,13 +145,13 @@ class RequestCreate extends Component <PropsItems, RequestData> {
                         </Form.Item>
 
                         <Form.Item label="Message" name="messageToDonor">
-                            <TextArea rows={10}
+                            <Input.TextArea rows={10}
                             placeholder="Please enter a message to the donor, if desired, 2000 character maximum" onChange={(event) =>(this.setState({messageToDonor: event.target.value}))} />
                         </Form.Item>
 
-    {/* <hr/> */}
-                        {/* <h1 id="fieldWords">*ADMINS WILL UPDATE WHEN FILLED*</h1> */}
+                        <hr/>
 
+                        <h1 id="fieldWords">ADMINS WILL UPDATE WHEN FILLED</h1>
                         <Form.Item name="requestFilled" label="Request Filled?" >
                         <Select defaultValue="no"
                     //    onChange={(event) =>(this.setState({requestFilled: value}))}
@@ -160,15 +159,7 @@ class RequestCreate extends Component <PropsItems, RequestData> {
                             {/* <Option value="true">Yes</Option> */}
                             <Option value="false">No</Option>
                         </Select>
-                    </Form.Item>
-                    
-                        {/* <Form.Item name="requestFilled" label="Request Filled?" >
-                            <Radio.Group defaultValue="no" buttonStyle="solid"
-                            onChange={(event) =>(this.setState({requestFilled: event.target.value}))}
-                            >
-                            <Radio.Button value="yes">Yes</Radio.Button>
-                            <Radio.Button value="no">No</Radio.Button>
-                            </Radio.Group>  */}
+                    </Form.Item>                   
                         
                         <Form.Item {...tailLayout}>
                             <Button type="primary" htmlType="submit">Submit</Button>

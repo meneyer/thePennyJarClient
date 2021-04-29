@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import APIURL from "../../helpers/environment";
-import {Layout, Form, Input, Button, Row, Col, InputNumber, Select } from "antd"
+import {Layout, Form, Input, Button, Row, Col, InputNumber, Select, Radio, Switch } from "antd"
 
 const {Sider, Content} = Layout
 const { TextArea } = Input;
@@ -36,7 +36,7 @@ class DonationCreate extends Component <PropsItems, DonationData> {
           taxReceipt: false,
           messageToRecipient: ''
       }
-      console.log("donation create", this.props.SessionToken)
+      // console.log("donation create", this.props.SessionToken)
   }
 
   handleSubmit = () => {
@@ -65,11 +65,11 @@ class DonationCreate extends Component <PropsItems, DonationData> {
     });
   };
 
-  onChange = () => {
-    this.setState({
-      taxReceipt: !this.state.taxReceipt
-    })
-  }
+  // onChange = () => {
+  //   this.setState({
+  //     taxReceipt: !this.state.taxReceipt
+  //   })    
+  // }
 
     handleChangeTaxReceipt = (event: any) => {
       this.setState({
@@ -99,29 +99,18 @@ class DonationCreate extends Component <PropsItems, DonationData> {
                   </Form.Item>
                   
                   <h1 id="fieldWords">OPTIONAL FIELDS</h1>
-                  {/* <Form.Item name="taxReceipt" label="Would you like a tax receipt?" >
-                    <Radio.Group onChange={(event) =>(this.setState({taxReceipt: event.target.value}))} buttonStyle="solid">
-                      <Radio.Button value="yes">Yes</Radio.Button>
-                      <Radio.Button value="no">No</Radio.Button>
-                    </Radio.Group>                
-                  </Form.Item> */}
 
                   <Form.Item name="taxReceipt" label="Would you like a tax reciept?" >
-                        <Select 
+                        <Select defaultValue="false"
                         onChange={this.handleChangeTaxReceipt}
                         >
                             <Option value="false">No</Option>
                             <Option value="true">Yes</Option>
                         </Select>
-                    </Form.Item>
-                  
-                  {/* <Form.Item name="taxReceipt" label="Would you like a tax receipt?" >
-                    <Switch onChange={this.onChange} checkedChildren="No" unCheckedChildren="Yes"/>
-                  </Form.Item> */}
-
+                    </Form.Item>   
 
                   <Form.Item label="Message" name="messageToReceipient">
-                    <TextArea rows={10}
+                    <Input.TextArea rows={10}
                     placeholder="Please enter a message to the recipient, if desired, 2000 character maximum" onChange={(event) =>(this.setState({messageToRecipient: event.target.value}))} />
                   </Form.Item>
 

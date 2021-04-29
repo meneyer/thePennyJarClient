@@ -35,14 +35,14 @@ class DonationTable extends Component <PropsItems, DonationData> {
         this.donationMap();
     };
 
-    donationMap = () => {  
+    donationMap = () => {   
         return this.props.logData.map((donations:DonationData, index: number) => {
             return (
                 <tr key={index}>
                     <th scope="row">{donations.id}</th>
                     <td>{donations.choice}</td>
                     <td>{donations.amount}</td>
-                    {/* <td>{donations.taxReceipt}</td> */}
+                    <td>{donations.taxReceipt === true ? "Yes" : "No"}</td>
                     <td>{donations.messageToRecipient}</td>
                     <td>
                         <DonationUpdate SessionToken={this.props.SessionToken} donations={donations} fetchDonationInfo={this.props.fetchDonationInfo}/>
@@ -70,7 +70,7 @@ class DonationTable extends Component <PropsItems, DonationData> {
                                 <th>Donation Number</th>
                                 <th>Choice</th>
                                 <th>Amount</th>
-                                {/* <th>TaxReceipt?</th> */}
+                                <th>TaxReceipt?</th>
                                 <th>Message To Recipient</th>
                                 <th>Update</th>
                                 <th>Delete</th>

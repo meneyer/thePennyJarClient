@@ -68,9 +68,15 @@ class DonationUpdate extends Component <PropsItems, DonationDataState> {
             });
             }
     
+    handleChangeTaxReceipt = (event: any) => {
+        this.setState({
+        taxReceipt: event,    
+        })
+        console.log("tax choice picked", event)
+        }
 
     render(){
-        // console.log(this.props.donations.taxReceipt)
+        console.log(this.props.donations.taxReceipt)
         // console.log(this.props.donations.messageToRecipient)
         return (
             <div>
@@ -92,7 +98,7 @@ class DonationUpdate extends Component <PropsItems, DonationDataState> {
                         name="taxReceipt"
                         label="Would you like a tax reciept?"                        
                     >
-                        <Select defaultValue={this.props.donations.taxReceipt} value={this.props.donations.taxReceipt} onChange={(event) =>(this.setState({taxReceipt: event}))}>
+                        <Select defaultValue={this.props.donations.taxReceipt=== true ? "Yes" : "No"} value={this.props.donations.taxReceipt === true ? "Yes" : "No"} onChange={this.handleChangeTaxReceipt}>
                             <Option value="false">No</Option>
                             <Option value="true">Yes</Option>
                         </Select>

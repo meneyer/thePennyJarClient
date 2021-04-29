@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import APIURL from "../../helpers/environment"
-// import DonationTableAndDelete from "./DonationTableAndDelete"
 import {  Button, Popconfirm, message  } from 'antd';
 
 export interface DonationData{

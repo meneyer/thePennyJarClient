@@ -1,23 +1,28 @@
 import React, {Component} from 'react';
 import APIURL from "../../helpers/environment"
-import {Modal, Form, Input, Button, Radio, InputNumber } from "antd"
+import {Modal, Layout, Form, Input, Button, Row, Col, Select  } from "antd"
 
+const {Sider, Content} = Layout
 const { TextArea } = Input;
+const { Option } = Select;
 
 export interface RequestData{
     displayName: string,
     description: string, 
     item: string, 
-    dateReqeusted: Date,
+    dateRequested: Date,
     dateNeeded: Date,
-    giftReciptient: string,
+    giftRecipient: string,
     link: string,
     messageToDonor: string,
-    requestFilled: boolean
+    requestFilled: boolean,
+    isModalVisible:boolean
 }
 
 type PropsItems ={
-
+    SessionToken:string
+    fetchRequestInfo: () => void,
+    requests: any,
 }
 
 class RequestUpdate extends Component <PropsItems, RequestData> {
@@ -27,40 +32,126 @@ class RequestUpdate extends Component <PropsItems, RequestData> {
             displayName: '',
             description: '', 
             item: '', 
-            dateReqeusted: new (Date),
+            dateRequested: new (Date),
             dateNeeded: new (Date),
-            giftReciptient: '',
+            giftRecipient: '',
             link: '',
             messageToDonor: '',
-            requestFilled: false
+            requestFilled: false,
+            isModalVisible: false,
         }
     }
 
-    // updateDonation = () => {            
-    //     fetch(`${APIURL}/giveapenny/update/${this.props.donations}`, {
-    //         method: "PUT",
-    //         body: JSON.stringify({
-    //             financialdonation:{ 
-    //                 choice:this.state.choice, 
-    //                 amount: this.state.amount, 
-    //                 taxReceipt: this.state.taxReceipt, 
-    //                 messageToRecipient: this.state.messageToRecipient
-    //         },
-    //         }),
-    //         headers: new Headers({
-    //             "Content-Type": "application/json",
-    //             Authorization: this.props.SessionToken,
-    //         }),
-    //         }).then((res) => {
-    //             this.props.fetchDonationInfo()
-    //         });
-    // }
+    showModal = (e: MouseEvent) => {
+        this.setState({
+            isModalVisible: true
+        });
+    };
+    
+    handleOk = (e: MouseEvent)  => {
+        this.setState({
+        isModalVisible: false
+        });
+    };
+    
+    handleCancel = (e: MouseEvent)  => {
+        this.setState({
+        isModalVisible: false
+        });
+    };
+
+    updateRequest = () => {            
+        fetch(`${APIURL}/giveapenny/update/${this.props.requests}`, {
+            method: "PUT",
+            body: JSON.stringify({
+                request:{ 
+                    displayName:this.state.displayName, 
+                    description: this.state.description, 
+                    item: this.state.item, 
+                    dateRequested: this.state.dateRequested,
+                    dateNeeded:this.state.dateNeeded, 
+                    giftRecipient: this.state.giftRecipient, 
+                    link: this.state.link, 
+                    messageToDonor: this.state.messageToDonor,
+                    requestFilled: this.state.requestFilled,
+            },
+            }),
+            headers: new Headers({
+                "Content-Type": "application/json",
+                Authorization: this.props.SessionToken,
+            }),
+            }).then((res) => {
+                this.props.fetchRequestInfo()
+            });
+    }
 
     render(){
         return (
             <div>
-                Hello from RequestUpdate                
-            </div>    
+                <Button type="primary" 
+                // onClick={this.showModal}
+                > Update  </Button>
+                <Modal title="Update Request" visible={this.state.isModalVisible} onOk={this.updateRequest} 
+                // onCancel={this.handleCancel}
+                >
+                <Form> 
+                    <Form.Item label="Display Name" name="displayName" rules={[{required: true, message: 'Please input a display name'}]}>
+                        <Input onChange={(event) =>(this.setState({displayName: event.target.value}))} placeholder="Examples: John, Sally Smith, NeedChristmasPresents42, etc."/>
+                    </Form.Item>
+
+                    <Form.Item label="Reason" name="reason" rules={[{required: true, message: 'Why do you need a penny?'}]}>
+                        <Input.TextArea rows={5}
+                        placeholder="Examples: Lost my job due to COVID-19; Spouse laid off work due to an unexpected medical event; Unexpected housing expense, like needing to replace an appliance; etc." onChange={(event) =>(this.setState({description: event.target.value}))} />
+                    </Form.Item>
+
+                    <Form.Item label="Today's Date">
+                        <Input type="date" 
+                        // defaultValue= {this.date.toISOString().slice(0,10)}       
+                        // onChange={this.handleChangeRequested}
+                        />
+                    </Form.Item>
+
+                    <Form.Item label="Date Needed">
+                        <Input type="date" 
+                        // onChange={this.handleChangeNeeded}
+                        />
+                    </Form.Item>
+
+                    <Form.Item label="What do you need?" name="item" rules={[{required: true, message: 'Please input what you need'}]}>
+                        <Input onChange={(event) =>(this.setState({item: event.target.value}))} />
+                    </Form.Item>
+
+                    <h1 id="fieldWords">OPTIONAL FIELDS</h1>
+                    <Form.Item label="Who is this for?" name="giftRecipient" >
+                        <Input onChange={(event) =>(this.setState({giftRecipient: event.target.value}))} />
+                    </Form.Item>
+
+                    <Form.Item label="Link to item" name="link" >
+                        <Input onChange={(event) =>(this.setState({link: event.target.value}))} />
+                    </Form.Item>
+
+                    <Form.Item label="Message" name="messageToDonor">
+                        <Input.TextArea rows={10}
+                        onChange={(event) =>(this.setState({messageToDonor: event.target.value}))} />
+                    </Form.Item>
+                    
+                    <Form.Item name="requestFilled" label="Request Filled?" >
+                    <Select defaultValue="no"
+                    // onChange={(event) =>(this.setState({requestFilled: value}))}
+                    >
+                        <Option value="true">Yes</Option>
+                        <Option value="false">No</Option>
+                    </Select>
+                </Form.Item>                   
+                    
+                    <Form.Item>
+                        <Button type="primary" htmlType="submit">Submit</Button>
+                    </Form.Item>
+                    {/* </Form.Item> */}
+
+                    </Form>
+                    </Modal>
+            </div>        
         );
     }
 }
@@ -68,38 +159,12 @@ class RequestUpdate extends Component <PropsItems, RequestData> {
 export default RequestUpdate;
 
 
-
-
-    // showModal = (isModalVisible: boolean) => {
-    //     this.setState=({
-    //         isModalVisible: true,
-    //     });
-    // };
-    
-    // handleOk = (e: MouseEvent)  => {
-    //     this.setState=({
-    //     isModalVisible: false
-    //     });
-    // };
-    
-    // handleCancel = (e: MouseEvent)  => {
-    //     this.setState=({
-    //     isModalVisible: false
-    //     });
-    // };
-    
-
-
-    
-
-
-
     
     // render(){
     //     return (
     //         <div>
     //             <Button type="primary" 
-    //             onClick={this.updateDonation}
+    //             onClick={this.updateRequest}
     //             >Update</Button>   
 
                 {/* <Button type="primary" onClick={this.showModal}> Open Modal  </Button>
@@ -141,7 +206,7 @@ export default RequestUpdate;
 //         );
 //     }
 // }
-// export default DonationUpdate;
+// export default RequestUpdate;
 
 
 

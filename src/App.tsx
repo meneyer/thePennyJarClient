@@ -12,6 +12,7 @@ import DonationCreate from "./components/FinancialDonation/DonationCreate"
 import DonationTableAndDelete from './components/FinancialDonation/DonationTable';
 import RequestCreate from './components/Request/RequestCreate';
 import UserInfoCreate from './components/UserInfoProfile/UserInfoCreate'
+import DonationTable from './components/FinancialDonation/DonationTable';
 // import Create from "./components/Auth/Create"
 // import Login from "./components/Auth/Login"
 
@@ -77,8 +78,8 @@ class App extends Component<{}, Token> {
 
           <Route exact path="/giveAPenny" component={()=> <DonationInfo SessionToken={this.state.SessionToken}/>} />
           <Route exact path="/giveAPenny/donate" component={DonationCreate} />
-          {/* <Route exact path="/giveAPenny/donationlist" component={DonationTableAndDelete} />  */}
-          {/* <Route exact path="/giveAPenny/mydonations" component={DonationTableAndDelete} />  */}
+          {/* <Route exact path="/giveAPenny/donationlist" component={DonationTable} />  */}
+          
         </Switch>
         <FooterSection />     
       </div>
