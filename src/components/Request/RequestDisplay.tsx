@@ -1,9 +1,5 @@
 import React, {Component} from 'react';
-import RequestUpdate from './RequestUpdate'
-import RequestDelete from './RequestDelete'
-// import APIURL from "../../helpers/environment"
 import {Layout } from 'antd';
-
 
 export interface RequestData{
     displayName: string,
@@ -24,7 +20,7 @@ type PropsItems ={
     logData: [],
 }
 
-class RequestTable extends Component <PropsItems, RequestData> {
+class RequestDisplay extends Component <PropsItems, RequestData> {
     constructor(props: PropsItems){
         super(props);
         this.state = {
@@ -46,6 +42,7 @@ class RequestTable extends Component <PropsItems, RequestData> {
     };
 
     requestMap = () => {  
+    // return (this.props.logData.length > 0 ? this.props.logData.map((requests:RequestData, index: number) => {
     return this.props.logData.map((requests:RequestData, index: number) => {
         return (
             <tr key={index}>
@@ -58,25 +55,19 @@ class RequestTable extends Component <PropsItems, RequestData> {
                 <td>{requests.giftRecipient}</td>
                 <td>{requests.link}</td>
                 <td>{requests.messageToDonor}</td>
-                <td>{requests.requestFilled === true ? "Yes" : "No"}</td>
-                <td>
-                    <RequestUpdate SessionToken={this.props.SessionToken} requests={requests} fetchRequestInfo={this.props.fetchRequestInfo}/>
-                </td>
-                <td>
-                    <RequestDelete SessionToken={this.props.SessionToken} requests={requests.id} fetchRequestInfo={this.props.fetchRequestInfo}/>
-                </td>
+                <td>{requests.requestFilled === true ? "Yes" : "No"}</td>              
             </tr>
         )
-        })
+        })        
+        // : null )
     }
 
     render(){
         return (
             <div className="boxbg">
-                <Layout>
-                    
+                <Layout>                    
                 <h2>Requests</h2>
-                    <table>
+                    {/* <table>
                         <thead>
                             <tr>
                                 <th>Request Number</th>
@@ -89,14 +80,12 @@ class RequestTable extends Component <PropsItems, RequestData> {
                                 <th>Link</th>
                                 <th>Message To Donor</th>
                                 <th>Request Filled?</th>
-                                <th>Update</th>
-                                <th>Delete</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody> */}
                             {this.requestMap()}
-                        </tbody>
-                    </table>
+                        {/* </tbody>
+                    </table> */}
                 </Layout>         
 
             </div>    
@@ -104,4 +93,4 @@ class RequestTable extends Component <PropsItems, RequestData> {
     }
 }
 
-export default RequestTable;
+export default RequestDisplay;

@@ -84,7 +84,7 @@ class Login extends Component <PropsItems, SignInData> {
             <div className="boxbg"> 
                 <Layout>
                     <Sider width={350}>
-                        <img id="pennyJarImage2" width={350}  src={Image1}></img>  
+                        <img id="pennyJarImage2" width={350}  src={Image1} alt=''></img>  
                     </Sider>
                     <Content>
                         <Row align="middle">              

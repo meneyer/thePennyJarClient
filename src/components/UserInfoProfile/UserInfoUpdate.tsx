@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 import APIURL from "../../helpers/environment"
-import {Modal, Form, Input, Button, Radio, InputNumber } from "antd"
-
-const { TextArea } = Input;
+import {Modal, Form, Input, Button, InputNumber } from "antd"
 
 export interface UserInfoData{
     firstName: string,
@@ -12,133 +10,141 @@ export interface UserInfoData{
     address: string,
     city: string,
     state: string,
-    zipcode: number
+    zipcode: number,
+    isModalVisible:boolean
 }
 
 type PropsItems ={
-
+    SessionToken:string
+    fetchProfileInfo: () => void,
+    profiles: any
 }
 
 class UserInfoUpdate extends Component <PropsItems, UserInfoData> {
     constructor(props: PropsItems){
         super(props);
         this.state = {
-            firstName: '',
-            lastName: '',
-            email: '',
-            phone: '',
-            address: '',
-            city: '',
-            state: '',
-            zipcode: 0
+            firstName: this.props.profiles.firstName,
+            lastName: this.props.profiles.lastName,
+            email: this.props.profiles.email,
+            phone: this.props.profiles.phone,
+            address: this.props.profiles.address,
+            city: this.props.profiles.city,
+            state: this.props.profiles.state,
+            zipcode: this.props.profiles.zipcode,
+            isModalVisible: false,
         }
     }
 
-        // updateDonation = () => {            
-    //     fetch(`${APIURL}/giveapenny/update/${this.props.donations}`, {
-    //         method: "PUT",
-    //         body: JSON.stringify({
-    //             financialdonation:{ 
-    //                 choice:this.state.choice, 
-    //                 amount: this.state.amount, 
-    //                 taxReceipt: this.state.taxReceipt, 
-    //                 messageToRecipient: this.state.messageToRecipient
-    //         },
-    //         }),
-    //         headers: new Headers({
-    //             "Content-Type": "application/json",
-    //             Authorization: this.props.SessionToken,
-    //         }),
-    //         }).then((res) => {
-    //             this.props.fetchDonationInfo()
-    //         });
+    showModal = () => {
+        this.setState({
+            isModalVisible: true
+        });
+    };
+    
+    handleOk = ()  => {
+        this.setState({
+        isModalVisible: false
+        });
+    };
+    
+    handleCancel = ()  => {
+        this.setState({
+        isModalVisible: false
+        });
+    };
+
+        updateProfile = () => {            
+        fetch(`${APIURL}/profile/update/${this.props.profiles.id}`, {
+            method: "PUT",
+            body: JSON.stringify({
+                userInfo:{ 
+                    firstName:this.state.firstName, 
+                    lastName:this.state.lastName, 
+                    email: this.state.email, 
+                    phone: this.state.phone, 
+                    address: this.state.address,
+                    city:this.state.city, 
+                    state: this.state.state, 
+                    zipcode: this.state.zipcode, 
+            },
+            }),
+            headers: new Headers({
+                "Content-Type": "application/json",
+                Authorization: this.props.SessionToken,
+            }),
+            }).then((res) => {
+                this.props.fetchProfileInfo()
+            });
+    }
+
+    // handleChangeFirstName = (event: any) => {
+    //     this.setState({
+    //     firstName: event.target.value,    
+    //     })
+    //     console.log("first name", event)
     // }
 
     render(){
         return (
             <div>
-                Hello from UserInfoUpdate
+                <Button type="primary" onClick={this.showModal}> Update  </Button>
+                <Modal title="Update Profile" visible={this.state.isModalVisible} onOk={this.updateProfile} onCancel={this.handleCancel}>
+
+                <Form>                
+                    <Form.Item label="First Name" name="First Name" >
+                        <Input defaultValue={this.props.profiles.firstName} value={this.props.profiles.firstName}
+                        onChange={(event) =>(this.setState({firstName: event.target.value}))} 
+                        />
+                    </Form.Item>
+                    
+                    <Form.Item label="Last Name" name="Last Name">
+                        <Input defaultValue={this.props.profiles.lastName} value={this.props.profiles.lastName}
+                        onChange={(event) =>(this.setState({lastName: event.target.value}))} 
+                        />
+                    </Form.Item>
+
+                    <Form.Item name='E-mail' label="Email" rules={[{ type: 'email'}]}>
+                        <Input defaultValue={this.props.profiles.email} value={this.props.profiles.email}
+                        onChange={(event) =>(this.setState({email: event.target.value}))} 
+                        />
+                    </Form.Item>
+
+                    <Form.Item label="Phone Number" name="Phone Number">
+                        <Input defaultValue={this.props.profiles.phone} value={this.props.profiles.phone}
+                        onChange={(event) =>(this.setState({phone: event.target.value}))} 
+                        />
+                    </Form.Item>
+
+                    <Form.Item label="Street Address" name="Street Address">
+                        <Input defaultValue={this.props.profiles.address} value={this.props.profiles.address}
+                        onChange={(event) =>(this.setState({address: event.target.value}))} 
+                        />
+                    </Form.Item>
+
+                    <Form.Item label="City" name="City">
+                        <Input defaultValue={this.props.profiles.city} value={this.props.profiles.city}
+                        onChange={(event) =>(this.setState({city: event.target.value}))} 
+                        />
+                    </Form.Item>
+
+                    <Form.Item label="State" name="State">
+                        <Input defaultValue={this.props.profiles.state} value={this.props.profiles.state}
+                        onChange={(event) =>(this.setState({state: event.target.value}))} 
+                        />
+                    </Form.Item>
+
+                    <Form.Item label="Zip Code" name="Zip Code">
+                        <InputNumber defaultValue={this.props.profiles.zipcode} value={this.props.profiles.zipcode}
+                        onChange={(event) =>(this.setState({zipcode: event}))} min={0} 
+                        />
+                    </Form.Item>  
+
+                    </Form>
+                </Modal>
             </div>    
         );
     }
 }
 
 export default UserInfoUpdate;
-
-
-    // showModal = (isModalVisible: boolean) => {
-    //     this.setState=({
-    //         isModalVisible: true,
-    //     });
-    // };
-    
-    // handleOk = (e: MouseEvent)  => {
-    //     this.setState=({
-    //     isModalVisible: false
-    //     });
-    // };
-    
-    // handleCancel = (e: MouseEvent)  => {
-    //     this.setState=({
-    //     isModalVisible: false
-    //     });
-    // };
-    
-
-
-    
-
-
-
-    
-    // render(){
-    //     return (
-    //         <div>
-    //             <Button type="primary" 
-    //             onClick={this.updateDonation}
-    //             >Update</Button>   
-
-                {/* <Button type="primary" onClick={this.showModal}> Open Modal  </Button>
-                <Modal title="Basic Modal" visible={this.state.isModalVisible} onOk={this.handleOk} onCancel={this.handleCancel}>
-
-                <Form 
-                onFinish={this.handleSubmit}
-                > 
-
-                    <Form.Item label="What would you like to do?" name="choice" rules={[{required: true, message: 'Please input a password'}]}>
-                        <Input onChange={(event) =>(this.setState({choice: event.target.value}))} placeholder='Fill Request # ____; Give to the Operations Fund;  Give to the "Need A Penny" Fund'/>
-                    </Form.Item>
-
-                    <Form.Item label="Amount">
-                    <Form.Item name="Amount" noStyle rules={[{required: true, message: 'Please input an amount'}]}>                     
-                        <InputNumber onChange={(event) =>(this.setState({amount: event}))} min={0} />                    
-                    </Form.Item>
-                    </Form.Item>
-
-                    <Form.Item name="taxReceipt" label="Would you like a tax receipt?" >
-                    <Radio.Group onChange={(event) =>(this.setState({taxReceipt: event.target.value}))}>
-                        <Radio.Button value="yes">Yes</Radio.Button>
-                        <Radio.Button value="no">No</Radio.Button>
-                    </Radio.Group>                
-                    </Form.Item>
-
-                    <Form.Item label="Message" name="messageToReceipient">
-                    <TextArea rows={10}
-                    placeholder="Please enter a message to the recipient, if desired, 2000 character maximum" onChange={(event) =>(this.setState({messageToRecipient: event.target.value}))} />
-                    </Form.Item>
-
-                    <Form.Item >
-                    <Button type="primary" htmlType="submit">Submit</Button>
-                    </Form.Item>
-
-                    </Form> */}
-                {/* </Modal> */}
-//             </div>    
-//         );
-//     }
-// }
-// export default DonationUpdate;
-
-
-
-

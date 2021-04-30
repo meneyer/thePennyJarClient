@@ -68,7 +68,7 @@ class DonationInfo extends Component <PropsItems, DonationData> {
                                 <Row justify="space-around" align="middle">
                                     <div>
                                     <Col span={8}>  
-                                    <img id="pennyJarImage2" width={500}  src={Image1}></img> 
+                                    <img id="pennyJarImage2" width={500}  src={Image1} alt=''></img> 
                                     </Col>
                                     </div>
                                     <Col span={12}>  

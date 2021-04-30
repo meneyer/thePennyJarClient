@@ -9,10 +9,10 @@ import RequestInfo from "./components/Request/RequestInfo"
 import FooterSection from "./components/Footer"
 import Auth from './components/Auth/Auth'
 import DonationCreate from "./components/FinancialDonation/DonationCreate"
-import DonationTableAndDelete from './components/FinancialDonation/DonationTable';
 import RequestCreate from './components/Request/RequestCreate';
+import RequestDisplay from './components/Request/RequestDisplay'
 import UserInfoCreate from './components/UserInfoProfile/UserInfoCreate'
-import DonationTable from './components/FinancialDonation/DonationTable';
+// import DonationTable from './components/FinancialDonation/DonationTable';
 // import Create from "./components/Auth/Create"
 // import Login from "./components/Auth/Login"
 
@@ -78,7 +78,7 @@ class App extends Component<{}, Token> {
 
           <Route exact path="/needAPenny" component={()=><RequestInfo SessionToken={this.state.SessionToken}/>} />
           <Route exact path="/needAPenny/request" component={RequestCreate} />
-          {/* <Route exact path="/needAPenny/requestlist" component={} />  */}
+          <Route exact path="/needAPenny/requestlist" component={RequestDisplay} /> 
           {/* <Route exact path="/needAPenny/myrequests" component={} />  */}
 
           <Route exact path="/profile" component={()=><UserInfoInfo SessionToken={this.state.SessionToken}/>} />

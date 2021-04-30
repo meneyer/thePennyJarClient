@@ -30,8 +30,8 @@ class RequestInfo extends Component <PropsItems, RequestData> {
             displayName: '',
             description: '', 
             item: '', 
-            dateReqeusted: new (Date),
-            dateNeeded: new (Date),
+            dateReqeusted: new(Date),
+            dateNeeded: new(Date),
             giftReciptient: '',
             link: '',
             messageToDonor: '',
@@ -80,7 +80,7 @@ class RequestInfo extends Component <PropsItems, RequestData> {
                                 <Row justify="space-around" align="middle">
                                     <div>
                                     <Col span={8}>  
-                                    <img id="pennyJarImage2" width={500}  src={Image1}></img> 
+                                    <img id="pennyJarImage2" width={500}  src={Image1} alt=''></img> 
                                     </Col>
                                     </div>
                                     <Col span={12}>  
@@ -98,17 +98,6 @@ class RequestInfo extends Component <PropsItems, RequestData> {
             </div>    
         );
     }
-
-                                
-    //                         <DonationCreate SessionToken={this.props.SessionToken} 
-    //                         fetchDonationInfo={this.fetchDonationInfo}
-    //                         />
-    //                         <DonationTableAndDelete SessionToken={this.props.SessionToken} fetchDonationInfo={this.fetchDonationInfo} logData={this.state.logData}/>
-    //                     </div> : <h1>Please log in</h1>  }
-    //             </div>
-    //         </div>    
-    //     );
-    // }
 }
 
 export default RequestInfo;

@@ -65,14 +65,14 @@ class UserInfo extends Component <PropsItems, UserInfoData> {
             <div>
                 <div>
                     {this.props.SessionToken === localStorage.getItem('token') ? 
-                        <div> 
-                            Hello from UserInfo
+                        <div>                             
                             <UserInfoCreate 
                             SessionToken={this.props.SessionToken} 
                             fetchProfileInfo={this.fetchProfileInfo}/>
                             <UserInfoTable 
-                            // SessionToken={this.props.SessionToken} 
-                            // fetchProfileInfo={this.fetchProfileInfo}
+                            SessionToken={this.props.SessionToken} 
+                            fetchProfileInfo={this.fetchProfileInfo}
+                            logData={this.state.logData}
                             />
                         </div> : <div className="boxbg">
                         <Layout>
@@ -97,22 +97,6 @@ class UserInfo extends Component <PropsItems, UserInfoData> {
             </div>    
         );
     }
-
-     // render(){
-    //     return (
-    //         <div>
-    //             <div>
-    //                 {this.props.SessionToken === localStorage.getItem('token') ? 
-    //                     <div>                            
-    //                         <DonationCreate SessionToken={this.props.SessionToken} 
-    //                         fetchDonationInfo={this.fetchDonationInfo}
-    //                         />
-    //                         <DonationTableAndDelete SessionToken={this.props.SessionToken} fetchDonationInfo={this.fetchDonationInfo} logData={this.state.logData}/>
-    //                     </div> : <h1>Please log in</h1>  }
-    //             </div>
-    //         </div>    
-    //     );
-    // }
 }
 
 export default UserInfo;

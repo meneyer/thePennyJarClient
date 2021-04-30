@@ -1,9 +1,7 @@
 import React, {Component} from 'react';
 import Create from './Create'
 import Login from './Login'
-import Sitebar from '../Sitebar'
-import {Button, Layout, Row} from "antd"
-const {Sider, Content} = Layout
+import {Button, Layout} from "antd"
 
 export interface Toggle{
     showLogin:boolean

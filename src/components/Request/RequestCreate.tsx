@@ -3,8 +3,7 @@ import APIURL from "../../helpers/environment";
 import {Layout, Form, Input, Button, Row, Col, Select } from "antd"
 import Image1 from '../assets/michael-longmire-lhltMGdohc8-unsplash.jpg'
 
-const {Sider, Content} = Layout
-const { TextArea } = Input;
+const { Content} = Layout;
 const { Option } = Select;
 
 const layout = {
@@ -40,8 +39,8 @@ class RequestCreate extends Component <PropsItems, RequestData> {
             displayName: '',
             description: '', 
             item: '', 
-            dateRequested: new (Date),
-            dateNeeded: new (Date),
+            dateRequested: new(Date),
+            dateNeeded: new(Date),
             giftRecipient: '',
             link: '',
             messageToDonor: '',
@@ -171,9 +170,9 @@ class RequestCreate extends Component <PropsItems, RequestData> {
                         : 
                         <Row>
                         <Col span={9}></Col>
-                        <Col span={7}><img id="pennyJarImage3" width={400}  src={Image1}></img></Col>
+                        <Col span={7}><img id="pennyJarImage3" width={400}  src={Image1} alt=''></img></Col>
                         <Col span={9}></Col>
-                      </Row>}
+                        </Row>}
                     </Col>
                     </Row>
                 </Content>

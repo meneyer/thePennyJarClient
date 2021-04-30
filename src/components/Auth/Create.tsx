@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {Layout, Form, Input, Button, Radio, Row, Col, Image } from "antd"
+import {Layout, Form, Input, Button, Radio, Row, Col } from "antd"
 import APIURL from "../../helpers/environment"
 
 const {Sider, Content} = Layout
@@ -80,7 +80,7 @@ class Create extends Component <PropsItems, SignUpData>{
             <div className="boxbg">
                 <Layout>
                     <Sider width={350}>
-                        <img id="pennyJarImage2" width={350}  src='https://images.unsplash.com/photo-1567427017947-545c5f8d16ad?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1990&q=80'></img>  
+                        <img id="pennyJarImage2" width={350}  src='https://images.unsplash.com/photo-1567427017947-545c5f8d16ad?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1990&q=80' alt=''></img>  
                     </Sider>
                     <Content> 
                         <Row align="middle" >

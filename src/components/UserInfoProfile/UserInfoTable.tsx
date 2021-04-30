@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import UserInfoUpdate from './UserInfoUpdate'
 import UserInfoDelete from './UserInfoDelete'
-import APIURL from "../../helpers/environment"
-import { Table, Button, Layout } from 'antd';
-const {Content} = Layout
+// import APIURL from "../../helpers/environment"
+import { Layout } from 'antd';
+
 
 export interface UserInfoData{
     firstName: string,
@@ -13,13 +13,14 @@ export interface UserInfoData{
     address: string,
     city: string,
     state: string,
-    zipcode: number
+    zipcode: number,
+    id: number
 }
 
 type PropsItems ={
-    // SessionToken:string
-    // fetchDonationInfo: () => void,
-    // logData: [],
+    SessionToken:string
+    fetchProfileInfo: () => void,
+    logData: [],
 }
 
 class UserTable extends Component <PropsItems, UserInfoData> {
@@ -33,85 +34,75 @@ class UserTable extends Component <PropsItems, UserInfoData> {
             address: '',
             city: '',
             state: '',
-            zipcode: 0
+            zipcode: 0,
+            id: 0
         }
     }
+
+    componentDidMount() {
+        this.profileMap();
+    };
+
+    profileMap = () => {   
+        return this.props.logData.map((profiles:UserInfoData, index: number) => {
+            return (
+                <tr key={index}>
+                    <th scope="row">{profiles.id}</th>
+                    <td>{profiles.firstName}</td>
+                    <td>{profiles.lastName}</td>
+                    <td>{profiles.email}</td>
+                    <td>{profiles.phone}</td>
+                    <td>{profiles.address}</td>
+                    <td>{profiles.city}</td>
+                    <td>{profiles.state}</td>
+                    <td>{profiles.zipcode}</td>
+                    <td>
+                        <UserInfoUpdate 
+                        SessionToken={this.props.SessionToken} profiles={profiles} 
+                        fetchProfileInfo={this.props.fetchProfileInfo}
+                        />
+                    </td>
+                    <td>
+                        <UserInfoDelete 
+                        SessionToken={this.props.SessionToken} profiles={profiles.id} 
+                        fetchProfileInfo={this.props.fetchProfileInfo}                        
+                        />
+                    </td>
+                </tr>
+            )
+            })
+        }
+
     render(){
         return (
-            <div>
-                Hello from UserTable
-                <UserInfoDelete />
-                <UserInfoUpdate />
-            </div>    
+            <div className="boxbg">
+            <Layout>                  
+
+            <h2>Profile</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Profile ID</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Email</th>
+                            <th>Phone Number</th>
+                            <th>Street Address</th>
+                            <th>City</th>
+                            <th>State</th>
+                            <th>Zip Code</th>
+                            <th>Update</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {this.profileMap()}
+                    </tbody>
+                </table>
+            </Layout>
+        </div>      
         );
     }
 }
 
 export default UserTable;
-
-
-
-// place under the construtor
-
-
-// componentDidMount() {
-//     this.donationMap();
-// };
-
-// donationMap = () => {  
-//     return this.props.logData.map((donations:DonationData, index: number) => {
-//         return (
-//             <tr key={index}>
-//                 <th scope="row">{donations.id}</th>
-//                 <td>{donations.choice}</td>
-//                 <td>{donations.amount}</td>
-//                 {/* <td>{donations.taxReceipt}</td> */}
-//                 <td>{donations.messageToRecipient}</td>
-//                 <td>
-//                     <DonationUpdate SessionToken={this.props.SessionToken} donations={donations.id} fetchDonationInfo={this.props.fetchDonationInfo}/>
-//                 </td>
-//                 <td>
-//                     <DonationDelete SessionToken={this.props.SessionToken} donations={donations.id} fetchDonationInfo={this.props.fetchDonationInfo}/>
-//                 </td>
-//             </tr>
-//         )
-//         })
-//     }
-    
-// render(){
-    
-//     return (
-//         <div className="boxbg">
-//             <Layout>
-//                 {/* <Content> */}
-
-//             <h2>Past Donations</h2>
-//             {/* <Table> */}
-//                 <table>
-
-//                 <thead>
-//                     <tr>
-//                         <th>Request Number</th>
-//                         <th>Choice</th>
-//                         <th>Amount</th>
-//                         {/* <th>TaxReceipt?</th> */}
-//                         <th>Message To Recipient</th>
-//                         <th>Update</th>
-//                         <th>Delete</th>
-//                     </tr>
-//                 </thead>
-//                 <tbody>
-//                     {this.donationMap()}
-//                 </tbody>
-//                 </table>
-//             {/* </Table> */}
-//             {/* <DonationUpdate /> */}
-//                 {/* </Content> */}
-//             </Layout>
-//         </div>    
-//     );
-// }
-// }
-// export default DonationTableAndDelete;
-
-

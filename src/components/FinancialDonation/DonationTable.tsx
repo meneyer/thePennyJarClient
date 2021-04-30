@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
 import DonationDelete from './DonationDelete'
 import DonationUpdate from './DonationUpdate'
-import APIURL from "../../helpers/environment"
-import { Table, Button, Layout } from 'antd';
-const {Content} = Layout
+// import APIURL from "../../helpers/environment"
+import { Layout } from 'antd';
 
 export interface DonationData{
     choice: string,

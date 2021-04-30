@@ -1,10 +1,9 @@
 import React, {Component} from 'react';
 import APIURL from "../../helpers/environment";
-import {Layout, Form, Input, Button, Row, Col, InputNumber, Select, Radio, Switch } from "antd"
+import {Layout, Form, Input, Button, Row, Col, InputNumber, Select } from "antd"
 import Image1 from '../assets/michael-longmire-lhltMGdohc8-unsplash.jpg'
 
-const {Sider, Content} = Layout
-const { TextArea } = Input;
+const {Content} = Layout;
 const { Option } = Select;
 
 const layout = {
@@ -125,7 +124,7 @@ class DonationCreate extends Component <PropsItems, DonationData> {
                 </Form> : 
                 <Row>
                 <Col span={9}></Col>
-                <Col span={7}><img id="pennyJarImage3" width={400}  src={Image1}></img></Col>
+                <Col span={7}><img id="pennyJarImage3" width={400}  src={Image1} alt=''></img></Col>
                 <Col span={9}></Col>
               </Row>}
                 

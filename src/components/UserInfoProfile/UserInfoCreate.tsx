@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import APIURL from "../../helpers/environment";
-import {Layout, Form, Input, Button, Radio, Row, Col, InputNumber } from "antd"
+import {Layout, Form, Input, Button, Row, Col, InputNumber } from "antd"
+import Image1 from '../assets/michael-longmire-lhltMGdohc8-unsplash.jpg'
 
-const {Sider, Content} = Layout
-const { TextArea } = Input;
+const {Content} = Layout
 
 const layout = {
     labelCol:{ span: 6},
@@ -46,7 +46,6 @@ class UserCreate extends Component <PropsItems, UserInfoData> {
     }
 
     handleSubmit = () => {
-      // let token = this.props.SessionToken ? this.props.SessionToken : localStorage.getItem('token');
       console.log(this.props.SessionToken, this.state)
         fetch(`${APIURL}/profile/`, {
           method: "POST",
@@ -66,7 +65,6 @@ class UserCreate extends Component <PropsItems, UserInfoData> {
           headers: new Headers({
             "Content-Type": "application/json",
             Authorization: this.props.SessionToken,
-            // Authorization: token ? token : "",
           }),
         })
         .then((res) => res.json())
@@ -78,14 +76,13 @@ class UserCreate extends Component <PropsItems, UserInfoData> {
 
   render(){
     return (
-      <div>
-        Hello from UserCreate
+      <div className="boxbg">
         <Layout>        
           <Content> 
             <Row justify="start" >
               <Col span={24} >  
                 <h1 id="formTitles">User Profile</h1>
-                <h1 >This information will only be seen by admins to fill requests, send tax receipts, etc.</h1>
+                <h2> To keep everything anonymous, this information will only be seen by admins. <br/> The information provided will be used to fill requests, send tax receipts, etc. <br /> <br /></h2>
                 <Form {...layout} onFinish={this.handleSubmit}> 
                 <h1 id="fieldWords">REQUIRED FIELDS</h1>
                   <Form.Item label="First Name" name="First Name" rules={[{required: true}]}>

@@ -1,8 +1,8 @@
 import React, {Component} from "react";
-import { Image, Layout, Row, Col, } from 'antd';
+import { Layout, Row, Col, } from 'antd';
 import Image1 from '../assets/michael-longmire-lhltMGdohc8-unsplash.jpg'
 
-const {Sider, Content} = Layout
+const {Content} = Layout
 
 type PropsItems ={
     token: string
@@ -25,7 +25,7 @@ class HomePage extends Component <PropsItems, {}>{
                             <Row justify="space-around" align="middle">
                                 <div>
                                 <Col span={8}>  
-                                <img id="pennyJarImage2" width={500}  src={Image1}></img> 
+                                <img id="pennyJarImage2" width={500}  src={Image1} alt=''></img> 
                                 </Col>
                                 </div>
                                 <Col span={12}>  

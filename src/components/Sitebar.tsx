@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Link} from "react-router-dom"
-import { Layout, Menu, Breadcrumb, Button, Image} from 'antd';
+import { Layout, Menu, Button} from 'antd';
 import Image1 from '../components/assets/thePennyJarLogo.png'
 
 const {SubMenu} = Menu
@@ -26,8 +26,9 @@ class SiteBar extends Component <PropsItems, {}> {
                     
                     <Menu.Item key="1"> 
                         <img id="pennyJarLogo" src={Image1} 
-                        width="100px"
+                        width="125px"
                         height="auto"
+                        alt=''
                         ></img>                              
                         <Link to='/' />  
                         </Menu.Item>
@@ -40,9 +41,9 @@ class SiteBar extends Component <PropsItems, {}> {
                         </Menu.Item> */}
 
                         <SubMenu key="sub3" title="Need A Penny">
-                            <Menu.Item key="4">Reqest Everything REMOVE THIS ITEM <Link to='/needAPenny' /> </Menu.Item>
+                            <Menu.Item key="4">Request Everything REMOVE THIS ITEM <Link to='/needAPenny/' /> </Menu.Item>
                             <Menu.Item key="1">Request Form <Link to='/needAPenny' />  </Menu.Item>
-                            <Menu.Item key="2">Request List <Link to='/needAPenny' /> </Menu.Item>
+                            <Menu.Item key="2">Request List NOT WORKING YET <Link to='/needAPenny/requestlist' /> </Menu.Item>
                             <Menu.Item key="3">My Requests <Link to='/needAPenny' /></Menu.Item>
                         </SubMenu>
                         

@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
 import APIURL from "../../helpers/environment"
-import {Modal, Layout, Form, Input, Button, Row, Col, Select  } from "antd"
+import {Modal, Form, Input, Button, Select  } from "antd"
 
-const {Sider, Content} = Layout
-const { TextArea } = Input;
+
 const { Option } = Select;
 
 export interface RequestData{
