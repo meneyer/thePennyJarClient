@@ -24,12 +24,13 @@ export interface RequestData{
     giftRecipient: string,
     link: string,
     messageToDonor: string,
-    requestFilled: boolean
+    requestFilled: boolean,
+    logData: []
 }
 
 type PropsItems ={
     SessionToken:string;
-    fetchRequestInfo: () => void
+    // fetchRequestInfo: () => void
 }
 
 class RequestCreate extends Component <PropsItems, RequestData> {
@@ -44,7 +45,8 @@ class RequestCreate extends Component <PropsItems, RequestData> {
             giftRecipient: '',
             link: '',
             messageToDonor: '',
-            requestFilled: false
+            requestFilled: false,
+            logData: []
         }
     }
 
@@ -76,9 +78,26 @@ class RequestCreate extends Component <PropsItems, RequestData> {
         .then((res) => res.json())
         .then((data) => {
             console.log(data);
-            this.props.fetchRequestInfo();
+            this.fetchRequestInfo();
         });
     };
+
+    fetchRequestInfo = () => {
+        fetch(`${APIURL}/needapenny/myrequests`, {
+            method: "GET",
+            headers: new Headers({
+                "Content-Type": "application/json",
+            Authorization: this.props.SessionToken,
+            }),
+        })
+        .then((res) => res.json())
+        .then((logData) => {
+            console.log (logData);
+            this.setState({
+                logData: logData
+            })
+        });
+    }
 
     handleChangeRequested = (event: any) => {
         this.setState({

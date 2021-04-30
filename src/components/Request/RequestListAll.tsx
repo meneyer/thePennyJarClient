@@ -1,16 +1,22 @@
 import React, {Component} from 'react';
-// import DonationCreate from './DonationCreate';
-import DonationTable from './DonationTable'
+import RequestCreate from './RequestCreate'
+import RequestTable from './RequestTable'
 import APIURL from '../../helpers/environment'
-import { Col, Layout, Row } from 'antd';
-import { Content } from 'antd/lib/layout/layout';
 import Image1 from '../assets/michael-longmire-lhltMGdohc8-unsplash.jpg'
+import {Row, Col, Layout } from "antd"
+import { Content } from 'antd/lib/layout/layout';
+import RequestListTable from './RequestListTable';
 
-export interface DonationData{
-    choice: string,
-    amount: number,
-    taxReceipt: boolean,
-    messageToRecipient: string,
+export interface RequestData{
+    displayName: string,
+    description: string, 
+    item: string, 
+    dateReqeusted: Date,
+    dateNeeded: Date,
+    giftReciptient: string,
+    link: string,
+    messageToDonor: string,
+    requestFilled: boolean,
     logData: []
 }
 
@@ -18,21 +24,25 @@ type PropsItems ={
     SessionToken:string
 }
 
-class DonationInfo extends Component <PropsItems, DonationData> {
+class RequestListAll extends Component <PropsItems, RequestData> {
     constructor(props: PropsItems){
         super(props);
         this.state = {
-            choice: '',
-            amount: 0,
-            taxReceipt: false,
-            messageToRecipient: '',  
-            logData: []                  
+            displayName: '',
+            description: '', 
+            item: '', 
+            dateReqeusted: new(Date),
+            dateNeeded: new(Date),
+            giftReciptient: '',
+            link: '',
+            messageToDonor: '',
+            requestFilled: false,
+            logData: []  
         }
-        console.log("donation info", this.props.SessionToken)
     }
 
-    fetchDonationInfo = () => {
-        fetch(`${APIURL}/giveapenny/mydonations`, {
+    fetchRequestList = () => {
+        fetch(`${APIURL}/needapenny/`, {
             method: "GET",
             headers: new Headers({
                 "Content-Type": "application/json",
@@ -47,9 +57,9 @@ class DonationInfo extends Component <PropsItems, DonationData> {
             })
         });
     }
-    
+
     componentDidMount() {
-        this.fetchDonationInfo();
+        this.fetchRequestList();
     };
 
     render(){
@@ -58,10 +68,10 @@ class DonationInfo extends Component <PropsItems, DonationData> {
                 <div>
                     {this.props.SessionToken === localStorage.getItem('token') ? 
                         <div>                            
-                            <DonationTable SessionToken={this.props.SessionToken} fetchDonationInfo={this.fetchDonationInfo} logData={this.state.logData}/>
-                            {/* <DonationCreate SessionToken={this.props.SessionToken} fetchDonationInfo={this.fetchDonationInfo}
-                            /> */}
-                        </div> :  <div className="boxbg">
+                            <RequestListTable SessionToken={this.props.SessionToken} 
+                            fetchRequestList={this.fetchRequestList} logData={this.state.logData} />
+                        </div> : 
+                        <div className="boxbg">
                         <Layout>
                             <Content>                                
                                 <Row justify="space-around" align="middle">
@@ -78,11 +88,13 @@ class DonationInfo extends Component <PropsItems, DonationData> {
                                     </Col>
                                 </Row>
                             </Content>
-                        </Layout>  
-                        </div>}
-                </div>
+                        </Layout>
+                    </div>
+    }
+                    </div>
             </div>    
         );
     }
 }
-export default DonationInfo;
+
+export default RequestListAll;

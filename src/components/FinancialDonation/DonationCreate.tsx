@@ -19,12 +19,13 @@ export interface DonationData{
   choice: string,
   amount: number,
   taxReceipt: boolean,
-  messageToRecipient: string
+  messageToRecipient: string,
+  logData: []
 }
 
 type PropsItems ={
   SessionToken:string;
-  fetchDonationInfo: () => void
+  // fetchDonationInfo: () => void
 }
 
 class DonationCreate extends Component <PropsItems, DonationData> {
@@ -34,7 +35,8 @@ class DonationCreate extends Component <PropsItems, DonationData> {
           choice: '',
           amount: 0,
           taxReceipt: false,
-          messageToRecipient: ''
+          messageToRecipient: '',
+          logData: []
       }
       // console.log("donation create", this.props.SessionToken)
   }
@@ -61,10 +63,26 @@ class DonationCreate extends Component <PropsItems, DonationData> {
     .then((res) => res.json())
     .then((data) => {
       console.log(data);
-      this.props.fetchDonationInfo();
+      this.fetchDonationInfo();
     });
   };
 
+  fetchDonationInfo = () => {
+    fetch(`${APIURL}/giveapenny/mydonations`, {
+        method: "GET",
+        headers: new Headers({
+            "Content-Type": "application/json",
+        Authorization: this.props.SessionToken,
+        }),
+    })
+    .then((res) => res.json())
+    .then((logData) => {
+        console.log (logData);
+        this.setState({
+            logData: logData
+        })
+    });
+}
   // onChange = () => {
   //   this.setState({
   //     taxReceipt: !this.state.taxReceipt
@@ -85,6 +103,7 @@ class DonationCreate extends Component <PropsItems, DonationData> {
           <Content> 
             <Row justify="start" >
               <Col span={24} >  
+
                 <h1 id="formTitles">Give A Penny</h1>
 
       {(localStorage.getItem('role') ==="donor" || localStorage.getItem('role') === "admin") ?
@@ -122,11 +141,25 @@ class DonationCreate extends Component <PropsItems, DonationData> {
                   </Form.Item>
 
                 </Form> : 
-                <Row>
-                <Col span={9}></Col>
-                <Col span={7}><img id="pennyJarImage3" width={400}  src={Image1} alt=''></img></Col>
-                <Col span={9}></Col>
-              </Row>}
+                <div className="boxbg">
+                <Layout>
+                    <Content>                                
+                        <Row justify="space-around" align="middle">
+                            <div>
+                            <Col span={8}>  
+                            <img id="pennyJarImage2" width={500}  src={Image1} alt=''></img> 
+                            </Col>
+                            </div>
+                            <Col span={12}>  
+                            <br />
+                            <h1 className='title'>The Penny Jar</h1>
+                                <hr />                   
+                                <h1 className='title'>Please Log In</h1>                                   
+                            </Col>
+                        </Row>
+                    </Content>
+                </Layout>  
+                </div>}
                 
               </Col>
             </Row>
