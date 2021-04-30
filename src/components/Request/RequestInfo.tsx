@@ -41,7 +41,7 @@ class RequestInfo extends Component <PropsItems, RequestData> {
     }
 
     fetchRequestInfo = () => {
-        fetch(`${APIURL}/needapenny/`, {
+        fetch(`${APIURL}/needapenny/myrequests`, {
             method: "GET",
             headers: new Headers({
                 "Content-Type": "application/json",
@@ -67,10 +67,10 @@ class RequestInfo extends Component <PropsItems, RequestData> {
                 <div>
                     {this.props.SessionToken === localStorage.getItem('token') ? 
                         <div>
-                            <RequestCreate 
+                            {/* <RequestCreate 
                             SessionToken={this.props.SessionToken} 
                             fetchRequestInfo={this.fetchRequestInfo}
-                            />
+                            /> */}
                             <RequestTable SessionToken={this.props.SessionToken} 
                             fetchRequestInfo={this.fetchRequestInfo} logData={this.state.logData} />
                         </div> : 

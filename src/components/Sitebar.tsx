@@ -31,42 +31,31 @@ class SiteBar extends Component <PropsItems, {}> {
                         alt=''
                         ></img>                              
                         <Link to='/' />  
-                        </Menu.Item>
-
-                    {/* <Menu.Item key="1">Home
-                        </Menu.Item>  */}
-                        
-                        {/* <Menu.Item key="3">Need A Penny
-                            <Link to='/needAPenny' />
-                        </Menu.Item> */}
+                        </Menu.Item>                    
 
                         <SubMenu key="sub3" title="Need A Penny">
-                            <Menu.Item key="4">Request Everything REMOVE THIS ITEM <Link to='/needAPenny/' /> </Menu.Item>
-                            <Menu.Item key="1">Request Form <Link to='/needAPenny' />  </Menu.Item>
-                            <Menu.Item key="2">Request List NOT WORKING YET <Link to='/needAPenny/requestlist' /> </Menu.Item>
-                            <Menu.Item key="3">My Requests <Link to='/needAPenny' /></Menu.Item>
+                            {/* <Menu.Item key="4">Request Everything REMOVE THIS ITEM<Link to='/needAPenny/' /> </Menu.Item> */}
+                            <Menu.Item key="1">Request Form<Link to='/needAPenny/request' />  </Menu.Item>
+                            <Menu.Item key="2">Request List<Link to='/needAPenny/requestlist' /> </Menu.Item>
+                            <Menu.Item key="3">My Requests <Link to='/needAPenny/myrequests' /></Menu.Item>
                         </SubMenu>
                         
-                        {/* <Menu.Item key="4">Give A Penny
-                        <Link to='/giveAPenny' />  
-                        </Menu.Item>  */}
-
-                        <SubMenu key="sub4" title="Give A Penny">
-                            <Menu.Item key="4">Donation Everything REMOVE THIS ITEM <Link to='/giveAPenny/' /></Menu.Item>
+                        <SubMenu key="sub4" title="Give A Penny">                           
                             <Menu.Item key="1">Donation Form <Link to='/giveAPenny/donate' />  </Menu.Item>
-                            <Menu.Item key="2">Donation List <Link to='/giveAPenny/donationlist' /> </Menu.Item>
-                            <Menu.Item key="3">My Donations <Link to='/giveAPenny/mydonations' /></Menu.Item>
+                            <Menu.Item key="2">Donation List<Link to='/giveAPenny/donationlist' /> </Menu.Item>
+                            <Menu.Item key="3">My Donations <Link to='/giveAPenny/mydonations'/></Menu.Item>
                         </SubMenu>
                         
-                        {/* <Menu.Item key="5">Profile
-                            <Link to='/profile' />
-                        </Menu.Item> */}
-
                         <SubMenu key="sub5" title="My Info">
-                            <Menu.Item key="1">User Profile <Link to='/profile' />  </Menu.Item>
-                            <Menu.Item key="2">Request List <Link to='/needAPenny' /> </Menu.Item>
-                            <Menu.Item key="3">My Requests <Link to='/needAPenny' /></Menu.Item>
-                            <Menu.Item key="4">option4</Menu.Item>
+                            <Menu.Item key="1">My Profile<Link to='/profile/myprofile' />  </Menu.Item>                            
+                            <Menu.Item key="3">My Requests <Link to='/needAPenny/myrequests' /></Menu.Item>
+                            <Menu.Item key="4">My Donations <Link to='/giveAPenny/mydonations'/></Menu.Item>
+                        </SubMenu>
+
+                        <SubMenu key="sub2" title="Admin">
+                            <Menu.Item key="4">User Profiles<Link to='/profile/' /></Menu.Item>
+                            <Menu.Item key="2">Request List<Link to='/needAPenny/requestlist' /> </Menu.Item>
+                            <Menu.Item key="3">Donation List<Link to='/giveAPenny/donationlist' /> </Menu.Item>
                         </SubMenu>
                         
                         <Menu.Item key="6">
@@ -77,7 +66,6 @@ class SiteBar extends Component <PropsItems, {}> {
                         <Button type="primary" onClick={()=>this.props.clearToken()}>Logout</Button>
                         </Menu.Item>                       
                         
-
                     </Menu>
                 </Header>       
             </Layout >       

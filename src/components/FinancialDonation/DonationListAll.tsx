@@ -1,10 +1,9 @@
 import React, {Component} from 'react';
-// import DonationCreate from './DonationCreate';
-import DonationTable from './DonationTable'
 import APIURL from '../../helpers/environment'
 import { Col, Layout, Row } from 'antd';
 import { Content } from 'antd/lib/layout/layout';
 import Image1 from '../assets/michael-longmire-lhltMGdohc8-unsplash.jpg'
+import DonationListTable from './DonationListTable';
 
 export interface DonationData{
     choice: string,
@@ -18,7 +17,7 @@ type PropsItems ={
     SessionToken:string
 }
 
-class DonationInfo extends Component <PropsItems, DonationData> {
+class DonationListAll extends Component <PropsItems, DonationData> {
     constructor(props: PropsItems){
         super(props);
         this.state = {
@@ -31,8 +30,8 @@ class DonationInfo extends Component <PropsItems, DonationData> {
         console.log("donation info", this.props.SessionToken)
     }
 
-    fetchDonationInfo = () => {
-        fetch(`${APIURL}/giveapenny/mydonations`, {
+    fetchDonationList = () => {
+        fetch(`${APIURL}/giveapenny/`, {
             method: "GET",
             headers: new Headers({
                 "Content-Type": "application/json",
@@ -49,18 +48,16 @@ class DonationInfo extends Component <PropsItems, DonationData> {
     }
     
     componentDidMount() {
-        this.fetchDonationInfo();
+        this.fetchDonationList();
     };
 
     render(){
         return (
-            <div>
+            <div>               
                 <div>
                     {this.props.SessionToken === localStorage.getItem('token') ? 
-                        <div>                            
-                            <DonationTable SessionToken={this.props.SessionToken} fetchDonationInfo={this.fetchDonationInfo} logData={this.state.logData}/>
-                            {/* <DonationCreate SessionToken={this.props.SessionToken} fetchDonationInfo={this.fetchDonationInfo}
-                            /> */}
+                        <div>
+                            <DonationListTable SessionToken={this.props.SessionToken} fetchDonationList={this.fetchDonationList} logData={this.state.logData}/>
                         </div> :  <div className="boxbg">
                         <Layout>
                             <Content>                                
@@ -85,4 +82,4 @@ class DonationInfo extends Component <PropsItems, DonationData> {
         );
     }
 }
-export default DonationInfo;
+export default DonationListAll;

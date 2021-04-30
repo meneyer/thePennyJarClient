@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Create from './Create'
 import Login from './Login'
-import {Button, Layout} from "antd"
+import {Button} from "antd"
 
 export interface Toggle{
     showLogin:boolean
