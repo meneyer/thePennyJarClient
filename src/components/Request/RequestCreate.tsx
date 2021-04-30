@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import APIURL from "../../helpers/environment";
 import {Layout, Form, Input, Button, Row, Col, Select } from "antd"
+import Image1 from '../assets/michael-longmire-lhltMGdohc8-unsplash.jpg'
 
 const {Sider, Content} = Layout
 const { TextArea } = Input;
@@ -105,6 +106,8 @@ class RequestCreate extends Component <PropsItems, RequestData> {
                     <Col span={24} >  
                         <h1 id="formTitles">Need A Penny</h1>
                         
+                        {(localStorage.getItem('role') ==="recipient" || localStorage.getItem('role') === "admin") ?
+                        
                         <Form {...layout} onFinish={this.handleSubmit}> 
                     
                         <h1 id="fieldWords">REQUIRED FIELDS</h1>
@@ -149,17 +152,15 @@ class RequestCreate extends Component <PropsItems, RequestData> {
                             placeholder="Please enter a message to the donor, if desired, 2000 character maximum" onChange={(event) =>(this.setState({messageToDonor: event.target.value}))} />
                         </Form.Item>
 
-                        <hr/>
-
-                        <h1 id="fieldWords">ADMINS WILL UPDATE WHEN FILLED</h1>
+                        {(localStorage.getItem('role')==="admin") ?
                         <Form.Item name="requestFilled" label="Request Filled?" >
                         <Select defaultValue="no"
                     //    onChange={(event) =>(this.setState({requestFilled: value}))}
                         >
-                            {/* <Option value="true">Yes</Option> */}
+                            <Option value="true">Yes</Option>
                             <Option value="false">No</Option>
                         </Select>
-                    </Form.Item>                   
+                    </Form.Item>  : ''}                  
                         
                         <Form.Item {...tailLayout}>
                             <Button type="primary" htmlType="submit">Submit</Button>
@@ -167,6 +168,12 @@ class RequestCreate extends Component <PropsItems, RequestData> {
                         {/* </Form.Item> */}
     
                         </Form>
+                        : 
+                        <Row>
+                        <Col span={9}></Col>
+                        <Col span={7}><img id="pennyJarImage3" width={400}  src={Image1}></img></Col>
+                        <Col span={9}></Col>
+                      </Row>}
                     </Col>
                     </Row>
                 </Content>

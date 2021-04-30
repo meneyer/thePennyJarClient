@@ -2,6 +2,9 @@ import React, {Component} from 'react';
 import DonationCreate from './DonationCreate';
 import DonationTable from './DonationTable'
 import APIURL from '../../helpers/environment'
+import { Col, Layout, Row } from 'antd';
+import { Content } from 'antd/lib/layout/layout';
+import Image1 from '../assets/michael-longmire-lhltMGdohc8-unsplash.jpg'
 
 export interface DonationData{
     choice: string,
@@ -59,7 +62,25 @@ class DonationInfo extends Component <PropsItems, DonationData> {
                             fetchDonationInfo={this.fetchDonationInfo}
                             />
                             <DonationTable SessionToken={this.props.SessionToken} fetchDonationInfo={this.fetchDonationInfo} logData={this.state.logData}/>
-                        </div> : <h1>Please log in</h1>  }
+                        </div> :  <div className="boxbg">
+                        <Layout>
+                            <Content>                                
+                                <Row justify="space-around" align="middle">
+                                    <div>
+                                    <Col span={8}>  
+                                    <img id="pennyJarImage2" width={500}  src={Image1}></img> 
+                                    </Col>
+                                    </div>
+                                    <Col span={12}>  
+                                    <br />
+                                    <h1 className='title'>The Penny Jar</h1>
+                                        <hr />                   
+                                        <h1 className='title'>Please Log In</h1>                                   
+                                    </Col>
+                                </Row>
+                            </Content>
+                        </Layout>  
+                        </div>}
                 </div>
             </div>    
         );

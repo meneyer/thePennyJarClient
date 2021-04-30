@@ -2,6 +2,9 @@ import React, {Component} from 'react';
 import RequestCreate from './RequestCreate'
 import RequestTable from './RequestTable'
 import APIURL from '../../helpers/environment'
+import Image1 from '../assets/michael-longmire-lhltMGdohc8-unsplash.jpg'
+import {Row, Col, Layout } from "antd"
+import { Content } from 'antd/lib/layout/layout';
 
 export interface RequestData{
     displayName: string,
@@ -70,7 +73,27 @@ class RequestInfo extends Component <PropsItems, RequestData> {
                             />
                             <RequestTable SessionToken={this.props.SessionToken} 
                             fetchRequestInfo={this.fetchRequestInfo} logData={this.state.logData} />
-                        </div> : <h1>Please log in</h1>  }
+                        </div> : 
+                        <div className="boxbg">
+                        <Layout>
+                            <Content>                                
+                                <Row justify="space-around" align="middle">
+                                    <div>
+                                    <Col span={8}>  
+                                    <img id="pennyJarImage2" width={500}  src={Image1}></img> 
+                                    </Col>
+                                    </div>
+                                    <Col span={12}>  
+                                    <br />
+                                    <h1 className='title'>The Penny Jar</h1>
+                                        <hr />                   
+                                        <h1 className='title'>Please Log In</h1>                                   
+                                    </Col>
+                                </Row>
+                            </Content>
+                        </Layout>
+                    </div>
+    }
                     </div>
             </div>    
         );

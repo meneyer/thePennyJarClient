@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import APIURL from "../../helpers/environment";
 import {Layout, Form, Input, Button, Row, Col, InputNumber, Select, Radio, Switch } from "antd"
+import Image1 from '../assets/michael-longmire-lhltMGdohc8-unsplash.jpg'
 
 const {Sider, Content} = Layout
 const { TextArea } = Input;
@@ -86,6 +87,9 @@ class DonationCreate extends Component <PropsItems, DonationData> {
             <Row justify="start" >
               <Col span={24} >  
                 <h1 id="formTitles">Give A Penny</h1>
+
+      {(localStorage.getItem('role') ==="donor" || localStorage.getItem('role') === "admin") ?
+      
                 <Form {...layout} onFinish={this.handleSubmit}> 
                 <h1 id="fieldWords">REQUIRED FIELDS</h1>
                   <Form.Item label="What would you like to do?" name="choice" rules={[{required: true, message: 'Please input a password'}]}>
@@ -118,7 +122,13 @@ class DonationCreate extends Component <PropsItems, DonationData> {
                     <Button type="primary" htmlType="submit">Submit</Button>
                   </Form.Item>
 
-                </Form>
+                </Form> : 
+                <Row>
+                <Col span={9}></Col>
+                <Col span={7}><img id="pennyJarImage3" width={400}  src={Image1}></img></Col>
+                <Col span={9}></Col>
+              </Row>}
+                
               </Col>
             </Row>
           </Content>

@@ -19,6 +19,7 @@ import DonationTable from './components/FinancialDonation/DonationTable';
 
 type Token ={
   SessionToken: string
+  userRole: string
 }
 
 class App extends Component<{}, Token> {
@@ -26,6 +27,7 @@ class App extends Component<{}, Token> {
     super(props)
     this.state={
       SessionToken: '',
+      userRole: ''
     }
   }
 
@@ -37,9 +39,17 @@ class App extends Component<{}, Token> {
       }) 
     };
   }
+
+  userRole = (role: string) =>{
+    localStorage.setItem('role', role)
+    this.setState({
+      userRole: role
+    }) 
+  }
   
-  updateToken = (newToken: string) => {
+  updateToken = (newToken: string, userRole:string) => {
     localStorage.setItem('token', newToken);
+    this.userRole(userRole)
     this.setState({
       SessionToken: newToken
     }) 

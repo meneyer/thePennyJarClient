@@ -61,7 +61,7 @@ class RequestTable extends Component <PropsItems, RequestData> {
                 <td>{requests.messageToDonor}</td>
                 <td>{requests.requestFilled === true ? "Yes" : "No"}</td>
                 <td>
-                    <RequestUpdate SessionToken={this.props.SessionToken} requests={requests.id} fetchRequestInfo={this.props.fetchRequestInfo}/>
+                    <RequestUpdate SessionToken={this.props.SessionToken} requests={requests} fetchRequestInfo={this.props.fetchRequestInfo}/>
                 </td>
                 <td>
                     <RequestDelete SessionToken={this.props.SessionToken} requests={requests.id} fetchRequestInfo={this.props.fetchRequestInfo}/>

@@ -10,7 +10,7 @@ export interface Toggle{
 }
 
 type PropsItems ={
-    updateToken: (newToken: string) => void;    
+    updateToken: (newToken: string, userRole:string) => void;    
 }
 
 class Auth extends Component <PropsItems, Toggle> {

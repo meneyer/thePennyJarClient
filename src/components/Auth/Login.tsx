@@ -21,7 +21,7 @@ type SignInData = {
 }
 
 type PropsItems ={
-    updateToken: (newToken: string) => void
+    updateToken: (newToken: string, userRole:string) => void
 }
 
 class Login extends Component <PropsItems, SignInData> {
@@ -66,7 +66,8 @@ class Login extends Component <PropsItems, SignInData> {
         }).then(
             (response) => response.json()
         ).then((data) => {
-            this.props.updateToken(data.sessionToken);
+            this.props.updateToken(data.sessionToken, data.user.role);
+            console.log(data.user.role)
             if(data.sessionToken === undefined){
                 console.log("Not a valid username/password combination") 
                 alert("Not a valid username/password combination")       
