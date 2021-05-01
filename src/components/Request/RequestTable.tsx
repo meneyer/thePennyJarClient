@@ -2,7 +2,9 @@ import React, {Component} from 'react';
 import RequestUpdate from './RequestUpdate'
 import RequestDelete from './RequestDelete'
 // import APIURL from "../../helpers/environment"
-import {Layout } from 'antd';
+import {Col, Layout, Row } from 'antd';
+import { Content } from 'antd/lib/layout/layout';
+import Image1 from '../assets/michael-longmire-lhltMGdohc8-unsplash.jpg'
 
 
 export interface RequestData{
@@ -31,8 +33,8 @@ class RequestTable extends Component <PropsItems, RequestData> {
             displayName: '',
             description: '', 
             item: '', 
-            dateRequested: new(Date),
-            dateNeeded: new(Date),
+            dateRequested: new Date(),
+            dateNeeded: new Date(),
             giftRecipient: '',
             link: '',
             messageToDonor: '',
@@ -72,10 +74,17 @@ class RequestTable extends Component <PropsItems, RequestData> {
 
     render(){
         return (
+            <div>
             <div className="boxbg">
                 <Layout>
                     
-                <h2>Requests</h2>
+                <h1 id="formTitlesSilver">My Need A Penny Requests</h1>
+                </Layout>
+
+            </div>
+            <div className="boxbg">
+            <Layout>
+                {(localStorage.getItem('role') ==="recipient" || localStorage.getItem('role') === "admin") ?
                     <table>
                         <thead>
                             <tr>
@@ -96,10 +105,31 @@ class RequestTable extends Component <PropsItems, RequestData> {
                         <tbody>
                             {this.requestMap()}
                         </tbody>
-                    </table>
+                    </table> :
+                    <div className="boxbg">
+                    <Layout>
+                        <Content>                                
+                            <Row justify="space-around" align="middle">
+                                <div>
+                                <Col span={8}>  
+                                <img id="pennyJarImage2" width={500}  src={Image1} alt=''></img> 
+                                </Col>
+                                </div>
+                                <Col span={12}>  
+                                <br />
+                                <h1 className='title'>The Penny Jar</h1>
+                                    <hr />                   
+                                    <h1 className='title'>Not Authorized</h1>                                   
+                                </Col>
+                            </Row>
+                        </Content>
+                    </Layout>
+                </div>
+                }
+                
                 </Layout>         
-
-            </div>    
+                </div> 
+            </div>               
         );
     }
 }

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import RequestCreate from './RequestCreate'
+// import RequestCreate from './RequestCreate'
 import RequestTable from './RequestTable'
 import APIURL from '../../helpers/environment'
 import Image1 from '../assets/michael-longmire-lhltMGdohc8-unsplash.jpg'
@@ -30,8 +30,8 @@ class RequestInfo extends Component <PropsItems, RequestData> {
             displayName: '',
             description: '', 
             item: '', 
-            dateReqeusted: new(Date),
-            dateNeeded: new(Date),
+            dateReqeusted: new Date(),
+            dateNeeded: new Date(),
             giftReciptient: '',
             link: '',
             messageToDonor: '',

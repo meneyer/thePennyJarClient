@@ -28,8 +28,8 @@ class RequestListTable extends Component <PropsItems, RequestData> {
             displayName: '',
             description: '', 
             item: '', 
-            dateRequested: new(Date),
-            dateNeeded: new(Date),
+            dateRequested: new Date(),
+            dateNeeded: new Date(),
             giftRecipient: '',
             link: '',
             messageToDonor: '',
@@ -47,15 +47,15 @@ class RequestListTable extends Component <PropsItems, RequestData> {
         return (
             <tr key={index}>
                 <th scope="row">{requests.id}</th>
+                <td>{requests.requestFilled === true ? "Yes" : "No"}</td>              
+                <td>{requests.dateRequested}</td>
+                <td>{requests.dateNeeded}</td>
                 <td>{requests.displayName}</td>
                 <td>{requests.description}</td>
                 <td>{requests.item}</td>
-                <td>{requests.dateRequested}</td>
-                <td>{requests.dateNeeded}</td>
                 <td>{requests.giftRecipient}</td>
                 <td>{requests.link}</td>
                 <td>{requests.messageToDonor}</td>
-                <td>{requests.requestFilled === true ? "Yes" : "No"}</td>              
             </tr>
         )
         })
@@ -63,23 +63,30 @@ class RequestListTable extends Component <PropsItems, RequestData> {
 
     render(){
         return (
+            <div>
             <div className="boxbg">
                 <Layout>
                     
-                <h2>Requests</h2>
+                <h1 id="formTitlesSilver" >All Need A Penny Requests</h1>  
+                </Layout>
+
+            </div>
+            <div className="boxbg">
+                <Layout>
+                    
                     <table>
                         <thead>
                             <tr>
                                 <th>Request Number</th>
+                                <th>Request Filled?</th>
+                                <th>Date Requested</th>
+                                <th>Date Needed</th>
                                 <th>Display Name</th>
                                 <th>Reason</th>
                                 <th>Item</th>
-                                <th>Date Requested</th>
-                                <th>Date Needed</th>
                                 <th>Gift Recipient</th>
                                 <th>Link</th>
                                 <th>Message To Donor</th>
-                                <th>Request Filled?</th>
                                 
                             </tr>
                         </thead>
@@ -88,7 +95,7 @@ class RequestListTable extends Component <PropsItems, RequestData> {
                         </tbody>
                     </table>
                 </Layout>         
-
+            </div>
             </div>    
         );
     }

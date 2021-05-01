@@ -54,7 +54,7 @@ class DonationTable extends Component <PropsItems, DonationData> {
             <div className="boxbg">
                 <Layout>                  
 
-                <h2>Pennies Given</h2>
+                <h1 id="formTitlesSilver">Pennies Given</h1>
                     <table>
                         <thead>
                             <tr>

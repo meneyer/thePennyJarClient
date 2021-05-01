@@ -1,21 +1,20 @@
 import React, {Component} from 'react';
-import UserInfoCreate from './UserInfoCreate';
-import UserInfoTable from './UserInfoTable'
+import RequestTable from './RequestTable'
 import APIURL from '../../helpers/environment'
-import { Col, Layout, Row } from 'antd';
-import { Content } from 'antd/lib/layout/layout';
 import Image1 from '../assets/michael-longmire-lhltMGdohc8-unsplash.jpg'
+import {Row, Col, Layout } from "antd"
+import { Content } from 'antd/lib/layout/layout';
 
-
-export interface UserInfoData{
-    firstName: string,
-    lastName: string,
-    email: string,
-    phone: string,
-    address: string,
-    city: string,
-    state: string,
-    zipcode: number,
+export interface RequestData{
+    displayName: string,
+    description: string, 
+    item: string, 
+    dateReqeusted: Date,
+    dateNeeded: Date,
+    giftReciptient: string,
+    link: string,
+    messageToDonor: string,
+    requestFilled: boolean,
     logData: []
 }
 
@@ -23,24 +22,25 @@ type PropsItems ={
     SessionToken:string
 }
 
-class UserInfo extends Component <PropsItems, UserInfoData> {
+class RequestInfo extends Component <PropsItems, RequestData> {
     constructor(props: PropsItems){
         super(props);
         this.state = {
-            firstName: '',
-            lastName: '',
-            email: '',
-            phone: '',
-            address: '',
-            city: '',
-            state: '',
-            zipcode: 0,
-            logData: []
+            displayName: '',
+            description: '', 
+            item: '', 
+            dateReqeusted: new Date(),
+            dateNeeded: new Date(),
+            giftReciptient: '',
+            link: '',
+            messageToDonor: '',
+            requestFilled: false,
+            logData: []  
         }
     }
 
-        fetchProfileInfo = () => {
-        fetch(`${APIURL}/profile/`, {
+    fetchRequestInfo = () => {
+        fetch(`${APIURL}/needapenny/`, {
             method: "GET",
             headers: new Headers({
                 "Content-Type": "application/json",
@@ -57,30 +57,29 @@ class UserInfo extends Component <PropsItems, UserInfoData> {
     }
 
     componentDidMount() {
-        this.fetchProfileInfo();
+        this.fetchRequestInfo();
     };
 
     render(){
         return (
             <div>
                 <div>
-                {this.props.SessionToken === localStorage.getItem('token') && (localStorage.getItem('role') ==="admin" ) ? 
-                        <div>                             
-                            <UserInfoCreate 
+                    {this.props.SessionToken === localStorage.getItem('token') && (localStorage.getItem('role') ==="admin" ) ? 
+                        <div>
+                            {/* <RequestCreate 
                             SessionToken={this.props.SessionToken} 
-                            fetchProfileInfo={this.fetchProfileInfo}/>
-                            <UserInfoTable 
-                            SessionToken={this.props.SessionToken} 
-                            fetchProfileInfo={this.fetchProfileInfo}
-                            logData={this.state.logData}
-                            />
-                        </div> : <div className="boxbg">
+                            fetchRequestInfo={this.fetchRequestInfo}
+                            /> */}
+                            <RequestTable SessionToken={this.props.SessionToken} 
+                            fetchRequestInfo={this.fetchRequestInfo} logData={this.state.logData} />
+                        </div> : 
+                        <div className="boxbg">
                         <Layout>
                             <Content>                                
                                 <Row justify="space-around" align="middle">
                                     <div>
                                     <Col span={8}>  
-                                    <img id="pennyJarImage2" width={500}  src={Image1} alt=""></img> 
+                                    <img id="pennyJarImage2" width={500}  src={Image1} alt=''></img> 
                                     </Col>
                                     </div>
                                     <Col span={12}>  
@@ -91,12 +90,14 @@ class UserInfo extends Component <PropsItems, UserInfoData> {
                                     </Col>
                                 </Row>
                             </Content>
-                        </Layout>  
-                        </div>}
-                </div>
+                        </Layout>
+                    </div>
+    }
+                    </div>
             </div>    
         );
     }
 }
 
-export default UserInfo;
+export default RequestInfo;
+

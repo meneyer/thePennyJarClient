@@ -16,7 +16,7 @@ class FooterSection extends Component <{}, {}> {
                 <Layout>
                     <Footer id="footerText">
                         <h3 id="footerLeft">The Penny Jar</h3> 
-                        <h3 id="footerCenter"> Give a Penny, Take a Penny -- Anonymous Help, Anonymous Requests </h3>
+                        <h3 id="footerCenter"> Need a Penny, Give a Penny -- Anonymous Requests, Anonymous Donations </h3>
                         <h3 id="footerRight"> M. Neyer, 2021</h3>                     
                     </Footer>
                 </Layout>,

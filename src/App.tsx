@@ -10,12 +10,12 @@ import FooterSection from "./components/Footer"
 import Auth from './components/Auth/Auth'
 import DonationCreate from "./components/FinancialDonation/DonationCreate"
 import RequestCreate from './components/Request/RequestCreate';
-import RequestDisplay from './components/Request/RequestListAll'
 import UserInfoCreate from './components/UserInfoProfile/UserInfoCreate'
 import DonationListAll from './components/FinancialDonation/DonationListAll';
 // import DonationTable from './components/FinancialDonation/DonationTable';
 // import RequestTable from './components/Request/RequestTable';
 import RequestListAll from './components/Request/RequestListAll';
+import RequestListAllAdmin from './components/Request/RequestListAllAdmin';
 // import DonationTable from './components/FinancialDonation/DonationTable';
 // import Create from "./components/Auth/Create"
 // import Login from "./components/Auth/Login"
@@ -83,6 +83,7 @@ class App extends Component<{}, Token> {
           <Route exact path="/needAPenny/myrequests" component={()=><RequestInfo SessionToken={this.state.SessionToken}/>} />
           <Route exact path="/needAPenny/request" component={()=> <RequestCreate SessionToken={this.state.SessionToken}/>} />
           <Route exact path="/needAPenny/requestlist" component={()=> <RequestListAll SessionToken={this.state.SessionToken}/>} />  
+          <Route exact path="/needAPenny/requestlistadmin" component={()=> <RequestListAllAdmin SessionToken={this.state.SessionToken}/>} /> 
 
           <Route exact path="/profile" component={()=><UserInfoInfo SessionToken={this.state.SessionToken}/>} />
           <Route exact path="/profile/myprofile" component={UserInfoCreate} />

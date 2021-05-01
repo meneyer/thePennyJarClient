@@ -40,8 +40,8 @@ class RequestCreate extends Component <PropsItems, RequestData> {
             displayName: '',
             description: '', 
             item: '', 
-            dateRequested: new(Date),
-            dateNeeded: new(Date),
+            dateRequested: new Date(),
+            dateNeeded: new Date(),
             giftRecipient: '',
             link: '',
             messageToDonor: '',
@@ -117,12 +117,17 @@ class RequestCreate extends Component <PropsItems, RequestData> {
 
     render(){
         return (
+            <div>
+            <div className="boxbg">
+                <Layout>
+                    <h1 id="formTitles">Need A Penny Request Form</h1>
+                </Layout>
+            </div>
             <div className="boxbg">              
                 <Layout>        
                 <Content> 
                     <Row justify="start" >
                     <Col span={24} >  
-                        <h1 id="formTitles">Need A Penny</h1>
                         
                         {(localStorage.getItem('role') ==="recipient" || localStorage.getItem('role') === "admin") ?
                         
@@ -187,16 +192,32 @@ class RequestCreate extends Component <PropsItems, RequestData> {
     
                         </Form>
                         : 
-                        <Row>
-                        <Col span={9}></Col>
-                        <Col span={7}><img id="pennyJarImage3" width={400}  src={Image1} alt=''></img></Col>
-                        <Col span={9}></Col>
-                        </Row>}
+                        <div className="boxbg">
+                        <Layout>
+                            <Content>                                
+                                <Row justify="space-around" align="middle">
+                                    <div>
+                                    <Col span={8}>  
+                                    <img id="pennyJarImage2" width={500}  src={Image1} alt=''></img> 
+                                    </Col>
+                                    </div>
+                                    <Col span={12}>  
+                                    <br />
+                                    <h1 className='title'>The Penny Jar</h1>
+                                        <hr />                   
+                                        <h1 className='title'>Please Log In</h1>                                   
+                                    </Col>
+                                </Row>
+                            </Content>
+                        </Layout>
+                    </div>
+    }
                     </Col>
                     </Row>
                 </Content>
                 </Layout>
-            </div>    
+            </div> 
+            </div>   
         );
     }
 }
