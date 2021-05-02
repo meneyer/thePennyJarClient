@@ -71,6 +71,7 @@ class UserCreate extends Component <PropsItems, UserInfoData> {
         .then((data) => {
             console.log(data);
             this.props.fetchProfileInfo();
+            alert("User Profile Submitted Successfully")
         });
     };
 
@@ -85,7 +86,7 @@ class UserCreate extends Component <PropsItems, UserInfoData> {
                 <h2> To keep everything anonymous, this information will only be seen by admins. <br/> The information provided will be used to fill requests, send tax receipts, etc. <br /> <br /></h2>
                 <Form {...layout} onFinish={this.handleSubmit}> 
                 <h1 id="fieldWords">REQUIRED FIELDS</h1>
-                  <Form.Item label="First Name" name="First Name" rules={[{required: true}]}>
+                  <Form.Item label="First Name" name="First Name" rules={[{required: true, message: 'Please input your first name'}]}>
                     <Input onChange={(event) =>(this.setState({firstName: event.target.value}))} />
                   </Form.Item>
                   <h1 id="fieldWords">OPTIONAL FIELDS</h1>

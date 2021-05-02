@@ -66,14 +66,14 @@ class UserInfo extends Component <PropsItems, UserInfoData> {
                 <div>
                 {this.props.SessionToken === localStorage.getItem('token') && (localStorage.getItem('role') ==="admin" ) ? 
                         <div>                             
-                            <UserInfoCreate 
-                            SessionToken={this.props.SessionToken} 
-                            fetchProfileInfo={this.fetchProfileInfo}/>
                             <UserInfoTable 
                             SessionToken={this.props.SessionToken} 
                             fetchProfileInfo={this.fetchProfileInfo}
                             logData={this.state.logData}
                             />
+                            <UserInfoCreate 
+                            SessionToken={this.props.SessionToken} 
+                            fetchProfileInfo={this.fetchProfileInfo}/>
                         </div> : <div className="boxbg">
                         <Layout>
                             <Content>                                

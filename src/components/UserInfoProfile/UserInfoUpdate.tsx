@@ -78,21 +78,16 @@ class UserInfoUpdate extends Component <PropsItems, UserInfoData> {
             });
     }
 
-    // handleChangeFirstName = (event: any) => {
-    //     this.setState({
-    //     firstName: event.target.value,    
-    //     })
-    //     console.log("first name", event)
-    // }
-
     render(){
+        console.log(this.props.profiles.firstName)
         return (
             <div>
                 <Button type="primary" onClick={this.showModal}> Update  </Button>
                 <Modal title="Update Profile" visible={this.state.isModalVisible} onOk={this.updateProfile} onCancel={this.handleCancel}>
 
                 <Form>                
-                    <Form.Item label="First Name" name="First Name" >
+                                    
+                    <Form.Item label="First Name" name="First Name">
                         <Input defaultValue={this.props.profiles.firstName} value={this.props.profiles.firstName}
                         onChange={(event) =>(this.setState({firstName: event.target.value}))} 
                         />

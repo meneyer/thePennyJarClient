@@ -57,10 +57,16 @@ class DonationTable extends Component <PropsItems, DonationData> {
     render(){
         
         return (
+            <div>
+            <div className="boxbg">
+                <Layout>
+                <h1 id="formTitlesSilver">My Pennies Given</h1>
+                </Layout>
+            </div>
             <div className="boxbg">
                 <Layout>                  
 
-                <h1 id="formTitlesSilver">My Pennies Given</h1>
+                
                     <table>
                         <thead>
                             <tr>
@@ -78,7 +84,8 @@ class DonationTable extends Component <PropsItems, DonationData> {
                         </tbody>
                     </table>
                 </Layout>
-            </div>    
+            </div>  
+            </div> 
         );
     }
 }

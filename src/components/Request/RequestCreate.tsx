@@ -79,6 +79,7 @@ class RequestCreate extends Component <PropsItems, RequestData> {
         .then((data) => {
             console.log(data);
             this.fetchRequestInfo();
+            alert("Request Submitted Successfully")
         });
     };
 
@@ -131,7 +132,7 @@ class RequestCreate extends Component <PropsItems, RequestData> {
                         
                         {(localStorage.getItem('role') ==="recipient" || localStorage.getItem('role') === "admin") ?
                         
-                        <Form {...layout} onFinish={this.handleSubmit}> 
+                        <Form {...layout} onFinish={this.handleSubmit} > 
                     
                         <h1 id="fieldWords">REQUIRED FIELDS</h1>
     

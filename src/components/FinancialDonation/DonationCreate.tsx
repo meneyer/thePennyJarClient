@@ -64,6 +64,7 @@ class DonationCreate extends Component <PropsItems, DonationData> {
     .then((data) => {
       console.log(data);
       this.fetchDonationInfo();
+      alert("Donation Form Submitted Successfully")
     });
   };
 
@@ -98,13 +99,17 @@ class DonationCreate extends Component <PropsItems, DonationData> {
 
   render(){
     return (
+      <div>
+      <div className="boxbg">
+          <Layout>
+              <h1 id="formTitles">Give A Penny Donation Form</h1>
+          </Layout>
+      </div>
       <div className="boxbg">
         <Layout>        
           <Content> 
             <Row justify="start" >
               <Col span={24} >  
-
-                <h1 id="formTitles">Give A Penny</h1>
 
       {(localStorage.getItem('role') ==="donor" || localStorage.getItem('role') === "admin") ?
       
@@ -165,7 +170,8 @@ class DonationCreate extends Component <PropsItems, DonationData> {
             </Row>
           </Content>
         </Layout>
-      </div>    
+      </div>  
+      </div>  
     );
   }
 }
