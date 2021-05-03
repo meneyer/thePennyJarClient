@@ -64,7 +64,7 @@ class DonationTable extends Component <PropsItems, DonationData> {
                 <Layout>    
                 {(localStorage.getItem('role') ==="donor" || localStorage.getItem('role') === "admin") ?
                 <div>              
-                <h1 id="formTitlesSilver">My Pennies Given</h1>
+                <h1 id="formTitlesSilver">Pennies Given</h1>
 
                 
                     <table>

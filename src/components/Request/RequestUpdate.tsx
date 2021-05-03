@@ -91,6 +91,15 @@ class RequestUpdate extends Component <PropsItems, RequestData> {
         console.log("requestFilled", event)
         }
 
+    handleChangeNeeded = (event: any) => {
+        this.setState({
+        dateNeeded: event.target.value,    
+        })
+        console.log("needed by date picked", event)
+    }
+
+    // date = new Date()
+
     render(){
         // console.log(this.props.requests.item)
         return (
@@ -101,7 +110,7 @@ class RequestUpdate extends Component <PropsItems, RequestData> {
                 <Modal title="Update Request" visible={this.state.isModalVisible} onOk={this.updateRequest} 
                 onCancel={this.handleCancel}
                 >
-                {/* {(localStorage.getItem('role')==="recipient") ? */}
+
                 <Form> 
                     <Form.Item label="Display Name" name="displayName" >
                         <Input defaultValue={this.props.requests.displayName} value={this.props.requests.displayName} onChange={(event) =>(this.setState({displayName: event.target.value}))}/>
@@ -123,7 +132,7 @@ class RequestUpdate extends Component <PropsItems, RequestData> {
                     <Form.Item label="Date Needed">
                         <Input type="date" 
                         defaultValue={(this.props.requests.dateNeeded)} value={this.props.requests.dateNeeded} 
-                        // onChange={this.handleChangeNeeded}
+                        onChange={this.handleChangeNeeded}
                         />
                     </Form.Item>
 
@@ -153,7 +162,7 @@ class RequestUpdate extends Component <PropsItems, RequestData> {
                 </Form.Item>  : ''}               
                     
                     </Form> : 
-                    {/* ''} */}
+
                     </Modal>
             </div>        
         );

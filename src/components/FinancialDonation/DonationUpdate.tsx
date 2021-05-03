@@ -76,7 +76,7 @@ class DonationUpdate extends Component <PropsItems, DonationDataState> {
         }
 
     render(){
-        console.log(this.props.donations.taxReceipt)
+        // console.log(this.props.donations.taxReceipt)
         // console.log(this.props.donations.messageToRecipient)
         return (
             <div>

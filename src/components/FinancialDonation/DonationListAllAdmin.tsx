@@ -1,20 +1,16 @@
 import React, {Component} from 'react';
-import RequestTable from './RequestTable'
+// import DonationCreate from './DonationCreate';
+import DonationTable from './DonationTable'
 import APIURL from '../../helpers/environment'
-import Image1 from '../assets/michael-longmire-lhltMGdohc8-unsplash.jpg'
-import {Row, Col, Layout } from "antd"
+import { Col, Layout, Row } from 'antd';
 import { Content } from 'antd/lib/layout/layout';
+import Image1 from '../assets/michael-longmire-lhltMGdohc8-unsplash.jpg'
 
-export interface RequestData{
-    displayName: string,
-    description: string, 
-    item: string, 
-    dateRequested: Date,
-    dateNeeded: Date,
-    giftReciptient: string,
-    link: string,
-    messageToDonor: string,
-    requestFilled: boolean,
+export interface DonationData{
+    choice: string,
+    amount: number,
+    taxReceipt: boolean,
+    messageToRecipient: string,
     logData: []
 }
 
@@ -22,25 +18,21 @@ type PropsItems ={
     SessionToken:string
 }
 
-class RequestInfo extends Component <PropsItems, RequestData> {
+class DonationInfo extends Component <PropsItems, DonationData> {
     constructor(props: PropsItems){
         super(props);
         this.state = {
-            displayName: '',
-            description: '', 
-            item: '', 
-            dateRequested: new Date(),
-            dateNeeded: new Date(),
-            giftReciptient: '',
-            link: '',
-            messageToDonor: '',
-            requestFilled: false,
-            logData: []  
+            choice: '',
+            amount: 0,
+            taxReceipt: false,
+            messageToRecipient: '',  
+            logData: []                  
         }
+        console.log("donation info", this.props.SessionToken)
     }
 
-    fetchRequestInfo = () => {
-        fetch(`${APIURL}/needapenny/`, {
+    fetchDonationInfo = () => {
+        fetch(`${APIURL}/giveapenny/`, {
             method: "GET",
             headers: new Headers({
                 "Content-Type": "application/json",
@@ -55,9 +47,9 @@ class RequestInfo extends Component <PropsItems, RequestData> {
             })
         });
     }
-
+    
     componentDidMount() {
-        this.fetchRequestInfo();
+        this.fetchDonationInfo();
     };
 
     render(){
@@ -65,15 +57,11 @@ class RequestInfo extends Component <PropsItems, RequestData> {
             <div>
                 <div>
                     {this.props.SessionToken === localStorage.getItem('token') && (localStorage.getItem('role') ==="admin" ) ? 
-                        <div>
-                            {/* <RequestCreate 
-                            SessionToken={this.props.SessionToken} 
-                            fetchRequestInfo={this.fetchRequestInfo}
+                        <div>                            
+                            <DonationTable SessionToken={this.props.SessionToken} fetchDonationInfo={this.fetchDonationInfo} logData={this.state.logData}/>
+                            {/* <DonationCreate SessionToken={this.props.SessionToken} fetchDonationInfo={this.fetchDonationInfo}
                             /> */}
-                            <RequestTable SessionToken={this.props.SessionToken} 
-                            fetchRequestInfo={this.fetchRequestInfo} logData={this.state.logData} />
-                        </div> : 
-                        <div className="boxbg">
+                        </div> :  <div className="boxbg">
                         <Layout>
                             <Content>                                
                                 <Row justify="space-around" align="middle">
@@ -90,14 +78,11 @@ class RequestInfo extends Component <PropsItems, RequestData> {
                                     </Col>
                                 </Row>
                             </Content>
-                        </Layout>
-                    </div>
-    }
-                    </div>
+                        </Layout>  
+                        </div>}
+                </div>
             </div>    
         );
     }
 }
-
-export default RequestInfo;
-
+export default DonationInfo;
