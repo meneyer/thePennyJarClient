@@ -119,11 +119,6 @@ class RequestCreate extends Component <PropsItems, RequestData> {
     render(){
         return (
             <div>
-            <div className="boxbg">
-                <Layout>
-                    <h1 id="formTitles">Need A Penny Request Form</h1>
-                </Layout>
-            </div>
             <div className="boxbg">              
                 <Layout>        
                 <Content> 
@@ -133,6 +128,7 @@ class RequestCreate extends Component <PropsItems, RequestData> {
                         {(localStorage.getItem('role') ==="recipient" || localStorage.getItem('role') === "admin") ?
                         
                         <Form {...layout} onFinish={this.handleSubmit} > 
+                        <h1 id="formTitles">Need A Penny Request Form</h1>
                     
                         <h1 id="fieldWords">REQUIRED FIELDS</h1>
     
@@ -205,8 +201,9 @@ class RequestCreate extends Component <PropsItems, RequestData> {
                                     <Col span={12}>  
                                     <br />
                                     <h1 className='title'>The Penny Jar</h1>
-                                        <hr />                   
-                                        <h1 className='title'>Please Log In</h1>                                   
+                                        <hr />   
+                                        {(localStorage.getItem('role')!=="donor") ?                
+                                        <h1 className='title'>Please Log In</ h1>  :     <h1 className='title'>Not Authorized </ h1>  }               
                                     </Col>
                                 </Row>
                             </Content>

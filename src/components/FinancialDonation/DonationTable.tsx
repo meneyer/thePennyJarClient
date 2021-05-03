@@ -2,7 +2,9 @@ import React, {Component} from 'react';
 import DonationDelete from './DonationDelete'
 import DonationUpdate from './DonationUpdate'
 // import APIURL from "../../helpers/environment"
-import { Layout } from 'antd';
+import { Col, Layout, Row } from 'antd';
+import { Content } from 'antd/lib/layout/layout';
+import Image1 from '../assets/michael-longmire-lhltMGdohc8-unsplash.jpg'
 
 export interface DonationData{
     choice: string,
@@ -59,12 +61,10 @@ class DonationTable extends Component <PropsItems, DonationData> {
         return (
             <div>
             <div className="boxbg">
-                <Layout>
+                <Layout>    
+                {(localStorage.getItem('role') ==="donor" || localStorage.getItem('role') === "admin") ?
+                <div>              
                 <h1 id="formTitlesSilver">My Pennies Given</h1>
-                </Layout>
-            </div>
-            <div className="boxbg">
-                <Layout>                  
 
                 
                     <table>
@@ -83,8 +83,29 @@ class DonationTable extends Component <PropsItems, DonationData> {
                             {this.donationMap()}
                         </tbody>
                     </table>
+                    </div>:
+                    <div className="boxbg">
+                    <Layout>
+                        <Content>                                
+                            <Row justify="space-around" align="middle">
+                                <div>
+                                <Col span={8}>  
+                                <img id="pennyJarImage2" width={500}  src={Image1} alt=''></img> 
+                                </Col>
+                                </div>
+                                <Col span={12}>  
+                                <br />
+                                <h1 className='title'>The Penny Jar</h1>
+                                    <hr />                   
+                                    <h1 className='title'>Not Authorized</h1>
+                                    </Col>
+                            </Row>
+                        </Content>
                 </Layout>
-            </div>  
+            </div> 
+    }
+    </Layout>
+    </div> 
             </div> 
         );
     }

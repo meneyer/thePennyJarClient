@@ -100,11 +100,7 @@ class DonationCreate extends Component <PropsItems, DonationData> {
   render(){
     return (
       <div>
-      <div className="boxbg">
-          <Layout>
-              <h1 id="formTitles">Give A Penny Donation Form</h1>
-          </Layout>
-      </div>
+
       <div className="boxbg">
         <Layout>        
           <Content> 
@@ -113,7 +109,8 @@ class DonationCreate extends Component <PropsItems, DonationData> {
 
       {(localStorage.getItem('role') ==="donor" || localStorage.getItem('role') === "admin") ?
       
-                <Form {...layout} onFinish={this.handleSubmit}> 
+      <Form {...layout} onFinish={this.handleSubmit}> 
+        <h1 id="formTitles">Give A Penny Donation Form</h1>
                 <h1 id="fieldWords">REQUIRED FIELDS</h1>
                   <Form.Item label="What would you like to do?" name="choice" rules={[{required: true, message: 'Please input a password'}]}>
                     <Input onChange={(event) =>(this.setState({choice: event.target.value}))} placeholder='Fill Request # ____; Give to the Operations Fund;  Give to the "Need A Penny" Fund'/>
@@ -159,7 +156,8 @@ class DonationCreate extends Component <PropsItems, DonationData> {
                             <br />
                             <h1 className='title'>The Penny Jar</h1>
                                 <hr />                   
-                                <h1 className='title'>Please Log In</h1>                                   
+                                {(localStorage.getItem('role')!=="recipient") ?                
+                                        <h1 className='title'>Please Log In</ h1>  :     <h1 className='title'>Not Authorized </ h1>  }                                    
                             </Col>
                         </Row>
                     </Content>

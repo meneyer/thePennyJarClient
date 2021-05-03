@@ -66,13 +66,7 @@ class RequestListTable extends Component <PropsItems, RequestData> {
             <div>
             <div className="boxbg">
                 <Layout>
-                    
                 <h1 id="formTitlesSilver" >All Need A Penny Requests</h1>  
-                </Layout>
-
-            </div>
-            <div className="boxbg">
-                <Layout>
                     
                     <table>
                         <thead>

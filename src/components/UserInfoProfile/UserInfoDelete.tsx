@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import APIURL from "../../helpers/environment"
-import {  Button, Popconfirm, message  } from 'antd';
+import {  Button, Popconfirm } from 'antd';
+// import {  message } from 'antd';
 
 export interface UserInfoData{
 }

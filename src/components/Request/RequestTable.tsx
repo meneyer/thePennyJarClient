@@ -75,17 +75,13 @@ class RequestTable extends Component <PropsItems, RequestData> {
     render(){
         return (
             <div>
-            <div className="boxbg">
-                <Layout>
-                    
-                <h1 id="formTitlesSilver">My Need A Penny Requests</h1>
-                </Layout>
 
-            </div>
             <div className="boxbg">
             <Layout>
                 {(localStorage.getItem('role') ==="recipient" || localStorage.getItem('role') === "admin") ?
+                <div> <h1 id="formTitlesSilver">My Need A Penny Requests</h1>
                     <table>
+                        
                         <thead>
                             <tr>
                                 <th>Request Number</th>
@@ -105,7 +101,8 @@ class RequestTable extends Component <PropsItems, RequestData> {
                         <tbody>
                             {this.requestMap()}
                         </tbody>
-                    </table> :
+                    </table> 
+                    </div>:
                     <div className="boxbg">
                     <Layout>
                         <Content>                                
