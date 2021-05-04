@@ -131,7 +131,8 @@ class RequestUpdate extends Component <PropsItems, RequestData> {
 
                     <Form.Item label="Date Needed">
                         <Input type="date" 
-                        defaultValue={(this.props.requests.dateNeeded)} value={this.props.requests.dateNeeded} 
+                        defaultValue={(this.props.requests.dateNeeded)} 
+                        // value={this.props.requests.dateNeeded} 
                         onChange={this.handleChangeNeeded}
                         />
                     </Form.Item>
