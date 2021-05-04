@@ -17,6 +17,7 @@ import DonationListAll from './components/FinancialDonation/DonationListAll';
 import RequestListAll from './components/Request/RequestListAll';
 import RequestListAllAdmin from './components/Request/RequestListAllAdmin';
 import DonationListAllAdmin from './components/FinancialDonation/DonationListAllAdmin';
+import UserInfoMine from './components/UserInfoProfile/UserInfoMine';
 // import DonationTable from './components/FinancialDonation/DonationTable';
 // import Create from "./components/Auth/Create"
 // import Login from "./components/Auth/Login"
@@ -87,7 +88,7 @@ class App extends Component<{}, Token> {
           <Route exact path="/needAPenny/requestlistadmin" component={()=> <RequestListAllAdmin SessionToken={this.state.SessionToken}/>} /> 
 
           <Route exact path="/profile" component={()=><UserInfoInfo SessionToken={this.state.SessionToken}/>} />
-          <Route exact path="/profile/myprofile" component={UserInfoCreate} />
+          <Route exact path="/profile/myprofile" component={()=><UserInfoMine SessionToken={this.state.SessionToken}/>} />
 
           <Route exact path="/giveAPenny/mydonations" component={()=> <DonationInfo SessionToken={this.state.SessionToken}/>} />
           <Route exact path="/giveAPenny/donate" component={()=> <DonationCreate SessionToken={this.state.SessionToken}/>} />
