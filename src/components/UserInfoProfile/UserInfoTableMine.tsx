@@ -86,7 +86,7 @@ class UserTableMine extends Component <PropsItems, UserInfoData> {
             <div className="boxbg">
             <Layout>                  
 
-            <h2>Profile</h2>
+            <h1 id="formTitlesSilver">Profile</h1>
                 <table>
                     <thead>
                         <tr>

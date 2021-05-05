@@ -59,7 +59,7 @@ class DonationTable extends Component <PropsItems, DonationData> {
     render(){
         
         return (
-            <div>
+            // <div>
             <div className="boxbg">
                 <Layout>    
                 {(localStorage.getItem('role') ==="donor" || localStorage.getItem('role') === "admin") ?
@@ -106,7 +106,7 @@ class DonationTable extends Component <PropsItems, DonationData> {
     }
     </Layout>
     </div> 
-            </div> 
+            // </div> 
         );
     }
 }

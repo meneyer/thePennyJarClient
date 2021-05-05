@@ -1,0 +1,18 @@
+SERVER
+
+heroku create pennyjarserver 
+
+https://git.heroku.com/pennyjarserver.git
+
+heroku addons:create heroku-postgresql:hobby-dev --app pennyjarserver
+
+*Run this in the terminal for any changes to the server for deployment*
+git add . 
+git commit -m "heroku deployment"
+git push heroku main
+
+
+CLIENT
+
+heroku create thepennyjarclient --buildpack https://github.com/mars/create-react-app-buildpack.git
+https://thepennyjarclient.herokuapp.com/
