@@ -79,7 +79,8 @@ class RequestTable extends Component <PropsItems, RequestData> {
             <div className="boxbg">
             <Layout>
                 {(localStorage.getItem('role') ==="recipient" || localStorage.getItem('role') === "admin") ?
-                <div> <h1 id="formTitlesSilver">Need A Penny Requests</h1>
+                <> 
+                    <h1 id="formTitlesSilver">Need A Penny Requests</h1>
                     <table>
                         
                         <thead>
@@ -102,7 +103,7 @@ class RequestTable extends Component <PropsItems, RequestData> {
                             {this.requestMap()}
                         </tbody>
                     </table> 
-                    </div>:
+                    </>:
                     <div className="boxbg">
                     <Layout>
                         <Content>                                

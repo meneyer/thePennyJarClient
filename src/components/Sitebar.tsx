@@ -52,7 +52,8 @@ class SiteBar extends Component <PropsItems, {}> {
                             <SubMenu key="sub2" title="Admin">
                                 <Menu.Item key="4">User Profiles - Admin<Link to='/profile/' /></Menu.Item>
                                 <Menu.Item key="2">Request List - Admin<Link to='/needAPenny/requestlistadmin' /> </Menu.Item>
-                                <Menu.Item key="3">Donation List - Admin<Link to='/giveAPenny/donationlistadmin' /> </Menu.Item>
+                                <Menu.Item key="3">Donation List - Admin<Link to='/giveAPenny/donationlist' /> </Menu.Item>
+                                {/* <Menu.Item key="3">Donation List - Admin<Link to='/giveAPenny/donationlistadmin' /> </Menu.Item> */}
                             </SubMenu>                        
 
                             <Menu.Item key="6">

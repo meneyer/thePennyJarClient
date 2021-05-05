@@ -39,40 +39,6 @@ class UserTableMine extends Component <PropsItems, UserInfoData> {
         }
     }
 
-    // componentDidMount() {
-    //     this.profileMap();
-    // };
-
-    // profileMap = () => {   
-    //     return this.props.logData.map((profiles:UserInfoData, index: number) => {
-    //         return (
-    //             <tr key={index}>
-    //                 <th scope="row">{profiles.id}</th>
-    //                 <td>{profiles.firstName}</td>
-    //                 <td>{profiles.lastName}</td>
-    //                 <td>{profiles.email}</td>
-    //                 <td>{profiles.phone}</td>
-    //                 <td>{profiles.address}</td>
-    //                 <td>{profiles.city}</td>
-    //                 <td>{profiles.state}</td>
-    //                 <td>{profiles.zipcode}</td>
-    //                 <td>
-    //                     <UserInfoUpdate 
-    //                     SessionToken={this.props.SessionToken} profiles={profiles} 
-    //                     fetchProfileInfo={this.props.fetchProfileInfo}
-    //                     />
-    //                 </td>
-    //                 <td>
-    //                     <UserInfoDelete 
-    //                     SessionToken={this.props.SessionToken} profiles={profiles.id} 
-    //                     fetchProfileInfo={this.props.fetchProfileInfo}                        
-    //                     />
-    //                 </td>
-    //             </tr>
-    //         )
-    //         })
-    //     }
-
     updatedAddress = (event:any) => {
         this.setState({
             address: event.target.value

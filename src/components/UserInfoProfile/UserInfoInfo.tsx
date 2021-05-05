@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import UserInfoCreate from './UserInfoCreate';
+// import UserInfoCreate from './UserInfoCreate';
 import UserInfoTable from './UserInfoTable'
 import APIURL from '../../helpers/environment'
 import { Col, Layout, Row } from 'antd';
@@ -71,10 +71,11 @@ class UserInfo extends Component <PropsItems, UserInfoData> {
                             fetchProfileInfo={this.fetchProfileInfo}
                             logData={this.state.logData}
                             />
-                            <UserInfoCreate 
+                            {/* <UserInfoCreate 
                             SessionToken={this.props.SessionToken} 
-                            fetchProfileInfo={this.fetchProfileInfo}/>
-                        </div> : <div className="boxbg">
+                            fetchProfileInfo={this.fetchProfileInfo}/> */}
+                        </div> 
+                        : <div className="boxbg">
                         <Layout>
                             <Content>                                
                                 <Row justify="space-around" align="middle">

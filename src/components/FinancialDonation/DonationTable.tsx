@@ -63,7 +63,7 @@ class DonationTable extends Component <PropsItems, DonationData> {
             <div className="boxbg">
                 <Layout>    
                 {(localStorage.getItem('role') ==="donor" || localStorage.getItem('role') === "admin") ?
-                <div>              
+                <>              
                 <h1 id="formTitlesSilver">Pennies Given</h1>
 
                 
@@ -83,7 +83,7 @@ class DonationTable extends Component <PropsItems, DonationData> {
                             {this.donationMap()}
                         </tbody>
                     </table>
-                    </div>:
+                    </>:
                     <div className="boxbg">
                     <Layout>
                         <Content>                                

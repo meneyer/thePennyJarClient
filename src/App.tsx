@@ -10,7 +10,7 @@ import FooterSection from "./components/Footer"
 import Auth from './components/Auth/Auth'
 import DonationCreate from "./components/FinancialDonation/DonationCreate"
 import RequestCreate from './components/Request/RequestCreate';
-import UserInfoCreate from './components/UserInfoProfile/UserInfoCreate'
+// import UserInfoCreate from './components/UserInfoProfile/UserInfoCreate'
 import DonationListAll from './components/FinancialDonation/DonationListAll';
 // import DonationTable from './components/FinancialDonation/DonationTable';
 // import RequestTable from './components/Request/RequestTable';

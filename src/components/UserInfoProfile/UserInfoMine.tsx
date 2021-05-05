@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import UserInfoCreate from './UserInfoCreate';
-import UserInfoTable from './UserInfoTable'
+// import UserInfoTable from './UserInfoTable'
 import APIURL from '../../helpers/environment'
 import { Col, Layout, Row } from 'antd';
 import { Content } from 'antd/lib/layout/layout';
@@ -36,7 +36,7 @@ class UserInfoMine extends Component <PropsItems, UserInfoData> {
             city: '',
             state: '',
             zipcode: 0,
-            logData: []
+            logData: {}
         }
     }
 
@@ -62,19 +62,27 @@ class UserInfoMine extends Component <PropsItems, UserInfoData> {
     };
 
     render(){
+        // console.log(this.state.logData)
+        // console.log(Object.keys(this.state.logData).length)
+        // console.log(this.state.logData.firstName)
+        // console.log(this.state.firstName)
+
         return (
             <div>
                 <div>
                 {this.props.SessionToken === localStorage.getItem('token') ? 
-                        <div>                             
+                        <div>  
+                            {(this.state.logData !== null) ?                            
                             <UserInfoTableMine 
                             SessionToken={this.props.SessionToken} 
                             fetchProfileInfo={this.fetchProfileInfo}
                             logData={this.state.logData}
-                            />
+                            /> 
+                            :
                             <UserInfoCreate 
                             SessionToken={this.props.SessionToken} 
-                            fetchProfileInfo={this.fetchProfileInfo}/>
+                                fetchProfileInfo={this.fetchProfileInfo}/>
+                            }
                         </div> : <div className="boxbg">
                         <Layout>
                             <Content>                                

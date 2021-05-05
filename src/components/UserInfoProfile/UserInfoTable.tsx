@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import UserInfoUpdate from './UserInfoUpdate'
-import UserInfoDelete from './UserInfoDelete'
+// import UserInfoUpdate from './UserInfoUpdate'
+// import UserInfoDelete from './UserInfoDelete'
 // import APIURL from "../../helpers/environment"
 import { Layout } from 'antd';
 
@@ -56,7 +56,7 @@ class UserTable extends Component <PropsItems, UserInfoData> {
                     <td>{profiles.city}</td>
                     <td>{profiles.state}</td>
                     <td>{profiles.zipcode}</td>
-                    <td>
+                    {/* <td>
                         <UserInfoUpdate 
                         SessionToken={this.props.SessionToken} profiles={profiles} 
                         fetchProfileInfo={this.props.fetchProfileInfo}
@@ -67,7 +67,7 @@ class UserTable extends Component <PropsItems, UserInfoData> {
                         SessionToken={this.props.SessionToken} profiles={profiles.id} 
                         fetchProfileInfo={this.props.fetchProfileInfo}                        
                         />
-                    </td>
+                    </td> */}
                 </tr>
             )
             })
@@ -91,8 +91,8 @@ class UserTable extends Component <PropsItems, UserInfoData> {
                             <th>City</th>
                             <th>State</th>
                             <th>Zip Code</th>
-                            <th>Update</th>
-                            <th>Delete</th>
+                            {/* <th>Update</th>
+                            <th>Delete</th> */}
                         </tr>
                     </thead>
                     <tbody>
