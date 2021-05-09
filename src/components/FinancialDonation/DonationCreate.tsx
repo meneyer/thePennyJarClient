@@ -113,41 +113,48 @@ class DonationCreate extends Component <PropsItems, DonationData> {
               <Col span={24} >  
 
       {(localStorage.getItem('role') ==="donor" || localStorage.getItem('role') === "admin") ?
-      
+      <>
       <Form {...layout} onFinish={this.handleSubmit}> 
         <h1 id="formTitles">Give A Penny Donation Form</h1>
-                <h1 id="fieldWords">REQUIRED FIELDS</h1>
-                  <Form.Item label="What would you like to do?" name="choice" rules={[{required: true, message: 'Please input a password'}]}>
-                    <Input onChange={(event) =>(this.setState({choice: event.target.value}))} placeholder='Fill Request # ____; Give to the Operations Fund;  Give to the "Need A Penny" Fund'/>
-                  </Form.Item>
+          <h1 id="fieldWords">REQUIRED FIELDS</h1>
+            <Form.Item label="What would you like to do?" name="choice" rules={[{required: true, message: 'Please input a password'}]}>
+              <Input onChange={(event) =>(this.setState({choice: event.target.value}))} placeholder='Fill Request # ____; Give to the Operations Fund;  Give to the "Need A Penny" Fund'/>
+            </Form.Item>
 
-                  <Form.Item label="Amount">
-                    <Form.Item name="Amount" noStyle rules={[{required: true, message: 'Please input an amount'}]}>                     
-                      <InputNumber onChange={(event) =>(this.setState({amount: event}))} min={0} />                    
-                    </Form.Item>
-                  </Form.Item>
-                  
-                  <h1 id="fieldWords">OPTIONAL FIELDS</h1>
+            <Form.Item label="Amount">
+              <Form.Item name="Amount" noStyle rules={[{required: true, message: 'Please input an amount'}]}>                     
+                <InputNumber onChange={(event) =>(this.setState({amount: event}))} min={0} />                    
+              </Form.Item>
+            </Form.Item>
+            
+            <h1 id="fieldWords">OPTIONAL FIELDS</h1>
 
-                  <Form.Item name="taxReceipt" label="Would you like a tax reciept?" >
-                        <Select defaultValue="false"
-                        onChange={this.handleChangeTaxReceipt}
-                        >
-                            <Option value="false">No</Option>
-                            <Option value="true">Yes</Option>
-                        </Select>
-                    </Form.Item>   
+            <Form.Item name="taxReceipt" label="Would you like a tax reciept?" >
+                  <Select defaultValue="false"
+                  onChange={this.handleChangeTaxReceipt}
+                  >
+                      <Option value="false">No</Option>
+                      <Option value="true">Yes</Option>
+                  </Select>
+              </Form.Item>   
 
-                  <Form.Item label="Message" name="messageToReceipient">
-                    <Input.TextArea rows={10}
-                    placeholder="Please enter a message to the recipient, if desired, 2000 character maximum" onChange={(event) =>(this.setState({messageToRecipient: event.target.value}))} />
-                  </Form.Item>
+            <Form.Item label="Message" name="messageToReceipient">
+              <Input.TextArea rows={10}
+              placeholder="Please enter a message to the recipient, if desired, 2000 character maximum" onChange={(event) =>(this.setState({messageToRecipient: event.target.value}))} />
+            </Form.Item>
 
-                  <Form.Item {...tailLayout}>
-                    <Button type="primary" htmlType="submit">Submit</Button>
-                  </Form.Item>
+            <Form.Item {...tailLayout}>
+              <Button type="primary" htmlType="submit">Submit</Button>
+            </Form.Item>
 
-                </Form> : 
+          </Form> 
+          
+          <div>
+            <Elements stripe={stripePromise}>
+              <CheckoutForm />
+            </Elements>
+          </div> 
+        </>:
                 <>
                 <Layout>
                     <Content>                                
@@ -167,13 +174,7 @@ class DonationCreate extends Component <PropsItems, DonationData> {
                         </Row>
                     </Content>
                 </Layout>  
-                </>}
-                {/* <StripeDonation /> */}
-                <div>
-          <Elements stripe={stripePromise}>
-            <CheckoutForm />
-          </Elements>
-        </div>
+                </>}               
               </Col>
             </Row>
           </Content>

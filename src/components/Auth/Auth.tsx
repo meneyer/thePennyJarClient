@@ -28,8 +28,8 @@ class Auth extends Component <PropsItems, Toggle> {
     render(){
         return (
             <div className="boxbg">
+                <Button type="primary" id="toggleButton" onClick={this.handleToggle} style={{ display: 'inline-flex', justifyContent: 'center', alignItems: 'center'}}>Switch between Login and Sign up</Button>   
                 {this.state.showLogin === true ? <Login updateToken={this.props.updateToken}/> : <Create updateToken={this.props.updateToken}/> }              
-                <Button type="primary" id="toggleButton" onClick={this.handleToggle} style={{ display: 'inline-flex', justifyContent: 'center', alignItems: 'center'}}>Click to switch between Login and Sign up</Button>   
             </div>
         );
     }
