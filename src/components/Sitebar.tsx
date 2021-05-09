@@ -41,12 +41,13 @@ class SiteBar extends Component <PropsItems, {}> {
                                 <Menu.Item key="1">Donation Form <Link to='/giveAPenny/donate' />  </Menu.Item>
                                 <Menu.Item key="2">Donation List<Link to='/giveAPenny/donationlist' /> </Menu.Item>
                                 <Menu.Item key="3">My Donations <Link to='/giveAPenny/mydonations'/></Menu.Item>
+                                <Menu.Item key="4">Checkout <Link to='/giveAPenny/checkout'/></Menu.Item>
                             </SubMenu>
                             
                             <SubMenu key="sub5" title="My Info">
                                 <Menu.Item key="1">My Profile<Link to='/profile/myprofile' />  </Menu.Item>                            
-                                <Menu.Item key="3">My Requests <Link to='/needAPenny/myrequests' /></Menu.Item>
-                                <Menu.Item key="4">My Donations <Link to='/giveAPenny/mydonations'/></Menu.Item>
+                                <Menu.Item key="2">My Requests <Link to='/needAPenny/myrequests' /></Menu.Item>
+                                <Menu.Item key="3">My Donations <Link to='/giveAPenny/mydonations'/></Menu.Item>
                             </SubMenu>
 
                             <SubMenu key="sub2" title="Admin">
