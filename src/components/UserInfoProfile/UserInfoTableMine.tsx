@@ -2,7 +2,8 @@ import React, {Component} from 'react';
 import UserInfoUpdate from './UserInfoUpdate'
 import UserInfoDelete from './UserInfoDelete'
 // import APIURL from "../../helpers/environment"
-import { Layout } from 'antd';
+import { Layout, Card } from 'antd';
+import Image2 from '../assets/thePennyJarLogo.png'
 
 
 export interface UserInfoData{
@@ -50,48 +51,32 @@ class UserTableMine extends Component <PropsItems, UserInfoData> {
         console.log(this.props.logData.firstName)
         return (
             <div className="boxbg">
-            <Layout>                  
-
             <h1 id="formTitlesSilver">Profile</h1>
-                <table>
-                    <thead>
-                        <tr>
-                            {/* <th>ID</th> */}
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>Email</th>
-                            <th>Phone Number</th>
-                            <th>Street Address</th>
-                            <th>City</th>
-                            <th>State</th>
-                            <th>Zip Code</th>
-                            <th>Update</th>
-                            <th>Delete</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                            {/* <td>ID</td> */}
-                            <td>{this.props.logData.firstName}</td>
-                            <td>{this.props.logData.lastName}</td>
-                            <td>{this.props.logData.email}</td>
-                            <td>{this.props.logData.phone}</td>
-                            <td>{this.props.logData.address}</td>
-                            <td>{this.props.logData.city}</td>
-                            <td>{this.props.logData.state}</td>
-                            <td>{this.props.logData.zipcode}</td>
-                            <td><UserInfoUpdate 
+            <Layout >
+                <Card hoverable id="userProfileCard"
+                style={{ width: 300, borderRadius: "2%" }}
+                cover={<img alt="example" src={Image2} />}>
+                    <h1 style={{color: "#0D2149", fontWeight:"bold"}}>{this.props.logData.firstName}</h1>
+                    <h1 style={{color: "#0D2149", fontWeight:"bold"}}>{this.props.logData.lastName}</h1>
+                    <h4 style={{color: "#0D2149", fontWeight:"bold"}}>{this.props.logData.email}</h4>
+                    <h4 style={{color: "#0D2149", fontWeight:"bold"}}>{this.props.logData.phone}</h4>
+                    <h4 style={{color: "#0D2149", fontWeight:"bold"}}>{this.props.logData.address}</h4>
+                    <h4 style={{color: "#0D2149", fontWeight:"bold"}}>{this.props.logData.city}</h4>
+                    <h4 style={{color: "#0D2149", fontWeight:"bold"}}>{this.props.logData.state}</h4>
+                    <h4 style={{color: "#0D2149", fontWeight:"bold"}}>{this.props.logData.zipcode}</h4>
+                    <h1 style={{color: "#0D2149", fontWeight:"bold"}}><UserInfoUpdate 
                                 SessionToken={this.props.SessionToken} 
                                 profiles={this.props.logData} 
                                 fetchProfileInfo={this.props.fetchProfileInfo}/>
-                                </td>
-                            <td><UserInfoDelete 
+                                </h1>
+                            <h1 style={{color: "#0D2149", fontWeight:"bold"}}><UserInfoDelete 
                                 SessionToken={this.props.SessionToken} 
                                 profiles={this.props.logData.id} 
                                 fetchProfileInfo={this.props.fetchProfileInfo}/>
-                                </td>
-                    </tbody>
-                </table>
-            </Layout>
+                                </h1>
+                </Card>
+                </Layout>
+        
         </div>      
         );
     }

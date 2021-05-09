@@ -104,7 +104,7 @@ class RequestTable extends Component <PropsItems, RequestData> {
                         </tbody>
                     </table> 
                     </>:
-                    <div className="boxbg">
+                    <>
                     <Layout>
                         <Content>                                
                             <Row justify="space-around" align="middle">
@@ -122,7 +122,7 @@ class RequestTable extends Component <PropsItems, RequestData> {
                             </Row>
                         </Content>
                     </Layout>
-                </div>
+                </>
                 }
                 
                 </Layout>         

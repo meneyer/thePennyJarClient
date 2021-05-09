@@ -189,7 +189,7 @@ class RequestCreate extends Component <PropsItems, RequestData> {
     
                         </Form>
                         : 
-                        <div className="boxbg">
+                        <>
                         <Layout>
                             <Content>                                
                                 <Row justify="space-around" align="middle">
@@ -208,7 +208,7 @@ class RequestCreate extends Component <PropsItems, RequestData> {
                                 </Row>
                             </Content>
                         </Layout>
-                    </div>
+                    </>
     }
                     </Col>
                     </Row>

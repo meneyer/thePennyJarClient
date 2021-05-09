@@ -84,7 +84,7 @@ class DonationTable extends Component <PropsItems, DonationData> {
                         </tbody>
                     </table>
                     </>:
-                    <div className="boxbg">
+                    <>
                     <Layout>
                         <Content>                                
                             <Row justify="space-around" align="middle">
@@ -102,7 +102,7 @@ class DonationTable extends Component <PropsItems, DonationData> {
                             </Row>
                         </Content>
                 </Layout>
-            </div> 
+            </> 
     }
     </Layout>
     </div> 

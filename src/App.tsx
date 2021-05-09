@@ -21,12 +21,17 @@ import UserInfoMine from './components/UserInfoProfile/UserInfoMine';
 // import DonationTable from './components/FinancialDonation/DonationTable';
 // import Create from "./components/Auth/Create"
 // import Login from "./components/Auth/Login"
+// import { loadStripe } from '@stripe/stripe-js';
+// import { ElementsConsumer, Elements } from '@stripe/react-stripe-js';
+// import StripeDonation from './components/FinancialDonation/StripeDonation';
 
 
 type Token ={
   SessionToken: string
   userRole: string
 }
+
+// const stripePromise = loadStripe('pk_test_51IoFgIGo0JALJHtfdCoyBl0DgA37XLOcig7woGtXQNlyYSOFRtoQOw8fAeMMeCjVkGA4S0Er76PIUqQahKOc6uFY00QMvshjTq');
 
 class App extends Component<{}, Token> {
   constructor(props:any){
@@ -45,6 +50,14 @@ class App extends Component<{}, Token> {
       }) 
     };
   }
+
+  // InjectedCheckoutForm = () => (
+  //   <ElementsConsumer>
+  //     {({ stripe, elements }) => (
+  //       <StripeDonation stripe={stripe} elements={elements} />
+  //     )}
+  //   </ElementsConsumer>
+  // );
 
   userRole = (role: string) =>{
     localStorage.setItem('role', role)
