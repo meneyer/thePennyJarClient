@@ -51,7 +51,7 @@ class CheckoutForm extends Component <PropsData, {}>{
             <CardSection />
             </Form.Item> 
             <button disabled={!this.props.stripe} className="btn-pay">
-                Buy Now
+                Donate
             </button>
             </form>
             </Col>
