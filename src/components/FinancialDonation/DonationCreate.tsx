@@ -3,8 +3,9 @@ import APIURL from "../../helpers/environment";
 import {Layout, Form, Input, Button, Row, Col, InputNumber, Select } from "antd"
 import Image1 from '../assets/michael-longmire-lhltMGdohc8-unsplash.jpg'
 import StripeDonation from "./StripeDonation"
-// import { loadStripe } from '@stripe/stripe-js';
-// import { ElementsConsumer, Elements } from '@stripe/react-stripe-js';
+import { loadStripe } from '@stripe/stripe-js';
+import { ElementsConsumer, Elements } from '@stripe/react-stripe-js';
+import CheckoutForm from './CheckoutForm'
 
 const {Content} = Layout;
 const { Option } = Select;
@@ -30,7 +31,7 @@ type PropsItems ={
   SessionToken:string;
   // fetchDonationInfo: () => void
 }
-// const stripePromise = loadStripe('pk_test_51IoFgIGo0JALJHtfdCoyBl0DgA37XLOcig7woGtXQNlyYSOFRtoQOw8fAeMMeCjVkGA4S0Er76PIUqQahKOc6uFY00QMvshjTq');
+const stripePromise = loadStripe('pk_test_51IoFgIGo0JALJHtfdCoyBl0DgA37XLOcig7woGtXQNlyYSOFRtoQOw8fAeMMeCjVkGA4S0Er76PIUqQahKOc6uFY00QMvshjTq');
 
 class DonationCreate extends Component <PropsItems, DonationData> {
   constructor(props: PropsItems){
@@ -167,7 +168,12 @@ class DonationCreate extends Component <PropsItems, DonationData> {
                     </Content>
                 </Layout>  
                 </>}
-                <StripeDonation />
+                {/* <StripeDonation /> */}
+                <div>
+          <Elements stripe={stripePromise}>
+            <CheckoutForm />
+          </Elements>
+        </div>
               </Col>
             </Row>
           </Content>
