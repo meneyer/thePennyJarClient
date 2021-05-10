@@ -23,8 +23,10 @@ class CheckoutForm extends Component <PropsData, {}>{
         const result = await stripe.createToken(card);
         if (result.error) {
         console.log(result.error.message);
+        alert("Donation unsuccessful.  Please try again.");
         } else {
         console.log(result.token);
+        alert("Donation sucessful.  Thank you!")
         }
     };
 

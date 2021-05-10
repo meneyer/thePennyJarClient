@@ -79,9 +79,9 @@ class HomePage extends Component <PropsItems, {}>{
                                     <ul>
                                         <li>Requested items must be $150 or less.</li>
                                         <li>You may request no more than 2 items per month.</li>
-                                        <li>Please allow at least 30 days for any requests to be fulfilled</li>
+                                        <li>Please allow at least 30 days for any requests to be fulfilled.</li>
                                         <li>Fill out your profile information so the admins know where to send your request.</li>
-                                        <li>Remember to include a reason for your request (ex: laid off due to COVID-19, a family medical situation, an unexpected housing bill, etc.)</li>
+                                        <li>Remember to include a reason for your request (ex: laid off due to COVID-19, a family medical situation, an unexpected housing bill, etc.).</li>
                                     </ul>
                                 </ol>
                             <h2 id="howItWorksSubTitle">Give A Penny</h2>
@@ -91,17 +91,17 @@ class HomePage extends Component <PropsItems, {}>{
                                             <ul>
                                                 <li>Navigate to the "Need A Penny" tab at the top of the website and click on the "Request List."  This brings up every request that has been made to The Penny Jar.</li>
                                                 <li>Pick a request that has not yet been filled.</li> 
-                                                <li>Write down the number of that request, along with the item requested</li>
-                                                <li>Navigate to the "Give A Penny" tab at the top of the website and click on the "Donation Form" and fill out the information</li>
-                                                <li>Fill out the payment information and the admins will fill your request and send you a tax receipt (if requested)</li>
+                                                <li>Write down the number of that request, along with the item requested.</li>
+                                                <li>Navigate to the "Give A Penny" tab at the top of the website and click on the "Donation Form" and fill out the information.</li>
+                                                <li>Fill out the payment information and the admins will fill your request and send you a tax receipt (if requested).</li>
                                             </ul>
                                         <li>Donate to the <u>Need A Penny</u> Fund </li>
                                             <ul>
-                                                <li>If you do not have a specific request you'd like to fill, you can choose to donate to the Need A Penny fund.  These donations will be collected and the admins will fill any remaining requests when the funds reach the necessary amounts</li>
+                                                <li>If you do not have a specific request you'd like to fill, you can choose to donate to the Need A Penny fund.  These donations will be collected and the admins will fill any remaining requests when the funds reach the necessary amounts.</li>
                                             </ul>
                                         <li>Donate to the <u>Operations</u> Fund</li>
                                             <ul>
-                                                <li>In order to keep 100% of donations going to the recipients, you can choose to give to the Operations fund.  This fund will cover all operational expenses (ex: credit card processing fees, an Amazon Prime Account, etc.) </li>
+                                                <li>In order to keep 100% of donations going to the recipients, you can choose to give to the Operations fund.  This fund will cover all operational expenses (ex: credit card processing fees, an Amazon Prime Account, etc.). </li>
                                             </ul>
                                     </ol>
                                 </ol>
@@ -110,8 +110,8 @@ class HomePage extends Component <PropsItems, {}>{
                                     <ul>
                                         {/* <li>General Rules</li> */}
                                             {/* <ul> */}
-                                                <li>Admins will fill all requests made through donors filling specific request or by donations through the Need A Penny Fund</li>
-                                                <li>Admins will utilize the Operations Fund donations for all operational expenses</li>
+                                                <li>Admins will fill all requests made through donors filling specific request or by donations through the Need A Penny Fund.</li>
+                                                <li>Admins will utilize the Operations Fund donations for all operational expenses.</li>
                                                 <li>Admins will keep all user information anonymous as they are the only people with access to user profiles.</li>
                                                 <li>Admins will send out tax receipts and other documentation as requested by users.</li>
                                             {/* </ul> */}

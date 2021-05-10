@@ -92,7 +92,7 @@ class App extends Component<{}, Token> {
           <Route exact path="/giveAPenny/mydonations" component={()=> <DonationInfo SessionToken={this.state.SessionToken}/>} />
           <Route exact path="/giveAPenny/donate" component={()=> <DonationCreate SessionToken={this.state.SessionToken}/>} />
           <Route exact path="/giveAPenny/donationlist" component={()=> <DonationListAll SessionToken={this.state.SessionToken}/>} /> 
-          
+
         </Switch>
 
         <FooterSection />   

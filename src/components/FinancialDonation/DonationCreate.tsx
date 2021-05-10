@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import APIURL from "../../helpers/environment";
 import {Layout, Form, Input, Button, Row, Col, InputNumber, Select } from "antd"
 import Image1 from '../assets/michael-longmire-lhltMGdohc8-unsplash.jpg'
-import StripeDonation from "./StripeDonation"
 import { loadStripe } from '@stripe/stripe-js';
 import { ElementsConsumer, Elements } from '@stripe/react-stripe-js';
 import CheckoutForm from './CheckoutForm'

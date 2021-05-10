@@ -162,7 +162,7 @@ class RequestUpdate extends Component <PropsItems, RequestData> {
                     </Select>
                 </Form.Item>  : ''}               
                     
-                    </Form> : 
+                    </Form>
 
                     </Modal>
             </div>        

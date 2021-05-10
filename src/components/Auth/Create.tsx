@@ -88,12 +88,13 @@ class Create extends Component <PropsItems, SignUpData>{
                                 <h1>Sign Up</h1>             
                                 <Form  {...layout} onFinish={this.handleSubmit}>
                                     {/* <h1>Sign up</h1> */}
-                                    <Form.Item label="Username" name="username" rules={[{required: true, message: 'Please input a username'}]}>
-                                        <Input onChange={this.handleChangeUsername}/>
+                                    <Form.Item label="Username" name="username" rules={[{required: true, message: 'Please input a username'}]}  >
+                                    
+                                        <Input onChange={this.handleChangeUsername} style={{fontFamily: "'Montserrat', sans-serif" }}/>
                                     </Form.Item>
 
                                     <Form.Item label="Password" name="password" rules={[{required: true, message: 'Please input a password'}]}>
-                                        <Input onChange={this.handleChangePassword} />
+                                        <Input onChange={this.handleChangePassword} style={{fontFamily: "'Montserrat', sans-serif" }}/>
                                     </Form.Item>
 
                                     <Form.Item name="radio-group" label="What would you like to do?" rules={[{ required: true, message: 'Please pick an item' }]}>
