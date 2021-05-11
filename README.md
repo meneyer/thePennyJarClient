@@ -6,7 +6,15 @@ The name was inspired by the Give A Penny, Take A Penny containers that are near
 
 ## Links
 
-https://thepennyjarclient.herokuapp.com/
+### Client
+Heroku: https://thepennyjarclient.herokuapp.com/
+
+GitHub: https://github.com/meneyer/thePennyJar__Client.git
+
+### Server
+Heroku: https://pennyjarserver.herokuapp.com/
+
+GitHub: https://github.com/meneyer/ThePennyJar__Server.git
 
 ## About the Project
 
